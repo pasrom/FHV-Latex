@@ -1,3 +1,16 @@
-/build/*
 LatexVorlage-built.pdf
 .DS_Store
+*.acn
+*.aux
+*.bcf
+*.fls
+*.glo
+*.glsdefs
+*.ist
+*.log
+*.out
+*.run.xml
+*.syg
+*.synctex.gz
+*.toc
+build/LatexVorlage.pdf
