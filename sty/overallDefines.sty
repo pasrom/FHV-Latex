@@ -1,0 +1,65 @@
+%%
+% only \def and \newcommand{cmd}{def} allowed here!
+%%
+\def\pathName{Programm}
+\def\ValueBindingOffset{0mm} 
+\def\debug{false} % ein ausschalten von hilfen
+\def\thesis{false}
+%
+% english or ngerman weg
+%
+\def\newLanguage{ngerman} % build twice!!!
+%
+\def\MotorName{Maxcon DCX 22S\xspace}
+\def\MotorTreiber{Escon 50/5\xspace}
+\def\pfeil{\ensuremath{\rightarrow}\xspace}
+%
+%Farbe Tabelle
+\def\farbeTabA{C0C0C0}
+\def\farbeTabB{EFEFEF}
+%
+% Defines for the Project
+% 
+\def\modeA{Local-Mode\xspace} %% FYI \xspace sets automatically a space if necessary
+\def\modeB{Chain-Mode\xspace}
+\def\wait{\enquote{WAIT}\xspace}
+\def\ready{\enquote{READY}\xspace}
+\def\release{\enquote{RELEASE}\xspace}
+\def\request{\enquote{REQUEST}\xspace}
+%
+% Counter for requirements
+%
+\newcounter{ReqCtr}
+\setcounter{ReqCtr}{1}
+%
+%
+%
+\def\getReqCtr#1{%
+	\theReqCtr
+	\labelText{\theReqCtr}{#1}%
+	\stepcounter{ReqCtr}\xspace%
+}
+%
+\def\stepSizeMotor{\(100~U/min\)\xspace}
+\def\minMaxVelocity{\(1000\ldots2200~U/min\)\xspace}
+\def\timeTpp{\(t_{pp} = 1~s\)\xspace}
+\def\tpp{\(t_{pp}\)\xspace}
+\def\paket#1{Paket#1\xspace}
+\def\delimiterKom{\textbackslash r\textbackslash n}
+%
+\newcommand{\mtnote}[1]{\textsuperscript{\TPTtagStyle{#1}}}
+%
+\def\SymbReg{\textsuperscript{\textregistered}}
+\newcommand{\MATLAB}{\textsc{Matlab\small\SymbReg}\xspace}
+%
+%do the caption with a source
+\newcommand{\unterschrift}[3]%
+{%
+	\ifthenelse{\equal{\getLanguage}{english}} % english or german
+	{\def\quelle{Source}}%
+	{\def\quelle{Quelle}}%
+	\ifthenelse{\equal{#3}{nein}} % ins Inhaltsverzeichnis aufnehmen? Standard auf ein
+	{\caption[]{#1\\\quelle: #2}}%
+	{\caption[#1]{#1\\\quelle: #2}}%
+	%\caption[\textContent]{#1\\\quelle: #2}%
+}%

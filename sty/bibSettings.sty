@@ -1,0 +1,76 @@
+%
+\renewcommand*{\labelnamepunct}{\addcolon\addspace}
+\DefineBibliographyStrings{german}{% 
+	urlseen = {Zugriff am:}, 
+}
+%
+% http://tex.stackexchange.com/questions/54644/name-delimiters-in-biblatex
+%
+\AtBeginBibliography{%
+	\renewcommand*{\multinamedelim}{\addsemicolon\space}%
+	% uncomment if you don't like the "and" between the last entry
+	%\renewcommand*{\finalnamedelim}{\multinamedelim}
+	%
+}
+%
+\DeclareNameAlias{sortname}{last-first}
+\DeclareNameAlias{editorin}{last-first}
+%
+\newbibmacro*{byeditor:in}{%
+	\ifnameundef{editor}
+	{}
+	{\printnames[editorin]{editor}%
+		\addspace\bibsentence%
+		\mkbibparens{\usebibmacro{editorstrg}}%
+		\clearname{editor}%
+		\printunit{\addcolon\space}}}
+%
+\xpatchbibdriver{inbook}
+{\usebibmacro{in:}%
+	\usebibmacro{bybookauthor}%
+	\newunit\newblock
+	\usebibmacro{maintitle+booktitle}%
+	\newunit\newblock
+	\usebibmacro{byeditor+others}}
+{\usebibmacro{in:}%
+	\usebibmacro{bybookauthor}%
+	\newunit\newblock
+	\usebibmacro{byeditor:in}%
+	\newunit\newblock
+	\usebibmacro{maintitle+booktitle}%
+	\newunit\newblock
+	\usebibmacro{byeditor+others}}
+{}{}
+%
+\xpatchbibdriver{incollection}
+{\usebibmacro{in:}%
+	\usebibmacro{maintitle+booktitle}%
+	\newunit\newblock
+	\usebibmacro{byeditor+others}}
+{\usebibmacro{in:}%
+	\usebibmacro{byeditor:in}%
+	\setunit{\labelnamepunct}\newblock
+	\usebibmacro{maintitle+booktitle}%
+	\newunit\newblock
+	\usebibmacro{byeditor}}
+{}{}
+%
+\xpatchbibdriver{inproceedings}
+{\usebibmacro{in:}%
+	\usebibmacro{maintitle+booktitle}%
+	\newunit\newblock
+	\usebibmacro{event+venue+date}%
+	\newunit\newblock
+	\usebibmacro{byeditor+others}}
+{\usebibmacro{in:}%
+	\usebibmacro{byeditor:in}%
+	\setunit{\labelnamepunct}\newblock
+	\usebibmacro{maintitle+booktitle}%
+	\newunit\newblock
+	\usebibmacro{event+venue+date}%
+	\newunit\newblock
+	\usebibmacro{byeditor+others}}
+{}{}
+%
+%\defbibheading{lit}{\section*{Literaturverzeichnis}} 
+%\defbibheading{ieee}{\section*{IEEE Standardverzeichnis}}

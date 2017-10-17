@@ -1,0 +1,134 @@
+\documentclass[./\jobname.tex]{subfiles}
+\begin{document}
+%
+	\blindmathtrue
+	\blinddocument
+	%
+\chapter{Mathemodus}
+%
+\begin{align}
+det(\lambda \cdot \mathds{1} -A) &= 0 \underbrace{\longrightarrow}_{\substack{\text{Zustands-} \\ \text{rückführung}}} det\left[\lambda\cdot \mathds{1} - \left(A-b\cdot k\right)\right]=0\label{eq: eigenwerte rueckfuehrung}\\
+\sin(x)^{2} + \cos(x)^{2} &= 1\label{eq: cos sin}
+\end{align}
+%
+Ich bin eine super Referenzierung: \cref{eq: eigenwerte rueckfuehrung}. Oder noch besser wenn auf mehrere Gleichungen referenziert werden will: \cref{eq: eigenwerte rueckfuehrung,eq: cos sin}
+%
+\chapter{BiB \& Acronyme}
+%
+\begin{itemize}
+	\item Dies ist eine Qullenangabe: \parencite[Vgl.][S.220-224]{IEEE802.1Q2014}.
+	\item Dies ist eine \gls{cbs}.
+	\item Zweite Verwendung von einem Acronym: \gls{cbs}.
+	\item Dies ist eine Fußzeile\footnote{Das ISO/OSI Model kann in \cite[][S.2-9]{Mandl2010} nachgeschlagen werden.}.
+	\item \parencite[][S.2-9]{Mandl2010} nachgeschlagen werden.
+\end{itemize}
+%
+\chapter{Bilder}
+%
+\begin{figure}[H]
+\centering
+\noindent\adjustbox{max width=\textwidth}{%falls größer als \textwidth, wird das Bild verkleinert
+	%trim option's parameter order: left bottom right top
+	\includegraphics[width=1\textwidth]{example-image-a}
+}
+	\unterschrift{ich bin die Unterschrift}{Quelle}{}
+	\label{fig: example-image}
+\end{figure}
+%
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{example-image-a}
+		\caption{Bild A}
+		\label{fig: Bild A}
+	\end{subfigure}% 
+	%
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{example-image-b}
+		\caption{Bild B}
+		\label{fig: Bild B}
+	\end{subfigure}%
+	\unterschrift{Bildunterschrift für beide Bilder}{\cite{Dorner2010}}{}%
+	\label{fig: Bild A und B}
+\end{figure}
+%
+\section{Spezial}
+%
+\def\spaceX{1.5}
+\begin{figure}[H]
+	\centering
+\begin{tikzpicture}%[scale=0.7]
+\begin{scope}[every node/.style={bgelement}]
+\node (Se) at (0,0) {Se};
+\node[right=\spaceX of Se] (i) {1};
+\node[above=\spaceX of i] (Iel) {$I:L_{a}$};
+\node[below=\spaceX of i] (Rel) {$R:R_{a}$};
+\node[right=\spaceX of i,label=below:{$\varPsi=k_{m}$}] (GY) {GY};
+\node[right=\spaceX of GY] (w) {1};
+\node[above=\spaceX of w] (Im) {$I:J_{m}$};
+\node[below=\spaceX of w] (Rm) {$R:b_{m}$};
+\end{scope}
+\draw[bonds]
+(Se) edge [e_out,effort={$U$}, flow={$i_a$}] (i)
+(i) edge [e_out,effort={$U_{La}$}, flow={$i_a$}] (Iel)
+edge [e_in,effort={$U_{Ra}$}, flow={$i_a$}] (Rel)
+edge [e_in,effort={$U_{emf}$}, flow={$i_a$}] (GY)
+(GY) edge [e_out,effort={$T$}, flow={$\omega$}] (w)
+(w) edge [e_out,effort={$T_{j}$}, flow={$\omega$}] (Im)
+edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
+\end{tikzpicture}
+	\unterschrift{Kausalisierter Bondgraph}{eigene Ausarbeitung}{}
+\label{fig: kausalisierter bondgraph}
+\end{figure}
+%
+\def\bildA{true}
+\begin{figure}[H]
+	\centering
+	\noindent\adjustbox{max width=\textwidth}{%falls größer als \textwidth, wird das Bild verkleinert
+	\subfile{./img/tikz/escon-schaltplan.tex}
+}
+	\unterschrift{Schaltkreis: Escon 50/5 Controller für Polverschiebung}{eigene Ausarbeitung}{}
+	\label{fig: Schalplan Polverschiebung}
+\end{figure}
+%
+\def\bildA{true}
+\begin{figure}[H]
+	\centering
+	\noindent\adjustbox{max width=\textwidth}{%falls größer als \textwidth, wird das Bild verkleinert
+		\subfile{./img/tikz/blockschaltbild-state-space.tex}
+	}
+	\unterschrift{Zustandsregler mit Rückkopplungsverstärkungsmatrix f}{eigene Ausarbeitung}{}
+	\label{fig: blockschaltbild-state-space.tex A}
+\end{figure}
+%
+\chapter{Tabellen}
+%
+\begin{table}[H]
+	\centering
+	\noindent\adjustbox{max width=\linewidth}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			\rowcolor[HTML]{\farbeTabA}
+			Switch Typ & load & $n$ & min & max & $\tilde{x}$ & $\bar{x}$ & $\sigma^{2}$ & $\sigma$ \\ \hline
+			Akro 6/0 & nein & 1199602 & 145.12 & 151.32 & 147.92 & 147.91 & 1.12 & 1.06	\\ \hline
+			\rowcolor[HTML]{\farbeTabB} 
+			Akro 6/0 & ja & 1199382 & 145.12 & 151.40 & 147.88 & 147.89 & 1.13 & 1.06 \\ \hline
+		\end{tabular}
+	}
+	\unterschrift{Tabellen Unterschrift}{eigene Ausarbeitung}{}
+	\label{tab: Tabelle A}
+\end{table}
+%
+\chapter{Listing}
+%
+\begin{lstlisting}[caption={example}]
+for i:=maxint to 0 do
+begin
+	{ comment } %(*\label{comment}*)
+end;
+\end{lstlisting}
+Line \ref{comment} shows a comment. Die Escape Operatoren können unter \enquote{./sty/Listings.sty} geändert werden.
+%
+\end{document}

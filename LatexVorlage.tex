@@ -1,0 +1,134 @@
+\newcommand{\DokuOderPresentation}{doku}
+\newcommand{\Zusammenfassung}{false}
+\newcommand{\version}{v0.0}
+%
+\input{./sty/overallDefines.sty}
+%
+\documentclass[
+a4paper,
+oneside,
+11pt,
+DIV=calc,
+headsepline,
+%%BCOR=10mm,
+parskip=half,
+headings=big,
+draft=\debug,
+numbers=noenddot,
+%bibliography=totoc,
+%headinclude=false, %koma script seite 79 tabelle 3.7
+]{scrreprt}
+%
+\pdfoptionpdfminorversion=6 %use newer pdf version
+%
+\usepackage{./sty/fhv}
+%
+\ifthenelse{\equal{\debug}{true}}{
+	\usepackage{pagegrid}
+	\usepackage{showframe}
+	\usepackage{layout}
+}{}
+%
+%Display length in mm
+\makeatletter
+\ifthenelse{\equal{\debug}{true}}{
+	\renewcommand*{\lay@value}[2]{%
+		\strip@pt\dimexpr0.351459\dimexpr\csname#2\endcsname\relax\relax mm%
+	}
+}{}
+\makeatother
+%
+%
+\makeglossaries
+%
+% General Settings for Title...
+%
+\setLanguage{\newLanguage}
+\setTitle{Laborbericht MEMOS}
+\setThesistype{BACHLELOR}
+\setAuthor{%
+	Florian Burtscher\\%
+	Roman Passler\\%
+}
+\setAuthorId{MATRIKELNUMMER}
+\setStudyprogram{Master Mechatronics} 
+\setSupervisor{Schmitt Thomas, MSc}   
+\setSupervisorCompany{COMPANY}
+\setSubtitle{}
+\setSubject{}
+%
+%% PDF Settings
+%
+\hypersetup{
+	pdftitle={\getTitle},
+	pdfauthor={%
+		Passler\xmpcomma\ Roman;%
+		Burtscher\xmpcomma\ Florian%
+	},
+	pdfsubject={},
+	pdfkeywords={Fachhochschule Vorarlberg : Heimarbeit 1 : MEM : Steinberger, Thomas},
+	pdfcreator={pdflatex},
+	pdfproducer={LaTeX with shyperref},
+	pdflang={de},
+	unicode=true,
+}
+%
+\setkomafont{descriptionlabel}{\normalfont\bfseries}%fuer glossaries serifen schrift
+%
+\begin{document}
+	%
+	% for Backlinks to work properly
+	%
+	\let\hypercontentsline=\contentsline
+	\renewcommand{\contentsline}[4]{\hypertarget{toc.#4}{}\hypercontentsline{#1}{#2}{#3}{#4}}
+	%
+	% Import the acronyms
+	%
+	\input{./util/Acronym.tex} %provide the defined acronyms to be used
+	%
+	\sisetup{output-decimal-marker = {,}}
+	% 
+	\pagenumbering{gobble} % used to prevent the page numbering 
+	{\ifthenelse{\equal{\debug}{true}}{
+			\layout
+			\textrm{Serif: \rmdefault}\par
+			\textsf{Sans-Serif: \sfdefault}\par
+			\texttt{Teletype: \ttdefault}
+	}{}
+	%
+	% evtl. Sperrvermerkseite
+	% nur in begründeten Ausnahmefällen verwenden
+	% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
+	\hypersetup{pageanchor=false}
+	%\sperrvermerk{Bachmann electronic GmbH}{5} 
+	%
+	\maketitle % creates the title page
+	%
+	\restoregeometry
+	%
+	\hypersetup{pageanchor=true}
+	\pagenumbering{Roman} 
+	%
+	% Abstracts
+	%\subfile{./tex/Widmung.tex}
+	\subfile{./tex/Kurzreferat.tex}
+	%\subfile{./tex/Abstract.tex}
+	%\subfile{./tex/Vorwort.tex}
+	\newpage
+	%
+	\fhvlists
+	%\pagenumbering{arabic} % seitenzahlnummerierung ab hier beginnen	
+	%\subfile{./tex/Hauptteil.tex}
+	\subfile{./tex/Examples.tex}
+	%The order of the chapters used
+	% final generated information
+	\glossaryAndBibliography
+	\newpage
+	\appendix
+	\addAppendix{
+		\subfile{./tex/Anhang.tex}
+	}
+	%
+	% Statuory Declaration
+	%\statuoryDeclaration
+\end{document}

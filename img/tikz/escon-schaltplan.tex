@@ -1,0 +1,198 @@
+\def\xKoord{3.5}
+\def\xKoordEnd{0}
+\def\yKoordEnd{7.5}
+\begin{circuitikz}
+
+\draw [thick] (\xKoordEnd,0) rectangle ++(\xKoord,\yKoordEnd) coordinate (u1) node[above left]{Escon Anschluss}	; % shape
+
+\draw [pin] (u1) ++ (0,-0.5) coordinate (Plus) 
+node[left]{-}
+node[above right]{1}; 
+
+\draw [pin] (u1) ++ (0,-1)  coordinate (Minus)
+node[left]{+}
+node[above right]{2}; 
+
+\draw (\xKoordEnd,\yKoordEnd-1.5) node[above right]{J1}-- ++ (\xKoord,0);
+
+\draw [pin] (u1) ++ (0,-2) coordinate (MotorPlus) 
+node[left]{Motor +}
+node[above right]{1}; 
+
+\draw [pin] (u1) ++ (0,-2.5)  coordinate (MotorMinus)
+node[left]{Motor -}
+node[above right]{2};  
+
+\draw (\xKoordEnd,\yKoordEnd-3) node[above right]{J2}-- ++ (\xKoord,0);
+
+\draw [pin] (u1) ++ (0,-3.5) coordinate (PWM) 
+node[left]{PWM}
+node[above right]{1}; 
+
+\draw [pin] (u1) ++ (0,-4)  coordinate (Enable)
+node[left]{Enable}
+node[above right]{2};  
+
+\draw (\xKoordEnd,\yKoordEnd-4.5) node[above right]{J5}-- ++ (\xKoord,0);
+
+\draw [pin] (u1) ++ (0,-5) coordinate (SetValue) 
+node[left]{Analog}
+node[above right]{1}; 
+
+\draw [pin] (u1) ++ (0,-5.5)  coordinate (ActualSpeed)
+node[left]{Actual Speed}
+node[above right]{5};  
+
+\draw [pin] (u1) ++ (0,-6)  coordinate (ActualCurrent)
+node[left]{Actual Current}
+node[above right]{6};  
+
+\draw [pin] (u1) ++ (0,-7.)  coordinate (USBA)
+node[left]{USB}
+node[above right]{USB};  
+
+\draw (\xKoordEnd,\yKoordEnd-6.5) node[above right]{J6}-- ++ (\xKoord,0);
+\draw (\xKoordEnd,\yKoordEnd-7.5) node[above right]{J7}-- ++ (\xKoord,0);
+\def\xKoordB{0}
+\def\xKoordEndB{3.5}
+\def\yKoordEndB{-5.5}	  
+\def\differenz{1} 
+\draw [thick] (0, \yKoordEndB)  rectangle ++ (\xKoordEndB,-\yKoordEndB-1)  coordinate (u2)node[above left]{Arduino Pins} ; % shape		   
+\draw [pin] (u2) ++ (0,-0.5) coordinate (pin5) 
+node[left]{PWM Out}
+node[above right]{5}; 
+
+\draw [pin] (u2) ++ (0,-1) coordinate (pin8) 
+node[left]{Direct Drive}
+node[above right]{8}; 
+
+\draw [pin] (u2) ++ (0,-1.5) coordinate (pin9) 
+node[left]{Enable Out}
+node[above right]{9}; 
+
+\draw [pin] (u2) ++ (0,-2) coordinate (pinA4) 
+node[left]{Current In}
+node[above right]{A4}; 
+
+\draw [pin] (u2) ++ (0,-2.5) coordinate (pinA5) 
+node[left]{RPM In}
+node[above right]{A5}; 
+
+\draw [pin] (u2) ++ (0,-3.5) coordinate (pinGND) 
+node[left]{GND}
+node[above right]{GND}; 
+
+
+\draw [pin] (u2) ++ (0,-3.) coordinate (USBB) 
+node[left]{USB}
+node[above right]{USB}; 
+
+\draw [pin] (u2) ++ (0,-4.) coordinate (pinEnableA) 
+node[left]{Enable In}
+node[above right]{11}; 
+
+\draw (\xKoordEnd,\yKoordEnd-7.5) node[above right]{J7}-- ++ (\xKoord,0);
+\draw (pin5) -- ++ (1,0)  coordinate (pin5B) ;  %PWM
+\draw (pin8) -- ++ (1,0)  coordinate (pin8B);  %Direktanst.
+\draw (pin9) -- ++ (1,0)  coordinate (pin9B) ;  % Enable
+\draw (pinA4) -- ++ (1,0)  coordinate (pinA4B) ;  %Current
+\draw (pinA5) -- ++ (1,0)  coordinate (pinA5B) ;  % Drehzahl
+\draw (pinGND) -- ++ (1,0)  coordinate (pinGNDB) ;  
+\draw (USBB) -- ++ (1,0)  coordinate (USBBB) ;  
+\draw (pinEnableA) -- ++ (1,0)  coordinate (pinEnableB) ;  
+
+\draw (pinGNDB)  to[short] ++ (0.75,0) to[short] ++ (0,-0.5)  node[ground]{};
+
+\draw (SetValue) -- ++ (1,0)  coordinate (SetValueB) ; 
+\draw (ActualSpeed) -- ++ (1,0)coordinate (ActualSpeed); 
+\draw (ActualCurrent) -- ++ (1,0) coordinate (ActualCurrentB); 
+\draw (PWM) -- ++ (1,0) coordinate (PWMB); 
+\draw (Enable) -- ++ (1,0) coordinate (EnableB); 
+\draw (MotorPlus) -- ++ (1,0) coordinate (MotorPlusB); 
+\draw (MotorMinus) -- ++ (1,0) coordinate (MotorMinusB);
+\draw (Minus) -- ++ (1,0) coordinate (MinusB); 
+\draw (Plus) -- ++ (1,0)coordinate (PlusB);
+\draw (USBA) -- ++ (1,0)coordinate (USBAB);
+
+\usetikzlibrary{fit}
+\ifthenelse{\equal{\bildA}{true}}{
+\draw (PWMB)
+to[short] ++  (0.5,0) to[short] ++  (0,-4.5-\differenz) -- (pin5B);
+
+
+
+\draw (ActualSpeed)
+to[short] ++  (2.5,0) to[short] ++  (0,-4.5-\differenz) coordinate (SpeedA)-- (pinA5B);
+
+\draw (ActualCurrentB)
+to[short] ++  (2,0) to[short] ++  (0,-3.5-\differenz)  coordinate (CurrentA)-- (pinA4B);		
+\draw (SpeedA) node[circ]{} ;
+\draw (CurrentA) node[circ]{} ;
+\draw(SpeedA) to[short] ++  (1,0) to[short] ++  (0,-0.75)  to[voltmeter,l_=Channel 1] ++  (0,-0.75)node[ground]{};
+\draw(CurrentA) to[short] ++  (2.5,0) to[short] ++  (0,-1.25) to[voltmeter,l=Channel 4] ++  (0,-0.75)node[ground]{};
+}{}		
+\ifthenelse{\equal{\bildA}{true}}{}{
+\draw (SetValueB)
+to[short] ++  (1.,0) to[short] ++  (0,-3.5-\differenz) -- (pin8B);}
+\draw (EnableB)
+to[short] ++  (1.5,0) to[short] ++  (0,-5-\differenz) -- (pin9B);
+
+\draw (PlusB)
+to[short] ++ (0,1.5) coordinate (beforeVolts)  node[circ]{}
+to[short] ++ (1.,0)
+to[V<=$24\,V$] ++ (0,-2) % The voltage source
+to[short]  (MinusB);
+
+\draw (beforeVolts)  to[short] ++ (-0.75,0) node[ground]{}
+;
+
+\draw (MotorPlusB)++(4.5,0.75) node[elmech](motor){M};
+\draw[thick,->>](motor.right)--++(1.5,0) node[midway,
+above]{$\omega,~T$};
+\draw[thin,-](motor.right)--++(0.5,0.75) node[above]{$b_{m}, J_{m}$};
+%
+\ifthenelse{\equal{\bildA}{true}}{%
+\draw (MotorPlusB)	 to [short] ++(2.5,0)
+to [short] ++(0,2)
+to [short] ++(0.4,0) node[ocirc]{}
+to [short] ++ (1.25,0) node[ocirc]{} to [short] ++(0.35,0) to [short] (motor.north);
+%
+}{%
+%
+\draw (MotorPlusB)	 to [short] ++(2.5,0)
+to [short] ++(0,2)
+to [short] ++(0.4,0) node[ocirc]{}
+to [ammeter,l=Channel 4]  ++ (1.25,0) node[ocirc]{} to [short] ++(0.35,0) to [short] (motor.north);
+}%
+%
+\draw (MotorMinusB) to [short] ++(4.5,0) to [short] (motor.south)
+;
+\draw (motor.right)++(1.9,0) node[elmech](Generator){G};
+%
+\ctikzset { label/align = rotate }
+\ifthenelse{\equal{\bildA}{true}}{%
+\draw (Generator.north)
+to[short] ++ (0,0.75) to[short] ++ (1.5,0) node[ocirc]{}
+to[vR,l=3 Stufen]  ++ (0,-2.5) node[ocirc]{}
+to[short] ++ (-1.5,0) 
+to[short] (Generator.south);
+}{%
+\draw (Generator.north)
+to[short] ++ (0,0.75) to[short] ++ (1.5,0) node[ocirc]{}
+to[voltmeter,l=Channel 1] ++ (0,-2.5) node[ocirc]{}
+to[short] ++ (-1.5,0) 
+to[short] (Generator.south);
+}
+\ctikzset { label/align = straight }
+%;	
+\node (PC) at (12.5,0){};
+\draw (USBAB) to[short] ++  (3,0)  to[short] ++  (0,-1.75)  to[short] ++  (4.5,0);
+\draw (USBBB) to[short] ++  (3,0)  to[short] ++  (0,2.5) to[short] ++ (4.5,0);
+
+\pic(comp0)[%
+draw,%
+fill=gray!30,%
+scale=0.25,%
+pic text={PC mit \\MATLAB / Simulink\\ und Escon Studio}%
+]at (PC){computer};
+\end{circuitikz}

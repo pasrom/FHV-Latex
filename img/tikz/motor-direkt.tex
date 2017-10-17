@@ -1,0 +1,26 @@
+\begin{circuitikz}
+	\draw (1,0)
+	to[V<=$\spannung\,V$] (1,2) % The voltage source
+	to[short] (1.5,2)
+	to[switch=S1] (2,2) to[short] ++ (.25,0) node[ocirc]{}
+	to[ammeter,l=Channel 4] (3.75,2)node[ocirc]{} to[short]  ++ (.25,0) ;
+	\draw (4,1) node[elmech](motor){M};
+	\draw (4,2)
+	to[short] (motor.north);
+	%to[Telmech=M,n=motor] (4,0)
+	\draw (motor.south)
+	to[short] (4,0)
+	to[short] (1,0);
+	\draw[thick,->>](motor.right)--++(1.5,0) node[midway,
+	above]{$\omega\omegaWert,~T$};
+	%\draw[thin,-](motor.right)--++(0.5,0.75) node[above]{$b_{m}, J_{m}$};
+	\draw (6.35,1) node[elmech](Generator){G};
+	\draw (Generator.north)
+	to[short] (6.35,2) to[short] (8,2) node[ocirc]{};
+	\ifthenelse{\equal{\bildA}{true}}{}{%
+		\draw (8,2) to[voltmeter,l=Channel 1] (8,0);
+	}
+	\draw (Generator.south) to[short] (6.35,0) to[short] (8,0) node[ocirc]{};
+	%to[short] (6.35,0) 
+	%to[short] (Generator.south);
+\end{circuitikz}

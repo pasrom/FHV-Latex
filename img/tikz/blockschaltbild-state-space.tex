@@ -1,0 +1,71 @@
+\begin{tikzpicture}
+%https://github.com/mp4096/blockschaltbilder
+\def\xAbstand{2.5}
+\def\xAnfang{2}
+\draw [blue, loosely dotted] (\xAnfang-0.75,1.5)  rectangle (\xAbstand*4.75+\xAnfang,-\xAbstand*2-\xAbstand*0.5);
+\draw [red, dashed] (\xAnfang+0.75,1) rectangle (\xAbstand*4.6+\xAnfang,-\xAbstand-\xAbstand*0.5);
+
+  \coordinate (ausgang) at (\xAbstand*5+\xAnfang, 0);
+  \Summationsstelle{sum-1}{\xAnfang, 0}{0.4 cm}
+  \UeFunk{UeFunkB}{\xAbstand+\xAnfang, 0}{1 cm}{$B$}
+ \Summationsstelle{sum-2}{\xAnfang+\xAbstand*2, 0}{0.4 cm}
+ \ifthenelse{\equal{\bildA}{true}}{%
+  \coordinate (eingang) at (0.5, 0);}{%
+  \UeFunk{UeFilter}{\xAnfang-\xAbstand*0.75, 0}{1 cm}{$V$}
+  \coordinate (eingang) at (-1.5, 0);}
+
+ \IGlied{int}{\xAnfang+\xAbstand*3, 0}{1.cm}{}
+ \UeFunk{UeFunkA}{\xAbstand*3+\xAnfang, -\xAbstand}{1 cm}{$A$}
+ \UeFunk{UeFunkF}{\xAbstand*3+\xAnfang, -\xAbstand*2}{1 cm}{$F$}
+ \UeFunk{UeFunkC}{\xAbstand*4.25+\xAnfang, 0}{1 cm}{$C$}
+  \Verzweigung{verzw-1}{\xAnfang+\xAbstand*3+\xAbstand*0.625, 0}{2 pt}
+  %\draw[thick, latex-] (sum) -- +(-2, 0) node[pos = 0.7, above] {$w(t)$};
+  %\draw[thick, latex-] (sum) -- +(0, -1.2) node[pos = 0.7, left] {$F \cdot x(t)$};
+  %\draw[thick, -latex] (sum) -- +(+2, 0) node[pos = 0.7, above] {$u(t)$};
+
+	%Signalflüsse
+\draw[vecArrow,thick] (UeFunkF)  -| (sum-1);
+\draw[vecArrow,thick] (UeFunkA)  -| (sum-2);
+\draw[vecArrow,thick] (verzw-1)  |- (UeFunkF);
+\draw[vecArrow,thick] (verzw-1)  |- (UeFunkA);
+\draw[vecArrow,thick] (sum-1)  -- (UeFunkB);
+\draw[vecArrow,thick] (UeFunkB)   -- (sum-2);
+\draw[vecArrow,thick] (sum-2)   -- (int);
+\draw[vecArrow,thick] (int)   -- (UeFunkC);
+\ifthenelse{\equal{\bildA}{true}}{%
+	\draw[vecArrow,thick] (eingang)   -- (sum-1);}{
+	\draw[vecArrow,thick] (eingang)   -- (UeFilter);
+	\draw[vecArrow,thick] (UeFilter)   -- (sum-1);
+}
+\draw[vecArrow,thick] (UeFunkC)   -- (ausgang);
+
+	%Signalflüsse weiss
+\draw[innerWhite] (UeFunkF)  -| (sum-1);
+\draw[innerWhite] (UeFunkA)  -| (sum-2);
+\draw[innerWhite] (verzw-1)  |- (UeFunkF);
+%\draw[innerWhite] (verzw-1)  |- (UeFunkA);
+\draw[innerWhite] (sum-1)  -- (UeFunkB);
+\draw[innerWhite] (UeFunkB)   -- (sum-2);
+\draw[innerWhite] (sum-2)   -- (int);
+\draw[innerWhite] (int)   -- (UeFunkC);
+\draw[innerWhite] (int)   -- (verzw-1) |- (UeFunkA);
+\ifthenelse{\equal{\bildA}{true}}{%
+	\draw[innerWhite] (eingang)   -- (sum-1);}{
+	\draw[innerWhite] (eingang)   -- (UeFilter);
+	\draw[innerWhite] (UeFilter)   -- (sum-1);
+}
+\draw[innerWhite] (UeFunkC)   -- (ausgang);
+
+\node[outer sep = 0.1 cm, above ] at (eingang) {$w(t)$};
+\node[outer sep = 0.1 cm, above ] at (ausgang) {$y(t)$};
+\node[outer sep = 0.1 cm,below right] at (sum-1.south) {$-$};
+\node[outer sep = 0.1 cm,below right] at (sum-2.south) {$+$};
+\node[outer sep = 0.1 cm, above left] at (sum-2.west) {$+$};
+\node[outer sep = 0.1 cm, above left] at (UeFunkB.west) {$u(t)$};
+\node[outer sep = 0.1 cm, above left] at (int.west) {$\dot{x}(t)$};
+\node[outer sep = 0.1 cm, above] at (verzw-1) {$x(t)$};
+\node[outer sep = 0.1 cm, above left] at (UeFunkF.west) {$F \cdot x(t)$};
+\node[blue,anchor=south west] at (\xAnfang-0.75,-\xAbstand*2-\xAbstand*0.5) {Zustandsregelung};
+\node[red,anchor=south west] at (\xAnfang+0.75,-\xAbstand-\xAbstand*0.5) {Regelstrecke};
+   %\node[below right] at (sum-2.north) {$+$};
+\end{tikzpicture}

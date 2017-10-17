@@ -1,0 +1,13 @@
+%change the headings with fancyhdr
+\usepackage[
+automark
+]{scrlayer-scrpage}         % Kopf- und Fusszeile
+\clearscrheadfoot
+\ifthenelse{\equal{\Zusammenfassung}{false}}{
+	\chead{\headmark}
+	\cfoot[\pagemark]{\pagemark}
+}{
+	\cfoot[\pagemark]{\pagemark}
+	\ofoot[\version]{\version}
+	\ifoot[\getAuthor]{\getAuthor}
+}

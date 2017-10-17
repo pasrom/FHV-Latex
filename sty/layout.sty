@@ -1,0 +1,117 @@
+%
+\newcommand{\abstandvor}{0.3}
+\newcommand{\abstandnach}{0.1}
+%
+\usepackage[draft=false,kerning=true]{microtype}
+%
+\setkomafont{disposition}{\normalcolor\bfseries}
+%
+\ifthenelse{\equal{\Zusammenfassung}{false}}{
+	%change the layout
+	\usepackage[
+		left= 3.5cm,
+		%right = 3.5cm, 
+		bottom = 2 cm, 
+		top = 4.5 cm,
+		textwidth = 398pt,
+		%headsep=1.0cm,%
+		footskip = 1.5cm,
+		%\bindingOffset,
+		bindingoffset = \ValueBindingOffset
+	]{geometry}
+	\setkomafont{chapter}{\Huge\bfseries}
+	\setkomafont{section}{\LARGE}
+	\setkomafont{subsection}{\Large}
+	\setkomafont{subsubsection}{\large}
+	\setkomafont{paragraph}{\large}
+	\setkomafont{subparagraph}{\large}
+}{
+	%change the layout
+	\usepackage[
+		left= 1.5cm,
+		right = 1.5cm, 
+		bottom = 2 cm, 
+		top = 1.5 cm,
+		headsep=1.0cm,%
+		footskip = 1.5cm,
+		%\bindingOffset,
+		bindingoffset = \ValueBindingOffset
+	]{geometry}
+	\setlength{\columnsep}{0.75cm}
+	%
+	\setkomafont{chapter}{\large\bfseries}
+	\setkomafont{section}{\small}
+	\setkomafont{subsection}{\small}
+	\setkomafont{subsubsection}{\small}
+	\setkomafont{paragraph}{\large}
+	\setkomafont{subparagraph}{\small}
+	%
+	%apitel auf selber Seite beginnen
+	\RedeclareSectionCommand[style=section, indent=0pt]{chapter}% 
+	\RedeclareSectionCommand[%
+	beforeskip=0pt,
+	afterskip=1\baselineskip plus .1\baselineskip minus .167\baselineskip]{chapter}
+	\RedeclareSectionCommand[
+	beforeskip=\abstandvor\baselineskip,
+	afterskip=\abstandnach\baselineskip]{section}
+	\RedeclareSectionCommand[
+	beforeskip=\abstandvor\baselineskip,
+	afterskip=\abstandnach\baselineskip]{subsection}
+	\RedeclareSectionCommand[
+	beforeskip=\abstandvor\baselineskip,
+	afterskip=\abstandnach\baselineskip]{subsubsection}
+	\RedeclareSectionCommand[
+	beforeskip=\abstandvor\baselineskip,
+	afterskip=\abstandnach\baselineskip]{paragraph}
+	\RedeclareSectionCommand[
+	beforeskip=\abstandvor\baselineskip,
+	afterskip=\abstandnach\baselineskip]{subparagraph}
+	
+\makeatletter
+\g@addto@macro\normalsize{%
+	\setlength\abovedisplayskip{0pt plus 3pt minus 4pt}
+	\setlength\abovedisplayshortskip{0pt plus 3pt minus 4pt}
+	\setlength\belowdisplayskip{0pt plus 3pt minus 4pt}
+	\setlength\belowdisplayshortskip{0pt plus 3pt minus 4pt}
+	\setlength\belowcaptionskip{0pt plus 3pt minus 2pt}
+	\setlength\abovecaptionskip{0pt plus 3pt minus 2pt}
+	\setlength\parindent{0in}
+	\setlength\multicolsep{5pt plus 4pt minus 3pt}
+	\setlength{\premulticols}{10pt}
+	\setlength{\postmulticols}{10pt}
+	%\setlength{\intextsep}{3mm plus2mm minus2mm}
+	\setlength{\textfloatsep}{4.0pt plus 2.0pt minus 4.0pt}
+	\setlength{\intextsep}{4.0pt plus 2.0pt minus 2.0pt}
+}
+\makeatother
+%
+}
+%
+% Backlinks
+%
+\makeatletter
+\let\hyperchapter\chapter
+\def\chapter{\@ifstar\starchapter\mychapter}
+\def\starchapter{\hyperchapter*}
+\newcommand{\mychapter}[2][\@empty]% #1=optional (toc and top of page), #2=title
+{\ifx#1\@empty \hyperchapter[#2]{\hyperlink{toc.chapter.\thechapter}{#2}}
+	\else \hyperchapter[#1]{\hyperlink{toc.chapter.\thechapter}{#2}}
+	\fi}
+
+\let\hypersection\section
+\def\section{\@ifstar\starsection\mysection}
+\def\starsection{\hypersection*}
+\newcommand{\mysection}[2][\@empty]% #1=optional (toc), #2=title
+{\ifx#1\@empty \hypersection[#2]{\hyperlink{toc.section.\thesection}{#2}}
+	\else \hypersecton[#1]{\hyperlink{toc.section.\thesection}{#2}}
+	\fi}
+
+\let\hypersubsection\subsection
+\def\subsection{\@ifstar\starsubsection\mysubsection}
+\def\starsubsection{\hypersubsection*}
+\newcommand{\mysubsection}[2][\@empty]% #1=optional (toc), #2=title
+{\ifx#1\@empty \hypersubsection[#2]{\hyperlink{toc.subsection.\thesubsection}{#2}}
+	\else \hypersecton[#1]{\hyperlink{toc.subsection.\thesubsection}{#2}}
+	\fi}
+\makeatother
+%
