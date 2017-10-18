@@ -1,4 +1,4 @@
-# FHV-Latex template
+#   FHV-Latex template
 
 To use this template, it is recommened to work with 
 [TeXstudio](http://texstudio.sourceforge.net). 
@@ -15,3 +15,6 @@ I also recommend to use
 
 With the command \Zusammenfassung in
 [LatexVorlage.tex](https://github.com/pasrom/FHV-Latex/blob/master/LatexVorlage.tex) you can choose between a summary or thesis. The summary has a wider layout in comparison with the thesis type.
+
+An easy to use 
+[tablegenerator.](http://www.tablesgenerator.com).
