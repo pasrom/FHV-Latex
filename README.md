@@ -10,3 +10,8 @@ The bibliography uses Biber to build and is adapted to FHV guidelines.
 
 I also recommend to use 
 [TeX Live](https://www.tug.org/texlive/) Latex distribution. 
+
+[Here](https://github.com/pasrom/FHV-Latex/blob/master/tex/Examples.tex) you find some examples: how to use Pictures, Tables, TikZ and the usage of referencing equations/sections.
+
+With the command \Zusammenfassung in
+[LatexVorlage.tex](https://github.com/pasrom/FHV-Latex/blob/master/LatexVorlage.tex) you can choose between a summary or thesis. The summary has a wider layout in comparison with the thesis type.
