@@ -12,3 +12,6 @@
 *.syg
 *.synctex.gz
 *.toc
+*.lol
+*.lot
+*.lof
