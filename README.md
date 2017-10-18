@@ -9,4 +9,4 @@ You can use the given profile provided in
 The bibliography uses Biber to build and is adapted to FHV guidelines.
 
 I also recommend to use 
-[TeX Live](https://www.tug.org/texlive/) Latex distribution.
+[TeX Live](https://www.tug.org/texlive/) Latex distribution. 
