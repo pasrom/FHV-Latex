@@ -45,16 +45,18 @@ numbers=noenddot,
 %
 \setLanguage{\newLanguage}
 \setTitle{Title}
-\setThesistype{BACHLELOR}
+\setThesistype{Masterthesis}
 \setAuthor{%
 	\authorSurname \authorName\\%
 }
 \setAuthorId{MATRIKELNUMMER}
 \setStudyprogram{Master Mechatronics}
 \setSupervisor{\supervisorSurname \supervisorName}
-\setSupervisorCompany{COMPANY}
+\setSupervisorCompany{SupervisorCompany}
 \setSubtitle{Subtitle}
 \setSubject{Subject}
+\setDegree{Master of Science}
+\setCompany{Company Name GmbH}
 %
 %% PDF Settings
 %
@@ -71,7 +73,7 @@ numbers=noenddot,
 	unicode=true,
 }
 %
-\setkomafont{descriptionlabel}{\normalfont\bfseries}%fuer glossaries serifen schrift
+\setkomafont{descriptionlabel}{\normalfont\bfseries} % for glossaries serif font
 %
 \begin{document}
 	%
@@ -82,11 +84,11 @@ numbers=noenddot,
 	%
 	% Import the acronyms
 	%
-	\input{./util/Acronym.tex} %provide the defined acronyms to be used
+	\input{./util/Acronym.tex} % provide the defined acronyms to be used
 	%
 	\sisetup{output-decimal-marker = {,}}
 	% 
-	\pagenumbering{gobble} % used to prevent the page numbering 
+	\pagenumbering{gobble} % used to prevent the page numbering
 	{\ifthenelse{\equal{\debug}{true}}{
 			\layout
 			\textrm{Serif: \rmdefault}\par
@@ -116,10 +118,9 @@ numbers=noenddot,
 	\newpage
 	%
 	\fhvlists
-	%\pagenumbering{arabic} % seitenzahlnummerierung ab hier beginnen	
 	%\subfile{./tex/Hauptteil.tex}
 	\subfile{./tex/Examples.tex}
-	%The order of the chapters used
+	% The order of the chapters used
 	% final generated information
 	\glossaryAndBibliography
 	\newpage
