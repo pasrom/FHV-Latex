@@ -1,9 +1,14 @@
-%here are all newcommands defined
+%
+% here are all newcommands defined
+%
 \newglossary[slg]{symbolslist}{syi}{syg}{Symbolverzeichnis}
-
-%print a zero -> Date
+%
+% print a zero -> Date
+%
 \newcommand{\leadingzero}[1]{\ifnum #1<10 0\the#1\else\the#1\fi}
-%new Date
+%
+% new Date
+%
 \newcommand{\todayX}{\leadingzero{\day}.\leadingzero{\month}.\the\year}% TODO DATE!!!
 \newcounter{endDatum}
 \newcommand{\SperrvermerkDate}[1]{%
@@ -18,44 +23,37 @@
 }%
 
 \newcommand{\getLanguage}{deutsch}
-%get the language and rename tables and figures
+%
+% get the language and rename tables and figures
+%
 \newcommand{\setLanguage}[1]{
-	\renewcommand{\getLanguage}{#1}	
-	\ifthenelse
-	{
-		\equal{\getLanguage}{english}
-	}
-  	{
-	%	\renewcommand{\figurename}{Figure}
-	%	\renewcommand{\tablename}{Table}
-  	}
-  	{
-	%	\renewcommand{\figurename}{Bild}
-	%	\renewcommand{\tablename}{Tabelle}
-  	}
+	\renewcommand{\getLanguage}{#1}
 }
-%a few definitions
-\newcommand{\getThesistype}{Bachelorarbeit }
+%
+% a few commands used to control author, etc., ...
+%
+\newcommand{\getThesistype}{Bachelorarbeit}
 \newcommand{\setThesistype}[1]{\renewcommand{\getThesistype}{#1 }}
-\newcommand{\getDegree}{Bachelor of Science }
+\newcommand{\getDegree}{Bachelor of Science}
 \newcommand{\getSubject}{Leadership \& Communication}
 \newcommand{\setSubject}[1]{\renewcommand{\getSubject}{#1}}
-\newcommand{\setDegree}[1]{\renewcommand{\getDegree}{#1 }}
-\newcommand{\getStudyprogram}{Informatik – Software and Information Engineering}
-\newcommand{\setStudyprogram}[1]{\renewcommand{\getStudyprogram}{#1 }}
+\newcommand{\setDegree}[1]{\renewcommand{\getDegree}{#1}}
+\newcommand{\getStudyprogram}{Mechatronics Master}
+\newcommand{\setStudyprogram}[1]{\renewcommand{\getStudyprogram}{#1}}
 \newcommand{\getAuthor}{AUTHOR}
 \newcommand{\setAuthor}[1]{\renewcommand{\getAuthor}{#1}}
-\newcommand{\getAuthorId}{\begin{flushleft}\noindent 12345 \end{flushleft}}
-\newcommand{\setAuthorId}[1]{\renewcommand{\getAuthorId}{\begin{flushleft}\noindent #1 \end{flushleft}}} 
+\newcommand{\getAuthorId}{\begin{flushleft}\noindent12345\end{flushleft}}
+\newcommand{\setAuthorId}[1]{\renewcommand{\getAuthorId}{\begin{flushleft}\noindent#1\end{flushleft}}}
 \newcommand{\getSupervisor}{1234}
-\newcommand{\setSupervisor}[1]{\renewcommand{\getSupervisor}{#1}} 
+\newcommand{\setSupervisor}[1]{\renewcommand{\getSupervisor}{#1}}
 \newcommand{\getSupervisorCompany}{1234}
-\newcommand{\setSupervisorCompany}[1]{\renewcommand{\getSupervisorCompany}{#1}} 
+\newcommand{\setSupervisorCompany}[1]{\renewcommand{\getSupervisorCompany}{#1}}
+\newcommand{\getCompany}{Company Name GmbH}
+\newcommand{\setCompany}[1]{\renewcommand{\getCompany}{#1}}
 \newcommand{\getTitle}{TITLE}
 \newcommand{\setTitle}[1]{\renewcommand{\getTitle}{#1}}
 \newcommand{\getSubtitle}{Seminararbeit}
 \newcommand{\setSubtitle}[1]{\renewcommand{\getSubtitle}{#1}}
-
 \newcommand{\getInstituteLocation}
 {
 	\ifthenelse
@@ -70,32 +68,19 @@
 \newcommand{\setInstituteLocation}[1]{\renewcommand{\getInstituteLocation}{#1}}
 \newcommand{\getInstituteGraphic}{\includegraphics[width = 0.6\textwidth]{./img/titlePage/fhvlogo_neu}}
 \newcommand{\setInstituteGraphic}[1]{\renewcommand{\getInstituteGraphic}{#1}}
-
+%
 \newcommand{\statuoryDeclaration}
 {
 	\ifthenelse
 	{\equal{\getLanguage}{english}}
 	{
 	\chapter*{Statement of Affirmation }
-	I hereby declare that this thesis was in all parts exclusively prepared on my own, without using other resources than those stated. The thoughts taken directly or indirectly from external sources are properly marked as such. This thesis or parts of it were not previously submitted to another academic institution and have also not yet been published.
+	I hereby declare that this thesis was in all parts exclusively prepared on my own, without using other resources than those stated. The thoughts taken directly or indirectly from external sources are properly marked as such. This thesis or parts of it were not previously submitted to another academic institution and have also not yet been published.\par
+	%
 	\vspace{3cm}
-
+	%
 	\begin{minipage}[t]{0.5\columnwidth}
 		Dornbirn, am \todayX
-	\end{minipage}\hspace{-\parfillskip}
-	\begin{minipage}[t][][t]{0.5\columnwidth}
-	\begin{flushright}      
-	\getAuthor
-	\end{flushright}
-	\end{minipage}\hspace{-\parfillskip}  	
-	}
-	{
-	\chapter*{Eidesstattliche Erklärung}
-	Ich erkläre hiermit an Eides statt, dass ich vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
-	\vspace{3cm}
-
-	\begin{minipage}[t]{0.5\columnwidth}
-	Dornbirn, am \todayX
 	\end{minipage}\hspace{-\parfillskip}
 	\begin{minipage}[t][][t]{0.5\columnwidth}
 	\begin{flushright}
@@ -103,10 +88,24 @@
 	\end{flushright}
 	\end{minipage}\hspace{-\parfillskip}
 	}
+	{
+	\chapter*{Eidesstattliche Erklärung}
+	Ich erkläre hiermit an Eides statt, dass ich vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
+	%
+	\vspace{3cm}
+	%
+	\begin{minipage}[t]{0.5\columnwidth}
+		Dornbirn, am \todayX
+	\end{minipage}\hspace{-\parfillskip}
+	\begin{minipage}[t][][t]{0.5\columnwidth}
+		\begin{flushright}
+			\getAuthor
+		\end{flushright}
+	\end{minipage}\hspace{-\parfillskip}
+	}
 }
 %
-\def\wOderM{m}
-\ifthenelse{\equal{\wOderM}{m}}
+\ifthenelse{\equal{\wOrM}{m}}
 	{
 		\def\VerfasserA{dem Verfasser\xspace}
 		\def\VerfasserB{des Verfassers\xspace}
@@ -119,12 +118,13 @@
 \newcommand{\sperrvermerk}[2]
 {
 \chapter*{Sperrvermerk}
+%
 	Auf Wunsch der Firma #1 ist die vorliegende Arbeit bis zum \SperrvermerkDate{#2} für die öffentliche Nutzung zu sperren.\par
 %
 	Veröffentlichung, Vervielfältigung und Einsichtnahme sind ohne ausdrückliche Genehmigung der oben genannten Firma und \VerfasserA nicht gestattet. Der Titel der Arbeit sowie das Kurzreferat / Abstract dürfen jedoch veröffentlicht werden.\par
-	%
+%
 	\vspace{3cm}
-	% 
+%
 	\begin{minipage}[t]{0.5\columnwidth}
 		Dornbirn, \todayX
 	\end{minipage}\hspace{-\parfillskip}
@@ -132,20 +132,19 @@
 		\begin{flushright}
 			Unterschrift \VerfasserB\par
 			\vspace{1.5cm}
-			Firmenstempel %
+			Firmenstempel
 		\end{flushright}
 	\end{minipage}\hspace{-\parfillskip}
 }
-
+%
 \newcommand{\newGlossaryEntryNEW}[4]
 {
-\newacronym[description={\glslink{#2}{#3}}]
-{#1}{#2}{#3}
-
-\newglossaryentry{#2}{name=\glslink{#1}{#3},
-text={#3},
-description={#4},
-sort={#3}}
+	\newacronym[description={\glslink{#2}{#3}}]
+	{#1}{#2}{#3}
+	\newglossaryentry{#2}{name=\glslink{#1}{#3},
+	text={#3},
+	description={#4},
+	sort={#3}}
 }
 
 \newcommand{\addAppendix}[1]
@@ -168,27 +167,8 @@ sort={#3}}
 \newcommand*{\optlot}{\IfFileExists{\jobname.lot}{\listoftables}{\relax}} 
 %
 \newcommand{\fhvlists}{
-	%\newpage
-	%\clearpage
-	%\pdfbookmark{\contentsname}{toc}
-	%\ifthenelse{\equal{\getLanguage}{english}}
-	%	{\renewcommand{\contentsname}{Table of Contents}}
-	%	{\renewcommand{\contentsname}{Inhaltsverzeichnis}}
-	%%
-	%% Table of Illustrations
-	%\ifthenelse{\equal{\getLanguage}{english}}
-	%  		{\renewcommand\listfigurename{List of Figures}}
-	%  		{\renewcommand\listfigurename{Bildverzeichnis}}
-	%%
-	%\ifthenelse{\equal{\getLanguage}{english}}
-	%  		{\renewcommand\listtablename{List of Tables}}
-	%  		{\renewcommand\listtablename{Tabellenverzeichnis}}
-	%%
-	%\ifthenelse{\equal{\getLanguage}{english}}
-	%  		{\renewcommand\lstlistoflistings{Listings}}
-	%  		{\renewcommand\lstlistoflistings{Listings}}
-	%
-	\tableofcontents % add table of contents
+	% add table of contents
+	\tableofcontents
 	%
 	\newpage
 	\listoffigures
@@ -203,7 +183,8 @@ sort={#3}}
 	\addcontentsline{toc}{chapter}{Listings}
 	\lstlistoflistings
 	\newpage
-	\pagenumbering{arabic} % seitenzahlnummerierung ab hier beginnen
+	% start arabic page numbering from here
+	\pagenumbering{arabic}
 }
 
 \newcommand{\glossaryAndBibliography}{
@@ -211,14 +192,14 @@ sort={#3}}
 	\renewcommand{\chaptername}{}
 	\renewcommand{\thechapter}{}
 	%
-	%Glossary
+	% Glossary
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
 		{\printglossary[type=\acronymtype]}
 		{\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]}
 	%
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
 		{\printglossary}
-		{\printglossary[title=Glossar]} 	 % if no option is supplied the default glossary is printed.
+		{\printglossary[title=Glossar]} % if no option is supplied the default glossary is printed.
 	\printglossary[type=symbolslist,style=long]
 	%
 	\ifthenelse{\equal{\getLanguage}{english}}%
@@ -244,14 +225,14 @@ sort={#3}}
 	\makeglossaries
 	\newacronym[see={gls-#3},#2]{#3}{#4}{#5\glsadd{gls-#3}}
 }
-
+%
 \newcommand{\maketitleThesis}{
 	\newgeometry{
 		left= 3.5cm,
 		top=2.5cm,
 		bottom=4.cm,
 		textwidth = 398pt,
-		headsep=1.0cm,%
+		headsep=1.0cm,
 		footskip = 1.cm,
 		bindingoffset = \ValueBindingOffset
 	}
@@ -262,12 +243,18 @@ sort={#3}}
 			\textsc~\getInstituteGraphic
 		\end{flushright}%
 		\begin{flushleft}%
-			\vspace{1.5cm}%
+			\vspace{1.25cm}%
 			%
 			%Title
 			\hrule%
 			\vspace{0.4cm}%
 			\textsc{\Huge \bfseries \getTitle}%
+			\ifthenelse{\equal{\getSubtitle}{}}{
+				%
+			}{%
+				\par%
+				\textsc{\Large \getSubtitle}%
+			}%
 			\vspace{0.625cm}%
 			\hrule%
 			%
@@ -284,7 +271,7 @@ sort={#3}}
 			\vspace{0.5cm}
 			\textsc{\Large \getDegree}
 			
-			\vspace{1.4cm}
+			\vspace{1.2cm}
 			\textsc{\ifthenelse{\equal{\getLanguage}{english}}
 				{University of Applied Sciences Vorarlberg}
 				{Fachhochschule Vorarlberg}
@@ -292,13 +279,13 @@ sort={#3}}
 			%
 			\textsc{\getStudyprogram}\par
 			%
-			\vspace{0.5cm}
+			\vspace{0.3cm}
 			%
 			% Author and supervisor
 			\textsc{%
-				\ifthenelse{\equal{\getLanguage}{english}}%
-				{\begin{flushleft}\noindent Submitted to\end{flushleft}}%
-				{\begin{flushleft}\noindent Eingereicht bei\end{flushleft}}%
+				%\ifthenelse{\equal{\getLanguage}{english}}%
+				%{\begin{flushleft}\noindent Submitted to\end{flushleft}}%
+				%{\begin{flushleft}\noindent Eingereicht bei\end{flushleft}}%
 				{\begin{flushleft}\noindent Betreuung Fachhochschule Vorarlberg\end{flushleft}}%
 			}\par
 			%
@@ -307,10 +294,10 @@ sort={#3}}
 			\vspace{0.5cm}
 			%
 			{%
-				\ifthenelse{\equal{\getLanguage}{english}}%
-				{\begin{flushleft}\noindent Submitted to\end{flushleft}}%
+				%\ifthenelse{\equal{\getLanguage}{english}}%
+				%{\begin{flushleft}\noindent Submitted to\end{flushleft}}%
 				%{\begin{flushleft}\noindent Betreut von\end{flushleft}}%
-				{\begin{flushleft}\noindent \textsc{Betreuung Bachmann} \textsc{electronic} \textsc{GmbH}\end{flushleft}}%
+				{\begin{flushleft}\noindent \textsc{Betreuung \getCompany}\end{flushleft}}%
 			}\par
 			%
 			\noindent\textsc{\Large\getSupervisorCompany}\par
@@ -324,7 +311,7 @@ sort={#3}}
 			%\vspace{0.25cm}%
 			\textsc{\Large\getAuthor}% 
 			\getAuthorId%
-			\vspace{1cm}%
+			\vspace{0.5cm}%
 			%
 			% Bottom of the page
 			\textsc
@@ -359,7 +346,7 @@ sort={#3}}
 			\textsc~\getInstituteGraphic
 		\end{flushright}%
 		\begin{flushleft}%
-			\vspace{1.5cm}%
+			\vspace{1.25cm}%
 			%
 			%Title
 			\hrule%
@@ -368,8 +355,9 @@ sort={#3}}
 			\ifthenelse{\equal{\getSubtitle}{}}{
 			%
 			}{%
-		\par%
-		\textsc{\Large \getSubtitle}}%
+				\par%
+				\textsc{\Large \getSubtitle}%
+			}%
 			\vspace{0.625cm}%
 			\hrule%
 			%
@@ -438,5 +426,5 @@ sort={#3}}
 		\maketitleThesis%
 	}{%
 		\maketitleReport%
-	}%	
+	}%
 }
