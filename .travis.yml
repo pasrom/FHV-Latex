@@ -16,6 +16,7 @@ before_install:
 - sudo apt-get install -y --no-install-recommends texlive texlive-extra-utils texlive-latex-extra texlive-generic-extra texlive-math-extra biber
 - sudo apt-get install -y texlive-science
 - sudo apt-get install -y texlive-fonts-extra 
+- sudo apt-get install -y texlive-lang-german
 - sudo apt-get install -y xzdec
 - tlmgr init-usertree
 - tlmgr install bondgraphs
