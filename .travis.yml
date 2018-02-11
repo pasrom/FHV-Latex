@@ -11,6 +11,7 @@ sudo: required
 dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber
+- sudo apt-get install -y texlive-science
 - sudo apt-get install -y xzdec
 - tlmgr init-usertree
 # - tlmgr install xcolor
@@ -20,4 +21,4 @@ script:
 - biber --output_directory ./build/ LatexVorlage
 - biber --output_directory ./build/ LatexVorlage
 - pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
-- makeglossaries "./build/LatexVorlage.idx"
+#- makeglossaries "./build/LatexVorlage.idx"
