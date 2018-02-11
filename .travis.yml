@@ -10,10 +10,10 @@ branches:
 sudo: required
 dist: trusty
 before_install:
-- sudo apt-get -qq update && sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber --no-install-recommends
+- sudo apt-get -qq update && sudo apt-get install -y texlive-latex-recommended texlive-latex-extra latex-xcolor texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber --no-install-recommends
 - sudo apt-get install -y xzdec
 - tlmgr init-usertree
-#- tlmgr install xcolor
+# - tlmgr install xcolor
 script:
 - pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
 - pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
