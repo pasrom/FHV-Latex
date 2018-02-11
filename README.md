@@ -27,7 +27,7 @@ Here you can define new commands (`./sty/overallDefines.sty`).
     This helps to lock at the page layout and to find `overfull \hbox` warnings.
         
  2. With the command `\def\thesis{false}` you can choose between a report or a thesis type. It changes the style of the title page.
- 3. With the command `\def\newLanguage{ngerman}` you can choose between the language english and german, don't forget to build twice.
+ 3. With the command `\def\newLanguage{ngerman}` you can choose between the language english and german, don't forget to build twice and don't panic if the first compilation throws an error.
  4. Setting names of the author and supervisor:
     ```
     \def\authorName{Name\xspace}
@@ -36,3 +36,13 @@ Here you can define new commands (`./sty/overallDefines.sty`).
     \def\supervisorSurname{Supervisor Surname\xspace}
     ```
  5. Setting the gender of the author with the command `\def\wOrM{m}`
+
+# LatexVorlage.tex
+
+This is the main file, where all subfiles and packages are loaded.
+
+You can define here 
+
+ 1. `\newcommand{\DokuOderPresentation}{doku}` if its a documentation or a presentation. This is not working proberly. 
+ 2. `\newcommand{\Zusammenfassung}{false}` changes the layout. If you want to use all the space an the page change it to `true`, but take in mind, the typography is destroyed!
+ 3. \newcommand{\version}{v0.0} self explaining, version numbering.
