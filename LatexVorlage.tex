@@ -44,29 +44,27 @@ numbers=noenddot,
 % General Settings for Title...
 %
 \setLanguage{\newLanguage}
-\setTitle{Laborbericht MEMOS}
+\setTitle{Title}
 \setThesistype{BACHLELOR}
 \setAuthor{%
-	Florian Burtscher\\%
-	Roman Passler\\%
+	\authorSurname \authorName\\%
 }
 \setAuthorId{MATRIKELNUMMER}
-\setStudyprogram{Master Mechatronics} 
-\setSupervisor{Schmitt Thomas, MSc}   
+\setStudyprogram{Master Mechatronics}
+\setSupervisor{\supervisorSurname \supervisorName}
 \setSupervisorCompany{COMPANY}
-\setSubtitle{}
-\setSubject{}
+\setSubtitle{Subtitle}
+\setSubject{Subject}
 %
 %% PDF Settings
 %
 \hypersetup{
 	pdftitle={\getTitle},
 	pdfauthor={%
-		Passler\xmpcomma\ Roman;%
-		Burtscher\xmpcomma\ Florian%
+		\authorSurname\xmpcomma\ \authorName%
 	},
 	pdfsubject={},
-	pdfkeywords={Fachhochschule Vorarlberg : Heimarbeit 1 : MEM : Steinberger, Thomas},
+	pdfkeywords={Fachhochschule Vorarlberg : Title : MEM : \supervisorSurname, \supervisorName},
 	pdfcreator={pdflatex},
 	pdfproducer={LaTeX with shyperref},
 	pdflang={de},
@@ -100,7 +98,8 @@ numbers=noenddot,
 	% nur in begründeten Ausnahmefällen verwenden
 	% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
 	\hypersetup{pageanchor=false}
-	%\sperrvermerk{Bachmann electronic GmbH}{5} 
+	%
+	\sperrvermerk{Bachmann electronic GmbH}{5}
 	%
 	\maketitle % creates the title page
 	%
@@ -110,10 +109,10 @@ numbers=noenddot,
 	\pagenumbering{Roman} 
 	%
 	% Abstracts
-	%\subfile{./tex/Widmung.tex}
+	\subfile{./tex/Widmung.tex}
 	\subfile{./tex/Kurzreferat.tex}
-	%\subfile{./tex/Abstract.tex}
-	%\subfile{./tex/Vorwort.tex}
+	\subfile{./tex/Abstract.tex}
+	\subfile{./tex/Vorwort.tex}
 	\newpage
 	%
 	\fhvlists
@@ -130,5 +129,5 @@ numbers=noenddot,
 	}
 	%
 	% Statuory Declaration
-	%\statuoryDeclaration
+	\statuoryDeclaration
 \end{document}
