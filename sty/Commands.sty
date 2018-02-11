@@ -1,35 +1,35 @@
 \tikzset{Shift/.style 2 args={shift={(+#1.5\pgflinewidth,+#2.5\pgflinewidth)}}}
 \newcommand*{\pgfkeysstylelet}[2]{\expandafter\let\csname pgfk@#1/.@cmd\expandafter\endcsname\csname pgfk@#2/.@cmd\endcsname}
 \ganttset{
-    /tikz/broken/.style={
-        decoration={
-            name=zigzag,
-            amplitude=+1pt,
-            segment length=+2pt}},
-    broken right/.code={
-        \pgfkeysstylelet{/pgfgantt/bar backup}{/pgfgantt/bar}
-        \pgfkeysalso{
-            /pgfgantt/bar left shift=-.5\pgflinewidth/\ganttvalueof{x unit},
-            /pgfgantt/bar right shift=(.5\pgflinewidth+.5\pgfdecorationsegmentamplitude)/\ganttvalueof{x unit},
-            /pgfgantt/bar/.append style={
-                draw=none,
-                path picture={
-                    \draw[/pgfgantt/bar backup, broken] ([Shift=+-] path picture bounding box.north west) |-
-                                                        ([Shift=-+, xshift=-\pgfdecorationsegmentamplitude-.6\pgflinewidth] path picture bounding box.south east)
-                                           decorate {-- ([Shift=--, xshift=-\pgfdecorationsegmentamplitude-.6\pgflinewidth] path picture bounding box.north east)}
-                                                     -- cycle;}}}},
-    broken left/.code={
-        \pgfkeysstylelet{/pgfgantt/bar backup}{/pgfgantt/bar}
-        \pgfkeysalso{
-            /pgfgantt/bar right shift=.5\pgflinewidth/\ganttvalueof{x unit},
-            /pgfgantt/bar left shift=(-.5\pgflinewidth-.5\pgfdecorationsegmentamplitude)/\ganttvalueof{x unit},
-            /pgfgantt/bar/.append style={
-                draw=none,
-                path picture={
-                    \draw[/pgfgantt/bar backup, broken] ([Shift=--] path picture bounding box.north east) |-
-                                                        ([Shift=++, xshift=\pgfdecorationsegmentamplitude+.6\pgflinewidth] path picture bounding box.south west)
-                                           decorate {-- ([Shift=+-, xshift=\pgfdecorationsegmentamplitude+.6\pgflinewidth] path picture bounding box.north west)}
-                                                     -- cycle;}}}}}
+	/tikz/broken/.style={
+		decoration={
+			name=zigzag,
+			amplitude=+1pt,
+			segment length=+2pt}},
+		broken right/.code={
+			\pgfkeysstylelet{/pgfgantt/bar backup}{/pgfgantt/bar}
+			\pgfkeysalso{
+				/pgfgantt/bar left shift=-.5\pgflinewidth/\ganttvalueof{x unit},
+				/pgfgantt/bar right shift=(.5\pgflinewidth+.5\pgfdecorationsegmentamplitude)/\ganttvalueof{x unit},
+				/pgfgantt/bar/.append style={
+				draw=none,
+				path picture={
+					\draw[/pgfgantt/bar backup, broken] ([Shift=+-] path picture bounding box.north west) |-
+					([Shift=-+, xshift=-\pgfdecorationsegmentamplitude-.6\pgflinewidth] path picture bounding box.south east)
+					decorate {-- ([Shift=--, xshift=-\pgfdecorationsegmentamplitude-.6\pgflinewidth] path picture bounding box.north east)}
+					-- cycle;}}}},
+	broken left/.code={
+		\pgfkeysstylelet{/pgfgantt/bar backup}{/pgfgantt/bar}
+		\pgfkeysalso{
+			/pgfgantt/bar right shift=.5\pgflinewidth/\ganttvalueof{x unit},
+			/pgfgantt/bar left shift=(-.5\pgflinewidth-.5\pgfdecorationsegmentamplitude)/\ganttvalueof{x unit},
+			/pgfgantt/bar/.append style={
+				draw=none,
+				path picture={
+					\draw[/pgfgantt/bar backup, broken] ([Shift=--] path picture bounding box.north east) |-
+						([Shift=++, xshift=\pgfdecorationsegmentamplitude+.6\pgflinewidth] path picture bounding box.south west)
+						decorate {-- ([Shift=+-, xshift=\pgfdecorationsegmentamplitude+.6\pgflinewidth] path picture bounding box.north west)}
+						-- cycle;}}}}}
 
 \makeatletter
 \@gtt@keydef{anyday}{none}
@@ -85,23 +85,23 @@
 \newcommand\Autoref[1]{\@first@ref#1,@}
 \def\@throw@dot#1.#2@{#1}% discard everything after the dot
 \def\@set@refname#1{%    % set \@refname to autoefname+s using \getrefbykeydefault
-    \edef\@tmp{\getrefbykeydefault{#1}{anchor}{}}%
-    \def\@refname{\@nameuse{\expandafter\@throw@dot\@tmp.@autorefname}s}%
+	\edef\@tmp{\getrefbykeydefault{#1}{anchor}{}}%
+	\def\@refname{\@nameuse{\expandafter\@throw@dot\@tmp.@autorefname}s}%
 }
 \def\@first@ref#1,#2{%
-  \ifx#2@\autoref{#1}\let\@nextref\@gobble% only one ref, revert to normal \autoref
-  \else%
-    \@set@refname{#1}%  set \@refname to autoref name
-    \@refname~\ref{#1}% add autoefname and first reference
-    \let\@nextref\@next@ref% push processing to \@next@ref
-  \fi%
-  \@nextref#2%
+	\ifx#2@\autoref{#1}\let\@nextref\@gobble% only one ref, revert to normal \autoref
+	\else%
+		\@set@refname{#1}%  set \@refname to autoref name
+		\@refname~\ref{#1}% add autoefname and first reference
+		\let\@nextref\@next@ref% push processing to \@next@ref
+	\fi%
+	\@nextref#2%
 }
 \def\@next@ref#1,#2{%
-   \ifx#2@ und~\ref{#1}\let\@nextref\@gobble% at end: print and+\ref and stop
-   \else, \ref{#1}% print  ,+\ref and continue
-   \fi%
-   \@nextref#2%
+	\ifx#2@ und~\ref{#1}\let\@nextref\@gobble% at end: print and+\ref and stop
+	\else, \ref{#1}% print  ,+\ref and continue
+	\fi%
+	\@nextref#2%
 }
 \makeatother
 %
@@ -113,26 +113,26 @@
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd{\hyper@makecurrent}{%
-    \ifx\Hy@param\Hy@chapterstring
-        \let\Hy@param\Hy@chapapp
-    \fi
+	\ifx\Hy@param\Hy@chapterstring
+		\let\Hy@param\Hy@chapapp
+	\fi
 }{%
-    \iftoggle{inappendix}{%true-branch
-        % list the names of all sectioning counters here
-        \@checkappendixparam{chapter}%
-        \@checkappendixparam{section}%
-        \@checkappendixparam{subsection}%
-        \@checkappendixparam{subsubsection}%
-        \@checkappendixparam{paragraph}%
-        \@checkappendixparam{subparagraph}%
-    }{}%
+	\iftoggle{inappendix}{%true-branch
+		% list the names of all sectioning counters here
+		\@checkappendixparam{chapter}%
+		\@checkappendixparam{section}%
+		\@checkappendixparam{subsection}%
+		\@checkappendixparam{subsubsection}%
+		\@checkappendixparam{paragraph}%
+		\@checkappendixparam{subparagraph}%
+	}{}%
 }{}{\errmessage{failed to patch}}
 
 \newcommand*{\@checkappendixparam}[1]{%
-    \def\@checkappendixparamtmp{#1}%
-    \ifx\Hy@param\@checkappendixparamtmp
-        \let\Hy@param\Hy@appendixstring
-    \fi
+	\def\@checkappendixparamtmp{#1}%
+	\ifx\Hy@param\@checkappendixparamtmp
+		\let\Hy@param\Hy@appendixstring
+	\fi
 }
 \makeatletter
 %
