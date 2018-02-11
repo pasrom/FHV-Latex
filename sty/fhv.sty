@@ -1,6 +1,6 @@
 %
 % we need this first
-\usepackage{ifthen} 
+\usepackage{ifthen}
 %
 \usepackage{./sty/layout}
 \usepackage[T1]{fontenc}
@@ -13,13 +13,13 @@
 {}%
 %
 \RequirePackage{currfile}
-\usepackage{amsmath}    % need for subequations
-\usepackage{graphicx}   % need for figures
-\usepackage[space]{grffile} %expand  file name processing of graphics/x
+\usepackage{amsmath} % need for subequations
+\usepackage{graphicx} % need for figures
+\usepackage[space]{grffile} % expand  file name processing of graphics/x
 \usepackage{calc}
 %
 \usepackage{subfiles}
-\usepackage[utf8]{inputenc} %utf8 encoding (us this, if you have to switch between platforms)
+\usepackage[utf8]{inputenc} % utf8 encoding (us this, if you have to switch between platforms)
 \usepackage{array}
 \usepackage{longtable}
 %allow rotating
@@ -50,21 +50,21 @@
 %
 \usepackage{pgfgantt}
 \usepackage[bottom,hang]{footmisc}
-\setlength{\footnotemargin}{0pt} %fussnoten nicht einruecken!
-%table footnotes
+\setlength{\footnotemargin}{0pt} % Do not indent foot notes!
+% table footnotes
 %\usepackage{tablefootnote}
 \usepackage{footnote}
 \usepackage{threeparttable}
 
 \usepackage[draft=false,kerning=true]{microtype}	
-\usepackage{lscape}%landscape verwenden
-%use other pdfs in this document
+\usepackage{lscape} % landscape verwenden
+% use other pdfs in this document
 \usepackage{pdfpages}
-%plots
+% plots
 \usepackage{pgfplots} 
 \pgfplotsset{compat=1.13}
 
-%center fuer zentrierung oder justification=RaggedRight, singlelinecheck=false fuer linksbuendig
+% center fuer zentrierung oder justification=RaggedRight, singlelinecheck=false fuer linksbuendig
 \usepackage[center]{caption}
 \usepackage{subcaption}
 %
@@ -85,11 +85,11 @@ backref=true,
 \usepackage{adjustbox,lipsum}
 \usepackage{multirow}
 \usepackage{forloop}
-%einruecken erste zeile verhinern (absatz)
+% prevent indent of first line (section)
 \setlength{\parindent}{0pt}
-%for lines in tables
+% for lines in tables
 \usepackage{hhline}
-%load as late as possible, otherwise the footnote will not work!
+% load as late as possible, otherwise the footnote will not work!
 \usepackage{hyperxmp}
 \usepackage[\newLanguage]{varioref}
 \PassOptionsToPackage{hyphens,obeyspaces,spaces}{url}\usepackage[breaklinks=true]{hyperref}
@@ -102,7 +102,7 @@ backref=true,
 %
 \usepackage{blindtext}
 %
-\usepackage[toc, acronym,automake]{glossaries } %need for table of contents, list of acronyms and glossary
+\usepackage[toc, acronym,automake]{glossaries } % need for table of contents, list of acronyms and glossary
 \usepackage{multicol}
 %
 \usepackage{dirtree}
