@@ -1,3 +1,12 @@
+# blocklist
+branches:
+  except:
+  - master
+# safelist
+branches:
+  only:
+  - travis-integration
+
 sudo: required
 dist: trusty
 before_install:
