@@ -163,26 +163,28 @@
 	\appendixpage
 	#1
 }
-\newcommand*{\optlof}{\IfFileExists{\jobname.lof}{\listoffigures}{\relax}} 
-\newcommand*{\optlot}{\IfFileExists{\jobname.lot}{\listoftables}{\relax}} 
 %
 \newcommand{\fhvlists}{
 	% add table of contents
 	\tableofcontents
 	%
-	\newpage
-	\listoffigures
-	%\optlof
+	\iftotalfigures
+		\newpage
+		\listoffigures
+	\fi
 	%
-	\newpage
-	\listoftables
-	%\optlot
+	\iftotaltables
+		\newpage
+		\listoftables
+	\fi
 	%
-	\cleardoublepage
-	\phantomsection
-	\addcontentsline{toc}{chapter}{Listings}
-	\lstlistoflistings
-	\newpage
+	\iftotallstlistings
+		\cleardoublepage
+		\phantomsection
+		\addcontentsline{toc}{chapter}{Listings}
+		\lstlistoflistings
+		\newpage
+	\fi
 	% start arabic page numbering from here
 	\pagenumbering{arabic}
 }
