@@ -13,7 +13,7 @@ before_install:
 - sudo add-apt-repository ppa:jonathonf/texlive-2017 -y
 - sudo apt-get update
 #- sudo apt-get -qq update && sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber
-- sudo apt-get install texlive-full
+- sudo apt-get install -y texlive-full
 - sudo apt-get install -y texlive-science
 - sudo apt-get install -y texlive-fonts-extra 
 - sudo apt-get install -y xzdec
