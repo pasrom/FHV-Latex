@@ -7,7 +7,7 @@
 \newcommand{\todayX}{\leadingzero{\day}.\leadingzero{\month}.\the\year}% TODO DATE!!!
 \newcounter{endDatum}
 \newcommand{\SperrvermerkDate}[1]{%
-	\ifthenel e{#1 > 5}%
+	\ifthenelse{#1 > 5}%
 	{%
 	\setcounter{endDatum}{5+ \year}%
 	}%
@@ -59,15 +59,13 @@
 \newcommand{\getInstituteLocation}
 {
 	\ifthenelse
+	{\equal{\getLanguage}{english}}
 	{
-		\equal{\getLanguage}{english}
+		Dornbirn, Austria
 	}
-  	{
-  	Dornbirn, Austria
-  	}
-  	{
-  	Dornbirn, Österreich
-  	}
+	{
+		Dornbirn, Österreich
+	}
 }
 \newcommand{\setInstituteLocation}[1]{\renewcommand{\getInstituteLocation}{#1}}
 \newcommand{\getInstituteGraphic}{\includegraphics[width = 0.6\textwidth]{./img/titlePage/fhvlogo_neu}}
@@ -76,67 +74,67 @@
 \newcommand{\statuoryDeclaration}
 {
 	\ifthenelse
+	{\equal{\getLanguage}{english}}
 	{
-		\equal{\getLanguage}{english}
+	\chapter*{Statement of Affirmation }
+	I hereby declare that this thesis was in all parts exclusively prepared on my own, without using other resources than those stated. The thoughts taken directly or indirectly from external sources are properly marked as such. This thesis or parts of it were not previously submitted to another academic institution and have also not yet been published.
+	\vspace{3cm}
+
+	\begin{minipage}[t]{0.5\columnwidth}
+		Dornbirn, am \todayX
+	\end{minipage}\hspace{-\parfillskip}
+	\begin{minipage}[t][][t]{0.5\columnwidth}
+	\begin{flushright}      
+	\getAuthor
+	\end{flushright}
+	\end{minipage}\hspace{-\parfillskip}  	
 	}
-  	{
-  		\chapter*{Statement of Affirmation }
-I hereby declare that this thesis was in all parts exclusively prepared on my own, without using other resources than those stated. The thoughts taken directly or indirectly from external sources are properly marked as such. This thesis or parts of it were not previously submitted to another academic institution and have also not yet been published.
-\vspace{3cm}
+	{
+	\chapter*{Eidesstattliche Erklärung}
+	Ich erkläre hiermit an Eides statt, dass ich vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
+	\vspace{3cm}
 
-  	\begin{minipage}[t]{0.5\columnwidth}
+	\begin{minipage}[t]{0.5\columnwidth}
 	Dornbirn, am \todayX
 	\end{minipage}\hspace{-\parfillskip}
 	\begin{minipage}[t][][t]{0.5\columnwidth}
-	\begin{flushright}      
+	\begin{flushright}
 	\getAuthor
 	\end{flushright}
-	\end{minipage}\hspace{-\parfillskip}  	
-  	}
-  	{
-\chapter*{Eidesstattliche Erklärung}
-Ich erkläre hiermit an Eides statt, dass ich vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
-\vspace{3cm}
-
-  	\begin{minipage}[t]{0.5\columnwidth}
-	Dornbirn, am \todayX
 	\end{minipage}\hspace{-\parfillskip}
-	\begin{minipage}[t][][t]{0.5\columnwidth}
-	\begin{flushright}      
-	\getAuthor
-	\end{flushright}
-	\end{minipage}\hspace{-\parfillskip}  	
-  	}  
+	}
 }
 %
 \def\wOderM{m}
 \ifthenelse{\equal{\wOderM}{m}}
 	{
-		\def\VerfasserA{dem Verfasser }
-		\def\VerfasserB{des Verfassers }
+		\def\VerfasserA{dem Verfasser\xspace}
+		\def\VerfasserB{des Verfassers\xspace}
 	}
 	{
-		\def\VerfasserA{der Verfasserin }
-		\def\VerfasserB{der Verfasserin }
+		\def\VerfasserA{der Verfasserin\xspace}
+		\def\VerfasserB{der Verfasserin\xspace}
 	}
-
+%
 \newcommand{\sperrvermerk}[2]
 {
 \chapter*{Sperrvermerk}
-Auf Wunsch der Firma #1 ist die vorliegende Arbeit bis zum \SperrvermerkDate{#2} für die öffentliche Nutzung zu sperren.\par%\hfill \\ 
-Veröffentlichung, Vervielfältigung und Einsichtnahme sind ohne ausdrückliche Genehmigung der oben genannten Firma und \VerfasserA nicht gestattet. Der Titel der Arbeit sowie das Kurzreferat/Abstract dürfen jedoch veröffentlicht werden.
-\vspace{3cm}
-
-\begin{minipage}[t]{0.5\columnwidth}
-Dornbirn, \todayX
-\end{minipage}\hspace{-\parfillskip}
-\begin{minipage}[t][][t]{0.5\columnwidth}
-\begin{flushright}      
-Unterschrift \VerfasserB\par
-\vspace{1.5cm}
-Firmenstempel %
-\end{flushright}
-\end{minipage}\hspace{-\parfillskip}
+	Auf Wunsch der Firma #1 ist die vorliegende Arbeit bis zum \SperrvermerkDate{#2} für die öffentliche Nutzung zu sperren.\par
+%
+	Veröffentlichung, Vervielfältigung und Einsichtnahme sind ohne ausdrückliche Genehmigung der oben genannten Firma und \VerfasserA nicht gestattet. Der Titel der Arbeit sowie das Kurzreferat / Abstract dürfen jedoch veröffentlicht werden.\par
+	%
+	\vspace{3cm}
+	% 
+	\begin{minipage}[t]{0.5\columnwidth}
+		Dornbirn, \todayX
+	\end{minipage}\hspace{-\parfillskip}
+	\begin{minipage}[t][][t]{0.5\columnwidth}
+		\begin{flushright}
+			Unterschrift \VerfasserB\par
+			\vspace{1.5cm}
+			Firmenstempel %
+		\end{flushright}
+	\end{minipage}\hspace{-\parfillskip}
 }
 
 \newcommand{\newGlossaryEntryNEW}[4]
@@ -149,6 +147,7 @@ text={#3},
 description={#4},
 sort={#3}}
 }
+
 \newcommand{\addAppendix}[1]
 {
 	\captionsetup{listof=false}
@@ -191,7 +190,7 @@ sort={#3}}
 	%
 	\tableofcontents % add table of contents
 	%
-	\newpage	
+	\newpage
 	\listoffigures
 	%\optlof
 	%
@@ -215,8 +214,8 @@ sort={#3}}
 	%Glossary
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
 		{\printglossary[type=\acronymtype]}
-		{\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]} 		
-	% 	
+		{\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]}
+	%
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
 		{\printglossary}
 		{\printglossary[title=Glossar]} 	 % if no option is supplied the default glossary is printed.
@@ -239,11 +238,11 @@ sort={#3}}
 %
 \usepackage{xparse}
 \DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
-  \newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
-    description={#6},#1
-  }
-  \makeglossaries
-  \newacronym[see={gls-#3},#2]{#3}{#4}{#5\glsadd{gls-#3}}
+	\newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
+	description={#6},#1
+	}
+	\makeglossaries
+	\newacronym[see={gls-#3},#2]{#3}{#4}{#5\glsadd{gls-#3}}
 }
 
 \newcommand{\maketitleThesis}{
