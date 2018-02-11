@@ -8,7 +8,7 @@ branches:
   - travis-integration
 
 sudo: required
-dist: xenial
+dist: trusty
 before_install:
 - sudo add-apt-repository ppa:jonathonf/texlive-2017-trusty -y
 - sudo apt-get update
