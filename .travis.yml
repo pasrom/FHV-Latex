@@ -19,6 +19,7 @@ before_install:
 - sudo apt-get install -y xzdec
 - tlmgr init-usertree
 - tlmgr install bondgraphs
+- tlmgr install biblatex
 script:
 - pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
 - pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
