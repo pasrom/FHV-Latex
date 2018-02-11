@@ -43,6 +43,6 @@ This is the main file, where all subfiles and packages are loaded.
 
 You can define here 
 
- 1. `\newcommand{\DokuOderPresentation}{doku}` if its a documentation or a presentation. This is not working proberly. 
+ 1. `\newcommand{\DokuOderPresentation}{doku}` if its a documentation or a presentation. This is not working properly.
  2. `\newcommand{\Zusammenfassung}{false}` changes the layout. If you want to use all the space an the page change it to `true`, but take in mind, the typography is destroyed!
- 3. \newcommand{\version}{v0.0} self explaining, version numbering.
+ 3. `\newcommand{\version}{v0.0}` self explaining, version numbering.
