@@ -19,7 +19,7 @@ before_install:
 #- sudo apt-get install -y texlive-lang-german
 #- sudo apt-get install texlive-lang-german
 - sudo apt-get install -y xzdec
-#- sudo tlmgr init-usertree
+- sudo tlmgr init-usertree
 - sudo tlmgr install bondgraphs logreq biblatex german babel-german currfile filehook pgf subfiles pdfpages eso-pic pgfplots
 - sudo tlmgr install blindtext lipsum circuitikz mwe xpatch etoolbox xcolor appendix csquotes pgfgantt footmisc threeparttable fp
 - sudo tlmgr install xstring adjustbox xkeyval collectbox ifoddpage varwidth multirow forloop hyperxmp ifmtarg hyperref tocbibind
