@@ -16,8 +16,8 @@ install:
     add-apt-repository -y ppa:jonathonf/texlive-2017;
     apt-get update;
     apt-get install -y texlive-full;
-    apt-get install -y xzdec;
-    tlmgr install circuitikz"
+    apt-get install texlive-pictures;
+    apt-get install -y xzdec;"
  
 script:
   - docker exec -t ubuntu-test bash -c "cd travis;
