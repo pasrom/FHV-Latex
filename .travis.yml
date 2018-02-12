@@ -21,7 +21,7 @@ before_install:
 - sudo apt-get install -y xzdec
 - tlmgr init-usertree
 - tlmgr install bondgraphs logreq biblatex german babel-german currfile filehook pgf subfiles
-- tlmgr install blindtext lipsum circuitikz mwe xpatch etoolbox
+- tlmgr install blindtext lipsum circuitikz mwe xpatch etoolbox xcolor appendix
 - tlmgr list --only-installed
 script:
 - pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
