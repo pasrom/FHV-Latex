@@ -13,10 +13,10 @@ before_install:
 
 install:
   - docker exec -t ubuntu-test bash -c "apt-get update;
-    add-apt-repository -y ppa:jonathonf/texlive-2017;
+    add-apt-repository -y ppa:jonathonf/texlive;
     apt-get update;
     apt-get install -y texlive-full;
-    apt-get install texlive-pictures;
+    apt-get install -y texlive-pictures;
     apt-get install -y xzdec;"
  
 script:
