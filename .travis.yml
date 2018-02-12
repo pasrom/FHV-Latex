@@ -17,7 +17,8 @@ install:
     apt-get update;
     apt-get install -y texlive-full;
     apt-get install -y texlive-pictures;
-    apt-get install -y xzdec;"
+    apt-get install -y xzdec;
+    tlmgr update --all;"
  
 script:
   - docker exec -t ubuntu-test bash -c "cd travis;
