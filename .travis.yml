@@ -8,18 +8,19 @@ services:
   - docker
 
 before_install:
-  - docker run -d --name ubuntu-test -v $(pwd):/travis ubuntu:16.04 tail -f /dev/null
+  - docker pull sumdoc/texlive-2017
+  - docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017 tail -f /dev/null
   - docker ps
 
-install:
-  - docker exec -t ubuntu-test bash -c "apt-get update;
-    add-apt-repository -y ppa:jonathonf/texlive-2016;
-    apt-get update;
-    apt-get install -y texlive-full;
-    apt-get install -y texlive-pictures;
-    apt-get install -y xzdec;
-    tlmgr init-usertree;
-    tlmgr update --all;"
+#install:
+#  - docker exec -t ubuntu-test bash -c "apt-get update;
+#    add-apt-repository -y ppa:jonathonf/texlive-2016;
+#    apt-get update;
+#    apt-get install -y texlive-full;
+#    apt-get install -y texlive-pictures;
+#    apt-get install -y xzdec;
+#    tlmgr init-usertree;
+#    tlmgr update --all;"
  
 script:
   - docker exec -t ubuntu-test bash -c "cd travis;
