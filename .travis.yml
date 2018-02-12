@@ -7,37 +7,6 @@ branches:
   only:
   - travis-integration
 
-#sudo: required
-#dist: trusty
-#before_install:
-#- sudo add-apt-repository -y ppa:jonathonf/texlive-2017
-#- sudo apt-get update
-#- sudo apt-get -qq update && sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber
-#- sudo apt-get install -y --no-install-recommends texlive texlive-lang-german biber #texlive-extra-utils texlive-latex-extra texlive-generic-extra texlive-math-extra biber
-#- sudo apt-get install -y texlive-science
-#- sudo apt-get install -y texlive-fonts-extra 
-#- sudo apt-get install -y texlive-lang-german
-#- sudo apt-get install texlive-lang-german
-#- sudo apt-get install -y xzdec
-#- sudo tlmgr init-usertree
-#- sudo tlmgr install bondgraphs logreq biblatex german babel-german currfile filehook pgf subfiles pdfpages eso-pic pgfplots
-#- sudo tlmgr install blindtext lipsum circuitikz mwe xpatch etoolbox xcolor appendix csquotes pgfgantt footmisc threeparttable fp
-#- sudo tlmgr install xstring adjustbox xkeyval collectbox ifoddpage varwidth multirow forloop hyperxmp ifmtarg hyperref tocbibind
-#- sudo tlmgr install glossaries
-#- sudo tlmgr install mfirstuc textcase glossaries-german glossaries-extra
-#- sudo tlmgr install xfor substr tracklang supertabular dirtree siunitx enumitem cleveref ifplatform booktabs amsfonts listings
-#- tlmgr list --only-installed
-#script:
-#- pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
-#- pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
-#- biber --output_directory ./build/ LatexVorlage
-#- biber --output_directory ./build/ LatexVorlage
-#- pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
-#- makeglossaries "./build/LatexVorlage.idx"
-
-#apt-get update; apt-get -qq update && apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber;
-#    apt-get install -y texlive-science texlive-fonts-extra texlive-lang-german;
-
 sudo: required
 
 services:
@@ -50,12 +19,12 @@ before_install:
 install:
   - docker exec -t ubuntu-test bash -c "apt-get update;
     add-apt-repository -y ppa:jonathonf/texlive-2017;
+    apt-get update;
     apt-get install -y texlive-full;
     apt-get install -y xzdec"
  
 script:
   - docker exec -t ubuntu-test bash -c "cd travis;
-      ls;
       pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
       pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
       biber --output_directory ./build/ LatexVorlage;
