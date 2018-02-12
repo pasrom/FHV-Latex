@@ -1,6 +1,6 @@
 cache:
   directories:
-    - /home/travis/docker/
+    - /home/travis/sumdoc/
 
 sudo: required
 
