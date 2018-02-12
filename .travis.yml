@@ -23,7 +23,7 @@ before_install:
 - tlmgr install bondgraphs logreq biblatex german babel-german currfile filehook pgf subfiles pdfpages eso-pic pgfplots
 - tlmgr install blindtext lipsum circuitikz mwe xpatch etoolbox xcolor appendix csquotes pgfgantt footmisc threeparttable fp
 - tlmgr install xstring adjustbox xkeyval collectbox ifoddpage varwidth multirow forloop hyperxmp ifmtarg hyperref tocbibind glossaries
-- tlmgr install mfirstuc textcase glossaries-german
+- tlmgr install mfirstuc textcase glossaries-german glossaries-extra
 - tlmgr install xfor substr tracklang supertabular dirtree siunitx enumitem cleveref ifplatform booktabs amsfonts listings
 - tlmgr list --only-installed
 script:
