@@ -1,3 +1,13 @@
+# blacklist
+branches:
+  except:
+
+# whitelist
+branches:
+  only:
+    - master
+    - travis-integration
+
 cache:
   directories:
   - "/home/travis/sumdoc/"
@@ -17,6 +27,9 @@ script:
   -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
 notifications:
   email: false
+before_deploy:
+# Set up git user name and tag this commit
+- git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 deploy:
   provider: releases
   api_key:
@@ -25,3 +38,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: pasrom/FHV-Latex
+    tags: true
