@@ -19,7 +19,7 @@ before_install:
 #- sudo apt-get install -y texlive-lang-german
 - sudo apt-get install -y xzdec
 - tlmgr init-usertree
-- tlmgr install bondgraphs logreq biblatex german
+- tlmgr install bondgraphs logreq biblatex german babel-german
 script:
 - pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
 - pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex
