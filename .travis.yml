@@ -1,3 +1,7 @@
+cache:
+  directories:
+    - /home/travis/docker/
+
 sudo: required
 
 services:
@@ -12,7 +16,8 @@ install:
     add-apt-repository -y ppa:jonathonf/texlive-2017;
     apt-get update;
     apt-get install -y texlive-full;
-    apt-get install -y xzdec"
+    apt-get install -y xzdec;
+    circuitikz"
  
 script:
   - docker exec -t ubuntu-test bash -c "cd travis;
