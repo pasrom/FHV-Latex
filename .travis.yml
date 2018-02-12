@@ -18,6 +18,7 @@ install:
     apt-get install -y texlive-full;
     apt-get install -y texlive-pictures;
     apt-get install -y xzdec;
+    tlmgr init-usertree;
     tlmgr update --all;"
  
 script:
