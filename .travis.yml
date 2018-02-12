@@ -7,21 +7,11 @@ branches:
   only:
     - master
     - travis-integration
-
-env:
-  global:
-    - DOCKER_CACHE_FILE=/home/travis/docker/cache.tar.gz
-
-cache:
-  directories:
-    - /home/travis/docker/
 sudo: required
 services:
 - docker
 before_install:
-- if [ -f ${DOCKER_CACHE_FILE} ]; then gunzip -c ${DOCKER_CACHE_FILE} | docker load; fi
 - docker pull sumdoc/texlive-2017
-- ls ../
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017 tail -f /dev/null
 - docker ps
 script:
@@ -31,10 +21,8 @@ script:
   LatexVorlage.tex; biber --output_directory ./build/ LatexVorlage; biber --output_directory
   ./build/ LatexVorlage; makeglossaries ./build/LatexVorlage.idx; pdflatex -shell-escape
   -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
-- if [[ ${TRAVIS_BRANCH} == "master" ]] && [[ ${TRAVIS_PULL_REQUEST} == "false" ]]; then mkdir -p $(dirname ${DOCKER_CACHE_FILE}) ; docker save $(docker history -q ${DOCKER_REPOSITORY}:${TRAVIS_COMMIT} | grep -v '<missing>') | gzip > ${DOCKER_CACHE_FILE}; fi
 notifications:
   email: false
-
 deploy:
   provider: releases
   api_key:
