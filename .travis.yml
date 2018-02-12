@@ -1,0 +1,25 @@
+cache:
+  directories:
+    - /home/travis/sumdoc/
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker pull sumdoc/texlive-2017
+  - docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017 tail -f /dev/null
+  - docker ps
+ 
+script:
+  - docker exec -t ubuntu-test bash -c "cd travis;
+      pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
+      pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
+      biber --output_directory ./build/ LatexVorlage;
+      biber --output_directory ./build/ LatexVorlage;
+      makeglossaries ./build/LatexVorlage.idx;
+      pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
+
+notifications:
+    email: false
