@@ -40,23 +40,17 @@ sudo: required
 services:
   - docker
 
-
-env:
-  matrix:
-    - CC_VER: "5"
-    - CC_VER: "6"
-
 before_install:
   - docker run -d --name ubuntu-test -v $(pwd):/travis ubuntu:latest tail -f /dev/null
   - docker ps
 
 install:
-  - docker exec -t ubuntu-test bash -c "sudo add-apt-repository -y ppa:jonathonf/texlive-2017;
-  sudo apt-get update;
-  sudo apt-get -qq update && sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber"
+  - docker exec -t ubuntu-test bash -c "add-apt-repository -y ppa:jonathonf/texlive-2017;
+  apt-get update;
+  #sudo apt-get -qq update && sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber"
 
-script:
-  - docker exec -t ubuntu-test bash -c "pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
+#script:
+#  - docker exec -t ubuntu-test bash -c "pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;"
 
 notifications:
     email: false
