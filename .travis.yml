@@ -6,7 +6,7 @@ branches:
 branches:
   only:
     - master
-    - travis-integration
+    - paper
 sudo: required
 services:
 - docker
