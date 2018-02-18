@@ -20,10 +20,8 @@ script:
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/
   LatexVorlage.tex; biber --output_directory ./build/ LatexVorlage; biber --output_directory
   ./build/ LatexVorlage; makeglossaries ./build/LatexVorlage.idx; pdflatex -shell-escape
-  -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
-- docker exec -t ubuntu-test bash -c "cd travis; pdflatex -shell-escape -recorder
-  -synctex=1 -interaction=nonstopmode -output-directory=./build/ "\def\mode{9} \input{LatexVorlage.tex}""
-
+  -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ "\def\mode{9} \input{LatexVorlage.tex}" "
 notifications:
   email: false
 deploy:
