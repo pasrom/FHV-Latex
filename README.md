@@ -41,6 +41,7 @@ This is the main file, where all subfiles and packages are loaded.
 You can define here 
 
  1. The mode of the layout can be spezified with`\def\mode{x}`. Where following arguments are working:
+
 	 `1`: **documentation**, e.g.: a documentation for a project done in a course
 	 
 	 `2`: **thesis**, e.g.: a master thesis (standard). It changes the style of the title page.
@@ -49,5 +50,5 @@ You can define here
 	page, but take in mind, the typography is destroyed!
 	
 	`9`: **paper**
-	
- 3. `\newcommand{\version}{v0.0}` self explaining, version numbering.
+
+ 2. `\newcommand{\version}{v0.0}` self explaining, version numbering.
