@@ -47,6 +47,7 @@ You can define here
 	 
 	`3`: **summary**, changes the layout. If you want to use all the space an the 
 	page, but take in mind, the typography is destroyed!
+	
 	`9`: **paper**
 	
  3. `\newcommand{\version}{v0.0}` self explaining, version numbering.
