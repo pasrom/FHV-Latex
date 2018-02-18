@@ -29,10 +29,14 @@ In \autoref{fig: example-image} ist ein Beispiel einer Abbildung dargestellt.
 %
 \begin{figure}[H]
 \centering
-\noindent\adjustbox{max width=\textwidth}{%falls größer als \textwidth, wird das Bild verkleinert
-	%trim option's parameter order: left bottom right top
+\noindent\adjustbox{max width=\textwidth}{% if the picture is greater than \textwidth, it is going to be resized to \textwidth.
+	% trim option's parameter order: left bottom right top
 	\includegraphics[width=1\textwidth]{example-image-a}
 }
+	% if you don't have to print the source, just remove it e.g.:
+	%\unterschrift{ich bin die Unterschrift}{}{}
+	% if you don't want to have your caption in the table of contents use the #3 argument to prevent the listing in the table of contents. e.q.:
+	%\unterschrift{ich bin die Unterschrift}{Quelle}{no}
 	\unterschrift{ich bin die Unterschrift}{Quelle}{}
 	\label{fig: example-image}
 \end{figure}
