@@ -44,7 +44,9 @@
 	\ifthenelse{\equal{\getLanguage}{english}} % english or german
 	{\def\quelle{Source}}%
 	{\def\quelle{Quelle}}%
-	\ifthenelse{\equal{#3}{nein}} % add to the table of contents? Standard is on
-	{\caption[]{#1\\\quelle: #2}}%
-	{\caption[#1]{#1\\\quelle: #2}}%
+	\def\source{\ifthenelse{\equal{#2}{}}{}{\\\quelle: #2}}
+	% if no source is given, don't use this
+	\ifthenelse{\equal{#3}{no}} % add to the table of contents? Standard is on
+		{\caption[]{#1\source}}%
+		{\caption[#1]{#1\source}}%
 }%
