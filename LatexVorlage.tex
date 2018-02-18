@@ -5,7 +5,6 @@
 % 5: presentation, not working!
 % 9: paper
 %
-%\newcommand{\mode}{9}
 \ifx\mode\undefined
 	\def\mode{2}
 \fi
@@ -75,32 +74,6 @@
 \setkomafont{descriptionlabel}{\normalfont\bfseries} % for glossaries serif font
 \allowdisplaybreaks
 %
-%\RedeclareSectionCommand[
-%beforeskip=9pt,
-%afterskip=9pt]{section}
-%\RedeclareSectionCommand[%
-%beforeskip=9pt,%
-%afterskip=-2pt%
-%]{paragraph}
-%
-%\setkomafont{section}{\normalsize}
-%\setlist{itemsep=1pt,topsep=2pt,parsep=0pt}
-%% Bilder Abstand
-%\setlength{\textfloatsep}{0pt}
-%\setlength{\floatsep}{0pt}
-%\setlength{\intextsep}{9pt}
-%% Mathe Gleichung Abstand
-%\setlength\abovedisplayshortskip{0pt}
-%\setlength\belowdisplayshortskip{0pt}
-%\setlength\abovedisplayskip{0pt}
-%\setlength\belowdisplayskip{0pt}
-%% Abstand Caption
-%\setlength{\abovecaptionskip}{2pt}
-%\setlength{\belowcaptionskip}{0pt}
-%\captionsetup[subfigure]{aboveskip=2pt}
-%\captionsetup[subfigure]{belowskip=0pt}
-%\setlength{\parskip}{0pt}
-%
 \begin{document}
 	%
 	% for Backlinks to work properly
@@ -135,7 +108,7 @@
 	% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
 	%
 	\ifthenelse{\equal{\mode}{\thesis}}{%
-	\sperrvermerk{Bachmann electronic GmbH}{5}
+		\sperrvermerk{Bachmann electronic GmbH}{5}
 	}{}
 	%
 	\maketitle % creates the title page
@@ -174,8 +147,8 @@
 	%
 	% Statuory Declaration
 	\ifthenelse{\equal{\mode}{\thesis}}{%
-	\statuoryDeclaration
-	}{}
+		\statuoryDeclaration
+	}{}%
 	}%
 	%
 \end{document}
