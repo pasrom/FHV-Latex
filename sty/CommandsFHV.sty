@@ -190,6 +190,7 @@
 }
 
 \newcommand{\glossaryAndBibliography}{
+	\ifthenelse{\equal{\mode}{\documentation} \or \equal{\mode}{\thesis}}{
 	% Anything following the further research must not have a chapternumber
 	\renewcommand{\chaptername}{}
 	\renewcommand{\thechapter}{}
@@ -203,13 +204,14 @@
 		{\printglossary}
 		{\printglossary[title=Glossar]} % if no option is supplied the default glossary is printed.
 	\printglossary[type=symbolslist,style=long]
+	}{}
 	%
 	\ifthenelse{\equal{\getLanguage}{english}}%
 	{%
 		\printbibliography[notkeyword=normen,heading=bibintoc]
 	}{%
 		\printbibliography[notkeyword=normen,title={Literaturverzeichnis},heading=bibintoc]
-	}	
+	}
 	%
 	\ifthenelse{\equal{\getLanguage}{english}}%
 	{%
@@ -424,7 +426,7 @@
 	\setcounter{page}{2}
 }
 \renewcommand{\maketitle}{
-	\ifthenelse{\equal{\thesis}{true}}{
+	\ifthenelse{\equal{\mode}{\thesis}}{
 		\maketitleThesis%
 	}{%
 		\maketitleReport%

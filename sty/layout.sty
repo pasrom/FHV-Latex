@@ -6,7 +6,20 @@
 %
 \setkomafont{disposition}{\normalcolor\bfseries}
 %
-\ifthenelse{\equal{\Zusammenfassung}{false}}{
+\ifthenelse{\equal{\mode}{\paper}}{%
+	\usepackage[
+	top=2cm,
+	bottom=2.cm,
+	left=2cm,
+	right=2cm,
+	]{geometry}
+	\setlength{\columnsep}{7mm}
+	\usepackage[draft=false,kerning=true]{microtype}
+	\setkomafont{section}{\normalsize}
+	\setuptoc{toc}{leveldown}
+}{%
+%
+\ifthenelse{\equal{\mode}{\documentation} \or \equal{\mode}{\thesis}}{
 	%change the layout
 	\usepackage[
 		left= 3.5cm,
@@ -25,7 +38,8 @@
 	\setkomafont{subsubsection}{\large}
 	\setkomafont{paragraph}{\large}
 	\setkomafont{subparagraph}{\large}
-}{
+}{}
+\ifthenelse{\equal{\mode}{\summary}}{
 	%change the layout
 	\usepackage[
 		left= 1.5cm,
@@ -84,7 +98,7 @@
 }
 \makeatother
 %
-}
+}{}
 %
 % Backlinks
 %
@@ -113,4 +127,6 @@
 	\else \hypersecton[#1]{\hyperlink{toc.subsection.\thesubsection}{#2}}
 	\fi}
 \makeatother
+%
+}
 %

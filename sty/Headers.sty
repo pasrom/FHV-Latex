@@ -5,11 +5,24 @@
 automark
 ]{scrlayer-scrpage}  % Header and footer
 \clearscrheadfoot
-\ifthenelse{\equal{\Zusammenfassung}{false}}{
-	\chead{\headmark}
-	\cfoot[\pagemark]{\pagemark}
-}{
-	\cfoot[\pagemark]{\pagemark}
-	\ofoot[\version]{\version}
-	\ifoot[\getAuthor]{\getAuthor}
+%
+\ifthenelse{\equal{\mode}{\paper}}{%
+	%
+	\definecolor{greyFoot}{HTML}{CCCCCC}
+	\lofoot{\textcolor{greyFoot}{\normalfont\small \paperName}
+	}
+	\lefoot{\textcolor{greyFoot}{\normalfont\small \paperName}
+	}
+	%
+}{%
+	\ifthenelse{\equal{\mode}{\documentation} \or \equal{\mode}{\thesis}}{
+		\chead{\headmark}
+		\cfoot[\pagemark]{\pagemark}
+	}{
+		\ifthenelse{\equal{\mode}{\summary}}{
+			\cfoot[\pagemark]{\pagemark}
+			\ofoot[\version]{\version}
+			\ifoot[\getAuthor]{\getAuthor}
+		}{}
+	}
 }

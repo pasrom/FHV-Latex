@@ -1,23 +1,22 @@
-\newcommand{\DokuOderPresentation}{doku}
-\newcommand{\Zusammenfassung}{false}
+%
+% 1: documentation, e.g.: a documentation for a project done in a course
+% 2: thesis, e.g.: a master thesis
+% 3: summary
+% 5: presentation, not working!
+% 9: paper
+%
+%\newcommand{\mode}{9}
+\ifx\mode\undefined
+	\def\mode{2}
+\fi
+%\newcommand{\Zusammenfassung}{false}
 \newcommand{\version}{v0.0}
 %
 \input{./sty/overallDefines.sty}
 %
 \documentclass[
-a4paper,
-oneside,
-11pt,
-DIV=calc,
-headsepline,
-%%BCOR=10mm,
-parskip=half,
-headings=big,
-draft=\debug,
-numbers=noenddot,
-%bibliography=totoc,
-%headinclude=false, %koma script seite 79 tabelle 3.7
-]{scrreprt}
+\documentclassOptions
+]{\komaScriptClass}
 %
 \pdfoptionpdfminorversion=6 %use newer pdf version
 %
@@ -76,6 +75,32 @@ numbers=noenddot,
 \setkomafont{descriptionlabel}{\normalfont\bfseries} % for glossaries serif font
 \allowdisplaybreaks
 %
+%\RedeclareSectionCommand[
+%beforeskip=9pt,
+%afterskip=9pt]{section}
+%\RedeclareSectionCommand[%
+%beforeskip=9pt,%
+%afterskip=-2pt%
+%]{paragraph}
+%
+%\setkomafont{section}{\normalsize}
+%\setlist{itemsep=1pt,topsep=2pt,parsep=0pt}
+%% Bilder Abstand
+%\setlength{\textfloatsep}{0pt}
+%\setlength{\floatsep}{0pt}
+%\setlength{\intextsep}{9pt}
+%% Mathe Gleichung Abstand
+%\setlength\abovedisplayshortskip{0pt}
+%\setlength\belowdisplayshortskip{0pt}
+%\setlength\abovedisplayskip{0pt}
+%\setlength\belowdisplayskip{0pt}
+%% Abstand Caption
+%\setlength{\abovecaptionskip}{2pt}
+%\setlength{\belowcaptionskip}{0pt}
+%\captionsetup[subfigure]{aboveskip=2pt}
+%\captionsetup[subfigure]{belowskip=0pt}
+%\setlength{\parskip}{0pt}
+%
 \begin{document}
 	%
 	% for Backlinks to work properly
@@ -97,12 +122,21 @@ numbers=noenddot,
 			\texttt{Teletype: \ttdefault}
 	}{}
 	%
+	\hypersetup{pageanchor=false}
+	%
+	\ifthenelse{\equal{\mode}{\paper}}{
+		\paperHeader
+		\begin{multicols}{2}[][7mm]
+		\raggedcolumns
+	}{%
+	%
 	% evtl. Sperrvermerkseite
 	% nur in begründeten Ausnahmefällen verwenden
 	% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
-	\hypersetup{pageanchor=false}
 	%
+	\ifthenelse{\equal{\mode}{\thesis}}{%
 	\sperrvermerk{Bachmann electronic GmbH}{5}
+	}{}
 	%
 	\maketitle % creates the title page
 	%
@@ -119,11 +153,19 @@ numbers=noenddot,
 	\newpage
 	%
 	\fhvlists
+	}
+	%
 	%\subfile{./tex/Hauptteil.tex}
 	\subfile{./tex/Examples.tex}
 	% The order of the chapters used
 	% final generated information
 	\glossaryAndBibliography
+	%
+	\ifthenelse{\equal{\mode}{\paper}}{%
+	\end{multicols}
+	\subfile{./tex/Lebenslauf.tex}
+	}{%
+	%
 	\newpage
 	\appendix
 	\addAppendix{
@@ -131,5 +173,9 @@ numbers=noenddot,
 	}
 	%
 	% Statuory Declaration
+	\ifthenelse{\equal{\mode}{\thesis}}{%
 	\statuoryDeclaration
+	}{}
+	}%
+	%
 \end{document}

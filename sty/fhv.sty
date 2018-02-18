@@ -8,9 +8,9 @@
 %necessary if german language is selected
 \usepackage[\newLanguage]{babel} %german hyphenation and headings
 %\selectlanguage{ngerman}
-\ifthenelse{\equal{\DokuOderPresentation}{doku}}%
-{\pagestyle{headings}}%
+\ifthenelse{\equal{\mode}{\presentation}}%
 {}%
+{\pagestyle{headings}}%
 %
 \RequirePackage{currfile}
 \usepackage{amsmath} % need for subequations
@@ -42,9 +42,9 @@
 \usepackage{epstopdf}
 %coloring and so on
 %
-\ifthenelse{\equal{\DokuOderPresentation}{doku}}%
-{\usepackage[table,xcdraw]{xcolor}}
+\ifthenelse{\equal{\mode}{\presentation}}%
 {}%
+{\usepackage[table,xcdraw]{xcolor}}%
 %set the quotes
 \usepackage[autostyle=true,german=quotes]{csquotes}
 %
@@ -128,14 +128,16 @@ backref=true,
 \usepackage{booktabs}
 %
 \usepackage{./sty/Tikz}
-\ifthenelse{\equal{\DokuOderPresentation}{doku}}{
-\usepackage{./sty/Headers}
-\usepackage{./sty/bibSettings}
-\usepackage{./sty/CommandsFHV}
-}{}%
+\ifthenelse{\equal{\mode}{\presentation}}{}%
+{%
+\usepackage{./sty/Headers}%
+\usepackage{./sty/bibSettings}%
+\usepackage{./sty/CommandsFHV}%
+}
 \usepackage{./sty/CommandsRoPa}
 \usepackage{./sty/Listings}
 \usepackage{./sty/Commands}
+\usepackage{./sty/Paper}
 %
 \setlength{\extrarowheight}{3pt} % table space in front of line
 \patchcmd{\bibsetup}{\interlinepenalty=5000}{\interlinepenalty=10000}{}{}
