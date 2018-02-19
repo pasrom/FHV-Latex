@@ -190,6 +190,7 @@
 }
 
 \newcommand{\glossaryAndBibliography}{
+	\ifthenelse{\equal{\mode}{\documentation} \or \equal{\mode}{\thesis}}{
 	% Anything following the further research must not have a chapternumber
 	\renewcommand{\chaptername}{}
 	\renewcommand{\thechapter}{}
@@ -203,13 +204,14 @@
 		{\printglossary}
 		{\printglossary[title=Glossar]} % if no option is supplied the default glossary is printed.
 	\printglossary[type=symbolslist,style=long]
+	}{}
 	%
 	\ifthenelse{\equal{\getLanguage}{english}}%
 	{%
 		\printbibliography[notkeyword=normen,heading=bibintoc]
 	}{%
 		\printbibliography[notkeyword=normen,title={Literaturverzeichnis},heading=bibintoc]
-	}	
+	}
 	%
 	\ifthenelse{\equal{\getLanguage}{english}}%
 	{%
@@ -226,6 +228,52 @@
 	}
 	\makeglossaries
 	\newacronym[see={gls-#3},#2]{#3}{#4}{#5\glsadd{gls-#3}}
+}
+%
+\newcommand{\maketitleMinimal}{
+	\newgeometry{
+		left= 3.5cm,
+		top=2.5cm,
+		bottom=4.cm,
+		textwidth = 398pt,
+		headsep=1.0cm,
+		footskip = 1.cm,
+		bindingoffset = \ValueBindingOffset
+	}
+	\begin{titlepage}
+		\begin{flushleft}%
+			\vspace{1.25cm}%
+			%
+			%Title
+			\vspace{0.4cm}%
+			\textsc{\Huge \bfseries \getTitle}%
+			\ifthenelse{\equal{\getSubtitle}{}}{
+				%
+			}{%
+				\par%
+				\textsc{\Large \getSubtitle}%
+			}\par%
+			%
+			\vspace{15.5cm}%
+			\noindent\textsc{\Large\getSupervisorCompany}\par
+			%
+			\textsc{\Large\getAuthor}% 
+			\vspace{.5cm}%
+			%
+			% Bottom of the page
+			\textsc
+			{
+				\begin{flushleft}\noindent Feldkirch, \todayX\end{flushleft}
+				\begin{flushleft}\version\end{flushleft}
+			}
+			%
+		\end{flushleft}
+	\end{titlepage}
+	%
+	\newpage
+	%
+	\pagenumbering{arabic}
+	\setcounter{page}{2}
 }
 %
 \newcommand{\maketitleThesis}{
@@ -424,9 +472,17 @@
 	\setcounter{page}{2}
 }
 \renewcommand{\maketitle}{
-	\ifthenelse{\equal{\thesis}{true}}{
+	\ifthenelse{\equal{\mode}{\thesis}}{
 		\maketitleThesis%
 	}{%
-		\maketitleReport%
+	\ifx\titlePage\undefined
+		\maketitleReport
+	\else
+		\ifthenelse{\equal{\titlePage}{minimal}}{%
+			\maketitleMinimal
+		}{%
+			\maketitleReport%
+		}
+	\fi
 	}%
 }

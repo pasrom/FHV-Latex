@@ -6,7 +6,7 @@ branches:
 branches:
   only:
     - master
-    - travis-integration
+    - paper
 sudo: required
 services:
 - docker
@@ -21,6 +21,11 @@ script:
   LatexVorlage.tex; biber --output_directory ./build/ LatexVorlage; biber --output_directory
   ./build/ LatexVorlage; makeglossaries ./build/LatexVorlage.idx; pdflatex -shell-escape
   -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
+- docker exec -t ubuntu-test bash -c "cd travis; pdflatex -shell-escape -recorder
+  -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\mode{1} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\mode{2} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\mode{3} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\mode{9} \input{LatexVorlage.tex}'"
 notifications:
   email: false
 deploy:

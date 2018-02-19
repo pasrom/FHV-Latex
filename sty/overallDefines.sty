@@ -5,7 +5,12 @@
 \def\pathName{Programm}
 \def\ValueBindingOffset{0mm} 
 \def\debug{false}
-\def\thesis{true}
+\def\documentation{1}
+\def\thesis{2}
+\def\summary{3}
+\def\presentation{5}
+\def\paper{9}
+%\def\titlePage{minimal}
 %
 % english or ngerman
 %
@@ -20,6 +25,59 @@
 \def\authorSurname{Surname\xspace}
 \def\supervisorName{Supervisor Name\xspace}
 \def\supervisorSurname{Supervisor Surname\xspace}
+\def\paperName{KONFERENZ DER MECHATRONIK-PLATTFORM: Smart Factory\\
+							FH Technikum Wien,  24. November 2016\xspace}
+%
+% standard definiton for the document class
+%
+\def\komaScriptClass{scrreprt}%
+\def\documentclassOptions{%
+	a4paper,%
+	oneside,%
+	fontsize=11pt,%
+	DIV=calc,%
+	headsepline,%
+	%%BCOR=10mm,
+	parskip=half,%
+	headings=big,%
+	draft=\debug,%
+	numbers=noenddot,%
+	%bibliography=totoc,
+	%headinclude=false, %koma script seite 79 tabelle 3.7
+}
+%
+\if\paper\mode
+	\def\komaScriptClass{%
+		scrartcl%
+	}%
+	\def\documentclassOptions{%
+		a4paper,%
+		oneside,%
+		fontsize=9pt,%
+		DIV=calc,%
+		draft=\debug,%
+		numbers=enddot,%
+		bibliography=totocnumbered,%
+	}%
+\fi
+%
+\if\summary\mode
+\def\komaScriptClass{%
+	scrartcl%
+}%
+	\def\komaScriptClass{scrreprt}%
+\def\documentclassOptions{%
+	a4paper,%
+	oneside,%
+	fontsize=11pt,%
+	DIV=calc,%
+	parskip=half,%
+	headings=big,%
+	draft=\debug,%
+	numbers=noenddot,%
+}
+\fi%
+%
 %
 % Define if the author is male (m) or female (w)
 %

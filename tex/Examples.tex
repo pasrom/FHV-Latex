@@ -29,7 +29,7 @@ In \autoref{fig: example-image} ist ein Beispiel einer Abbildung dargestellt.
 %
 \begin{figure}[H]
 \centering
-\noindent\adjustbox{max width=\textwidth}{% if the picture is greater than \textwidth, it is going to be resized to \textwidth.
+\noindent\adjustbox{max width=\linewidth}{% if the picture is greater than \textwidth, it is going to be resized to \textwidth.
 	% trim option's parameter order: left bottom right top
 	\includegraphics[width=1\textwidth]{example-image-a}
 }
@@ -45,14 +45,14 @@ In \Cref{fig: Bild A,fig: Bild A} (oder mit Abkürzung \cref{fig: Bild A,fig: Bi
 %
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.5\textwidth}
+	\begin{subfigure}[b]{0.5\linewidth}
 		\centering
 		\includegraphics[width=1\textwidth]{example-image-a}
 		\caption{Bild A}
 		\label{fig: Bild A}
 	\end{subfigure}% 
 	%
-	\begin{subfigure}[b]{0.5\textwidth}
+	\begin{subfigure}[b]{0.5\linewidth}
 		\centering
 		\includegraphics[width=1\textwidth]{example-image-b}
 		\caption{Bild B}
@@ -67,6 +67,7 @@ In \Cref{fig: Bild A,fig: Bild A} (oder mit Abkürzung \cref{fig: Bild A,fig: Bi
 \def\spaceX{1.5}
 \begin{figure}[H]
 	\centering
+	\noindent\adjustbox{max width=\linewidth}{
 \begin{tikzpicture}%[scale=0.7]
 \begin{scope}[every node/.style={bgelement}]
 \node (Se) at (0,0) {Se};
@@ -87,6 +88,7 @@ edge [e_in,effort={$U_{emf}$}, flow={$i_a$}] (GY)
 (w) edge [e_out,effort={$T_{j}$}, flow={$\omega$}] (Im)
 edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 \end{tikzpicture}
+}
 	\unterschrift{Kausalisierter Bondgraph}{eigene Ausarbeitung}{}
 \label{fig: kausalisierter bondgraph}
 \end{figure}
@@ -94,7 +96,7 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 \def\bildA{true}
 \begin{figure}[H]
 	\centering
-	\noindent\adjustbox{max width=\textwidth}{%falls größer als \textwidth, wird das Bild verkleinert
+	\noindent\adjustbox{max width=\linewidth}{%
 	\subfile{./img/tikz/escon-schaltplan.tex}
 }
 	\unterschrift{Schaltkreis: Escon 50/5 Controller für Polverschiebung}{eigene Ausarbeitung}{}
@@ -104,7 +106,7 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 \def\bildA{true}
 \begin{figure}[H]
 	\centering
-	\noindent\adjustbox{max width=\textwidth}{%falls größer als \textwidth, wird das Bild verkleinert
+	\noindent\adjustbox{max width=\linewidth}{%
 		\subfile{./img/tikz/blockschaltbild-state-space.tex}
 	}
 	\unterschrift{Zustandsregler mit Rückkopplungsverstärkungsmatrix f}{eigene Ausarbeitung}{}
