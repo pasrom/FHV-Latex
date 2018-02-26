@@ -117,11 +117,19 @@
 %
 \newcommand{\sperrvermerk}[2]
 {
-\chapter*{Sperrvermerk}
+	\ifthenelse{\equal{\getLanguage}{english}}{%
+		\chapter*{Blocking Note}
 %
-	Auf Wunsch der Firma #1 ist die vorliegende Arbeit bis zum \SperrvermerkDate{#2} für die öffentliche Nutzung zu sperren.\par
+		The Company #1 requests that this master thesis should be blocked from public use until \SperrvermerkDate{#2}.\par
 %
-	Veröffentlichung, Vervielfältigung und Einsichtnahme sind ohne ausdrückliche Genehmigung der oben genannten Firma und \VerfasserA nicht gestattet. Der Titel der Arbeit sowie das Kurzreferat / Abstract dürfen jedoch veröffentlicht werden.\par
+		Publication, photocopying and viewing may be possible only with consent from the company and the author. The title of the master thesis and the abstract can be published.\par
+	}{%
+		\chapter*{Sperrvermerk}
+%
+		Auf Wunsch der Firma #1 ist die vorliegende Arbeit bis zum \SperrvermerkDate{#2} für die öffentliche Nutzung zu sperren.\par
+%
+		Veröffentlichung, Vervielfältigung und Einsichtnahme sind ohne ausdrückliche Genehmigung der oben genannten Firma und \VerfasserA nicht gestattet. Der Titel der Arbeit sowie das Kurzreferat / Abstract dürfen jedoch veröffentlicht werden.\par
+}
 %
 	\vspace{3cm}
 %
@@ -130,9 +138,15 @@
 	\end{minipage}\hspace{-\parfillskip}
 	\begin{minipage}[t][][t]{0.5\columnwidth}
 		\begin{flushright}
-			Unterschrift \VerfasserB\par
-			\vspace{1.5cm}
-			Firmenstempel
+			\ifthenelse{\equal{\getLanguage}{english}}{%
+				signature of the author\par
+				\vspace{1.5cm}
+				company stamp
+			}{
+				Unterschrift \VerfasserB\par
+				\vspace{1.5cm}
+				Firmenstempel
+			}
 		\end{flushright}
 	\end{minipage}\hspace{-\parfillskip}
 }
