@@ -52,3 +52,7 @@ You can define here
 	`9`: **paper**
 
  2. `\newcommand{\version}{v0.0}` self explaining, version numbering.
+
+## Use autocompletion
+
+Coppy [`fhv.cwl`](https://github.com/pasrom/FHV-Latex/blob/master/scripts/fhv.cwl) to `~/.config/texstudio/completion/user/` (Linux, Mac). For further information [FAQ: Where are cwl files stored?](https://sourceforge.net/p/texstudio/wiki/Frequently%20Asked%20Questions/#where-are-cwl-files-stored)
