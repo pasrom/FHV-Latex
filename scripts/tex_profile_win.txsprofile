@@ -325,7 +325,7 @@ Preview\Cursor%20Follows%20Scrolling=false
 Preview\Sync%20Multiple%20Views=true
 Preview\Invert%20Colors=false
 Preview\Grayscale=false
-Editor\Completion%20Files=latex-dev.cwl, latex-document.cwl, latex-mathsymbols.cwl, tex.cwl
+Editor\Completion%20Files=acro.cwl, acronym.cwl, amsmath.cwl, amssymb.cwl, appendix.cwl, array.cwl, babel.cwl, biblatex.cwl, bm.cwl, calc.cwl, caption.cwl, circuitikz.cwl, "class-scrartcl,scrreprt,scrbook.cwl", color.cwl, csquotes.cwl, etoolbox.cwl, fancybox.cwl, fancyhdr.cwl, fhv.cwl, float.cwl, geometry.cwl, glossaries.cwl, graphicx.cwl, hyperref.cwl, ifthen.cwl, import.cwl, latex-dev.cwl, latex-document.cwl, latex-mathsymbols.cwl, layout.cwl, lipsum.cwl, listings.cwl, multicol.cwl, nameref.cwl, ngerman.cwl, pdfpages.cwl, pstricks.cwl, rotating.cwl, siunitx.cwl, subcaption.cwl, subfig.cwl, subfigure.cwl, subfiles.cwl, tex.cwl, tikz.cwl, url.cwl, xcolor.cwl, xspace.cwl
 qttwp\userwidth=700
 qttwp\compil=1
 qttwp\tocdepth=2
@@ -361,7 +361,7 @@ DiffToolBar=@Invalid()
 CentralToolBar=@Invalid()
 customIcons=@Variant(\0\0\0\b\0\0\0\0)
 customHighlighting=@Variant(\0\0\0\b\0\0\0\0)
-customCommands=@Invalid()
+customCommands=customCommands=\\debug, \\newLanguage, \\paperHeader
 Symbols\Quantity=@Variant(\0\0\0\b\0\0\0\0)
 Symbols\Favorite%20IDs=@Invalid()
 Symbols\hiddenlists=
