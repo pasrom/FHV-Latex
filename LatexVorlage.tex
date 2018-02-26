@@ -124,7 +124,11 @@
 	}
 	\subfile{./tex/Kurzreferat.tex}
 	\subfile{./tex/Abstract.tex}
-	\subfile{./tex/Vorwort.tex}
+	\ifthenelse{\equal{\newLanguage}{english}}{%
+		\subfile{./tex/Preface_Acknowledgement.tex}
+	}{
+		\subfile{./tex/Vorwort.tex}
+	}
 	\newpage
 	%
 	\fhvlists
