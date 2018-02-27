@@ -87,85 +87,85 @@
 	\else
 		\let\hypercontentsline=\contentsline
 		\renewcommand{\contentsline}[4]{\hypertarget{toc.#4}{}\hypercontentsline{#1}{#2}{#3}{#4}}%
-	%
-	\sisetup{output-decimal-marker = {,}}
-	% 
-	\pagenumbering{gobble} % used to prevent the page numbering
-	{\ifthenelse{\equal{\debug}{true}}{
-			\layout
-			\textrm{Serif: \rmdefault}\par
-			\textsf{Sans-Serif: \sfdefault}\par
-			\texttt{Teletype: \ttdefault}
-	}{}
-	%
-	\hypersetup{pageanchor=false}
-	%
-	\ifthenelse{\equal{\FHVmode}{\paper}}{
-		\paperHeader
-		\begin{multicols}{2}[][7mm]
-		\raggedcolumns
-	}{%
-	%
-	% evtl. Sperrvermerkseite
-	% nur in begründeten Ausnahmefällen verwenden
-	% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
-	%
-	\ifthenelse{\equal{\FHVmode}{\thesis}}{%
-		\sperrvermerk{Bachmann electronic GmbH}{5}
-	}{}
-	%
-	\maketitle % creates the title page
-	%
-	\restoregeometry
-	%
-	\hypersetup{pageanchor=true}
-	\pagenumbering{Roman} 
-	%
-	% Abstracts
-	\ifthenelse{\equal{\newLanguage}{english}}{%
-		\subfile{./tex/Dedication.tex}
-	}{
-		\subfile{./tex/Widmung.tex}
-	}
-	\subfile{./tex/Kurzreferat.tex}
-	\subfile{./tex/Abstract.tex}
-	\ifthenelse{\equal{\newLanguage}{english}}{%
-		\subfile{./tex/Preface_Acknowledgement.tex}
-	}{
-		\subfile{./tex/Vorwort.tex}
-	}
-	\newpage
-	%
-	\fhvlists
-	}
-	%
-	% INSERT your .tex files
-	%
-	%\subfile{./tex/Hauptteil.tex}
-	\subfile{./tex/Examples.tex}
-	% The order of the chapters used
-	% final generated information
-	\glossaryAndBibliography
-	%
-	\ifthenelse{\equal{\FHVmode}{\paper}}{%
-	\end{multicols}
-	\subfile{./tex/Lebenslauf.tex}
-	}{%
-	%
-	\newpage
-	\appendix
-	\addAppendix{
-	%
-	% INSERT your .tex files
-	%
-		\subfile{./tex/Anhang.tex}
-	}
-	%
-	% Statuory Declaration
-	\ifthenelse{\equal{\FHVmode}{\thesis}}{%
-		\statuoryDeclaration
-	}{}%
-	}%
+		%
+		\sisetup{output-decimal-marker = {,}}
+		% 
+		\pagenumbering{gobble} % used to prevent the page numbering
+		\ifthenelse{\equal{\debug}{true}}{
+				\layout
+				\textrm{Serif: \rmdefault}\par
+				\textsf{Sans-Serif: \sfdefault}\par
+				\texttt{Teletype: \ttdefault}
+		}{}
+		%
+		\hypersetup{pageanchor=false}
+		%
+		\if\paper\FHVmode
+			\paperHeader
+			\begin{multicols}{2}[][7mm]
+			\raggedcolumns
+		\else
+			%
+			% evtl. Sperrvermerkseite
+			% nur in begründeten Ausnahmefällen verwenden
+			% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
+			%
+			\ifthenelse{\equal{\FHVmode}{\thesis}}{%
+				\sperrvermerk{Bachmann electronic GmbH}{5}
+			}{}
+			%
+			\maketitle % creates the title page
+			%
+			\restoregeometry
+			%
+			\hypersetup{pageanchor=true}
+			\pagenumbering{Roman} 
+			%
+			% Abstracts
+			\ifthenelse{\equal{\newLanguage}{english}}{%
+				\subfile{./tex/Dedication.tex}
+			}{
+				\subfile{./tex/Widmung.tex}
+			}
+			\subfile{./tex/Kurzreferat.tex}
+			\subfile{./tex/Abstract.tex}
+			\ifthenelse{\equal{\newLanguage}{english}}{%
+				\subfile{./tex/Preface_Acknowledgement.tex}
+			}{
+				\subfile{./tex/Vorwort.tex}
+			}
+			\newpage
+			%
+			\fhvlists
+		\fi
+		%
+		% INSERT your .tex files
+		%
+		%\subfile{./tex/Hauptteil.tex}
+		\subfile{./tex/Examples.tex}
+		% The order of the chapters used
+		% final generated information
+		\glossaryAndBibliography
+		%
+		\if\paper\FHVmode
+			\end{multicols}
+			\subfile{./tex/Lebenslauf.tex}
+		\else%
+			%
+			\newpage
+			\appendix
+			\addAppendix{
+			%
+			% INSERT your .tex files
+			%
+				\subfile{./tex/Anhang.tex}
+			}
+			%
+			% Statuory Declaration
+			\ifthenelse{\equal{\FHVmode}{\thesis}}{%
+				\statuoryDeclaration
+			}{}%
+		\fi
 	\fi
 	%
 \end{document}
