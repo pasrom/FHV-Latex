@@ -6,7 +6,7 @@ branches:
 branches:
   only:
     - master
-    - paper
+    - presentation
 sudo: required
 services:
 - docker
@@ -22,10 +22,11 @@ script:
   ./build/ LatexVorlage; makeglossaries ./build/LatexVorlage.idx; pdflatex -shell-escape
   -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
 - docker exec -t ubuntu-test bash -c "cd travis; pdflatex -shell-escape -recorder
-  -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\mode{1} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\mode{2} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\mode{3} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\mode{9} \input{LatexVorlage.tex}'"
+  -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{1} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{2} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{3} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{5} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{9} \input{LatexVorlage.tex}'"
 notifications:
   email: false
 deploy:

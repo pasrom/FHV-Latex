@@ -65,7 +65,7 @@
 \def\komaScriptClass{%
 	scrartcl%
 }%
-	\def\komaScriptClass{scrreprt}%
+\def\komaScriptClass{scrreprt}%
 \def\documentclassOptions{%
 	a4paper,%
 	oneside,%
@@ -78,6 +78,17 @@
 }
 \fi%
 %
+\if\presentations\FHVmode
+\def\komaScriptClass{%
+	beamer%
+}%
+\def\documentclassOptions{%
+	18pt,%
+	xcolor=dvipsnames,%
+	hyperref={breaklinks=true},%
+	xcolor=table,%
+}%
+\fi
 %
 % Define if the author is male (m) or female (w)
 %
@@ -99,12 +110,12 @@
 %
 \newcommand{\unterschrift}[3]%
 {%
-	\ifthenelse{\equal{\getLanguage}{english}} % english or german
+	\ifthenelse{\equal{\getLanguage}{english}}% english or german
 	{\def\quelle{Source}}%
 	{\def\quelle{Quelle}}%
-	\def\source{\ifthenelse{\equal{#2}{}}{}{\\\quelle: #2}}
+	\def\source{\ifthenelse{\equal{#2}{}}{}{\\\quelle: #2}}%
 	% if no source is given, don't use this
-	\ifthenelse{\equal{#3}{no}} % add to the table of contents? Standard is on
+	\ifthenelse{\equal{#3}{no}}% add to the table of contents? Standard is on
 		{\caption[]{#1\source}}%
 		{\caption[#1]{#1\source}}%
 }%

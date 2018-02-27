@@ -1,0 +1,56 @@
+\usetheme{Berkeley}
+\usecolortheme{seagull}
+\usefonttheme{serif}
+
+\author{\getAuthor}
+\title{\getTitle}
+\subtitle{\getSubtitle}
+\logo{%
+	\hspace*{10.9cm}%
+	\includegraphics[height=1cm]{./img/TitlePage/FHVlogo-eps-converted-to.pdf}%
+	\hspace*{8.35cm}~%
+	\includegraphics[height=1cm]{./img/TitlePage/bachmann.pdf}%
+} 
+%
+\institute[Fachhochschule Vorarlberg] % (optional)
+{
+	Fachhochschule Vorarlberg:\\
+	\supervisorName \supervisorSurname
+	\and
+	\getCompany:\\
+	\getSupervisorCompany
+}
+%
+\date{11. September 2018}
+\subject{Echtzeit Netzwerk}
+%
+\definecolor{greenRoman}{HTML}{00ba38}
+\definecolor{redRoman}{HTML}{9AFF99}
+%
+\setbeamertemplate{navigation symbols}{} 
+\addtobeamertemplate{navigation symbols}{}{%
+	\usebeamerfont{footline}%
+	\usebeamercolor[fg]{footline}%
+	\hspace{0.5em}%
+	\makebox[0.6cm]{\insertframenumber/16}
+}
+%
+% Notes
+%
+\setbeameroption{show notes on second screen}
+\setbeamertemplate{note page}[plain]
+%\setbeameroption{show only notes}
+\definecolor{bachmannGrau}{cmyk}{.57,.47,.41,.25} 
+\newcommand{\frameTitle}[1]
+{%
+	\frametitle{\textcolor{bachmannGrau}{\textbf{#1}}}%
+}
+%
+\setbeamertemplate{itemize item}[square]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}[circle]
+\setbeamertemplate{caption}[numbered]
+\setbeamerfont{section in sidebar}{size=\fontsize{1pt}{5}\selectfont}
+\setbeamerfont{subsection in sidebar}{size=\fontsize{1pt}{5}\selectfont}
+\setbeamerfont{subsubsection in sidebar}{size=\fontsize{1pt}{5}\selectfont}
+\setbeamerfont{section in sidebar shaded}{size=\fontsize{1pt}{5}\selectfont}
