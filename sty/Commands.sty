@@ -80,6 +80,9 @@
 	(\xRight, \yLower);
 }
 %
+\if\presentations\FHVmode
+\else
+%
 \makeatletter
 % define a macro \Autoref to allow multiple references to be passed to \autoref
 \newcommand\Autoref[1]{\@first@ref#1,@}
@@ -140,5 +143,6 @@
 \togglefalse{inappendix}
 %
 \apptocmd{\appendix}{\toggletrue{inappendix}}{}{\errmessage{failed to patch}}
-\apptocmd{\subappendices}{\toggletrue{inappendix}}{}{\errmessage{failed to patch}}
+\apptocmd{\subappendices}{\toggletrue{inappendix}}{}{\errmessage{failed to patch}}%
 % end appendix autoref patch
+\fi

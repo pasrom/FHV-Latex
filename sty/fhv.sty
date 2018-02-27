@@ -2,7 +2,18 @@
 % we need this first
 \usepackage{ifthen}
 %
-\usepackage{./sty/layout}
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
+{
+\usepackage{pgfpages}
+\usepackage{makeidx}
+\makeindex
+\newenvironment{theindex}
+{\let\item\par
+	%definitions for subitem etc
+}{}
+\newcommand\indexspace{}
+}%
+{\usepackage{./sty/layout}}
 \usepackage[T1]{fontenc}
 %
 %necessary if german language is selected
@@ -111,7 +122,9 @@ backref=true,
 %
 \usepackage{xspace}
 %
-\usepackage{enumitem}
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
+{}%
+{\usepackage{enumitem}}
 %
 \usepackage{latexsym}
 %
@@ -128,11 +141,14 @@ backref=true,
 \usepackage{booktabs}
 %
 \usepackage{./sty/Tikz}
-\usepackage{./sty/Headers}%
-\usepackage{./sty/bibSettings}%
-\usepackage{./sty/CommandsFHV}%
 \ifthenelse{\equal{\FHVmode}{\presentations}}{%
+%	\usepackage{./sty/Presentation}
+}{%
+	\usepackage{./sty/Headers}%
+	\usepackage{./sty/bibSettings}%
 }
+\usepackage{./sty/CommandsFHV}%
+
 \usepackage{./sty/CommandsRoPa}
 \usepackage{./sty/Listings}
 \usepackage{./sty/Commands}

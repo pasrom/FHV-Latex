@@ -11,13 +11,14 @@
 %\newcommand{\Zusammenfassung}{false}
 \newcommand{\version}{v0.0}
 %
+\pdfminorversion=6 %use newer pdf version
+%
 \input{./sty/overallDefines.sty}
 %
 \documentclass[
 \documentclassOptions
 ]{\komaScriptClass}
 %
-\pdfminorversion=6 %use newer pdf version
 %
 \usepackage{./sty/fhv}
 %
@@ -50,11 +51,15 @@
 \setAuthorId{MATRIKELNUMMER}
 \setStudyprogram{Master Mechatronics}
 \setSupervisor{\supervisorSurname \supervisorName}
-\setSupervisorCompany{SupervisorCompany}
+\setSupervisorCompany{SupervisorCompanyName}
 \setSubtitle{Subtitle}
 \setSubject{Subject}
 \setDegree{Master of Science}
 \setCompany{Company Name GmbH}
+%
+\if\presentations\FHVmode
+	\usepackage{./sty/Presentation}
+\fi
 %
 %% PDF Settings
 %
@@ -69,19 +74,25 @@
 	unicode=true,
 }
 %
-\setkomafont{descriptionlabel}{\normalfont\bfseries} % for glossaries serif font
+\if\presentations\FHVmode
+\else
+	\setkomafont{descriptionlabel}{\normalfont\bfseries} % for glossaries serif font
+\fi
 \allowdisplaybreaks
 %
 \begin{document}
 	%
-	% for Backlinks to work properly
-	%
-	\let\hypercontentsline=\contentsline
-	\renewcommand{\contentsline}[4]{\hypertarget{toc.#4}{}\hypercontentsline{#1}{#2}{#3}{#4}}
-	%
 	% Import the acronyms
 	%
 	\input{./util/Acronym.tex} % provide the defined acronyms to be used
+	%
+	% for Backlinks to work properly
+	%
+	\if\presentations\FHVmode
+		\subfile{./tex/Presentation.tex}
+	\else
+		\let\hypercontentsline=\contentsline
+		\renewcommand{\contentsline}[4]{\hypertarget{toc.#4}{}\hypercontentsline{#1}{#2}{#3}{#4}}%
 	%
 	\sisetup{output-decimal-marker = {,}}
 	% 
