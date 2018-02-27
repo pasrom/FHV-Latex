@@ -8,7 +8,7 @@
 %necessary if german language is selected
 \usepackage[\newLanguage]{babel} %german hyphenation and headings
 %\selectlanguage{ngerman}
-\ifthenelse{\equal{\mode}{\presentation}}%
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
 {}%
 {\pagestyle{headings}}%
 %
@@ -42,7 +42,7 @@
 \usepackage{epstopdf}
 %coloring and so on
 %
-\ifthenelse{\equal{\mode}{\presentation}}%
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
 {}%
 {\usepackage[table,xcdraw,dvipsnames]{xcolor}}%
 %set the quotes
@@ -128,11 +128,10 @@ backref=true,
 \usepackage{booktabs}
 %
 \usepackage{./sty/Tikz}
-\ifthenelse{\equal{\mode}{\presentation}}{}%
-{%
 \usepackage{./sty/Headers}%
 \usepackage{./sty/bibSettings}%
 \usepackage{./sty/CommandsFHV}%
+\ifthenelse{\equal{\FHVmode}{\presentations}}{%
 }
 \usepackage{./sty/CommandsRoPa}
 \usepackage{./sty/Listings}

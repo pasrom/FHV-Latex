@@ -6,7 +6,7 @@ automark
 ]{scrlayer-scrpage}  % Header and footer
 \clearscrheadfoot
 %
-\ifthenelse{\equal{\mode}{\paper}}{%
+\ifthenelse{\equal{\FHVmode}{\paper}}{%
 	%
 	\definecolor{greyFoot}{HTML}{CCCCCC}
 	\lofoot{\textcolor{greyFoot}{\normalfont\small \paperName}
@@ -15,11 +15,11 @@ automark
 	}
 	%
 }{%
-	\ifthenelse{\equal{\mode}{\documentation} \or \equal{\mode}{\thesis}}{
+	\ifthenelse{\equal{\FHVmode}{\documentation} \or \equal{\FHVmode}{\thesis}}{
 		\chead{\headmark}
 		\cfoot[\pagemark]{\pagemark}
 	}{
-		\ifthenelse{\equal{\mode}{\summary}}{
+		\ifthenelse{\equal{\FHVmode}{\summary}}{
 			\cfoot[\pagemark]{\pagemark}
 			\ofoot[\version]{\version}
 			\ifoot[\getAuthor]{\getAuthor}

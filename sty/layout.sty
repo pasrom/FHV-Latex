@@ -6,7 +6,7 @@
 %
 \setkomafont{disposition}{\normalcolor\bfseries}
 %
-\ifthenelse{\equal{\mode}{\paper}}{%
+\ifthenelse{\equal{\FHVmode}{\paper}}{%
 	\usepackage[
 	top=2cm,
 	bottom=2.cm,
@@ -19,7 +19,7 @@
 	\setuptoc{toc}{leveldown}
 }{%
 %
-\ifthenelse{\equal{\mode}{\documentation} \or \equal{\mode}{\thesis}}{
+\ifthenelse{\equal{\FHVmode}{\documentation} \or \equal{\FHVmode}{\thesis}}{
 	%change the layout
 	\usepackage[
 		left= 3.5cm,
@@ -39,7 +39,7 @@
 	\setkomafont{paragraph}{\large}
 	\setkomafont{subparagraph}{\large}
 }{}
-\ifthenelse{\equal{\mode}{\summary}}{
+\ifthenelse{\equal{\FHVmode}{\summary}}{
 	%change the layout
 	\usepackage[
 		left= 1.5cm,

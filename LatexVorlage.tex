@@ -5,8 +5,8 @@
 % 5: presentation, not working!
 % 9: paper
 %
-\ifx\mode\undefined
-	\def\mode{2}
+\ifx\FHVmode\undefined
+	\def\FHVmode{2}
 \fi
 %\newcommand{\Zusammenfassung}{false}
 \newcommand{\version}{v0.0}
@@ -95,7 +95,7 @@
 	%
 	\hypersetup{pageanchor=false}
 	%
-	\ifthenelse{\equal{\mode}{\paper}}{
+	\ifthenelse{\equal{\FHVmode}{\paper}}{
 		\paperHeader
 		\begin{multicols}{2}[][7mm]
 		\raggedcolumns
@@ -105,7 +105,7 @@
 	% nur in begründeten Ausnahmefällen verwenden
 	% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
 	%
-	\ifthenelse{\equal{\mode}{\thesis}}{%
+	\ifthenelse{\equal{\FHVmode}{\thesis}}{%
 		\sperrvermerk{Bachmann electronic GmbH}{5}
 	}{}
 	%
@@ -140,7 +140,7 @@
 	% final generated information
 	\glossaryAndBibliography
 	%
-	\ifthenelse{\equal{\mode}{\paper}}{%
+	\ifthenelse{\equal{\FHVmode}{\paper}}{%
 	\end{multicols}
 	\subfile{./tex/Lebenslauf.tex}
 	}{%
@@ -152,9 +152,10 @@
 	}
 	%
 	% Statuory Declaration
-	\ifthenelse{\equal{\mode}{\thesis}}{%
+	\ifthenelse{\equal{\FHVmode}{\thesis}}{%
 		\statuoryDeclaration
 	}{}%
 	}%
+	\fi
 	%
 \end{document}

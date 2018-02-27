@@ -1,7 +1,9 @@
 %
 % here are all newcommands defined
 %
-\newglossary[slg]{symbolslist}{syi}{syg}{Symbolverzeichnis}
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
+{}%
+{\newglossary[slg]{symbolslist}{syi}{syg}{Symbolverzeichnis}}
 %
 % print a zero -> Date
 %
@@ -204,7 +206,7 @@
 }
 
 \newcommand{\glossaryAndBibliography}{
-	\ifthenelse{\equal{\mode}{\documentation} \or \equal{\mode}{\thesis}}{
+	\ifthenelse{\equal{\FHVmode}{\documentation} \or \equal{\FHVmode}{\thesis}}{
 	% Anything following the further research must not have a chapternumber
 	\renewcommand{\chaptername}{}
 	\renewcommand{\thechapter}{}
@@ -486,10 +488,10 @@
 	\setcounter{page}{2}
 }
 \renewcommand{\maketitle}{
-	\ifthenelse{\equal{\mode}{\thesis}}{
+	\ifthenelse{\equal{\FHVmode}{\thesis}}{
 		\maketitleThesis%
 	}{%
-	\ifx\titlePage\undefined
+	\ifx\FHVtitlePage\undefined
 		\maketitleReport
 	\else
 		\ifthenelse{\equal{\titlePage}{minimal}}{%
