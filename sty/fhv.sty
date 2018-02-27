@@ -154,5 +154,11 @@ backref=true,
 \usepackage{./sty/Commands}
 \usepackage{./sty/Paper}
 %
+\ifthenelse{\equal{\debug}{true}}{
+	\usepackage{pagegrid}
+	\usepackage{showframe}
+	\usepackage{layout}
+}{}
+%
 \setlength{\extrarowheight}{3pt} % table space in front of line
 \patchcmd{\bibsetup}{\interlinepenalty=5000}{\interlinepenalty=10000}{}{}
