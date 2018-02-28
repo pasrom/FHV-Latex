@@ -1,7 +1,9 @@
 %
 % here are all newcommands defined
 %
-\newglossary[slg]{symbolslist}{syi}{syg}{Symbolverzeichnis}
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
+{}%
+{\newglossary[slg]{symbolslist}{syi}{syg}{Symbolverzeichnis}}
 %
 % print a zero -> Date
 %
@@ -71,6 +73,7 @@
 %
 \newcommand{\statuoryDeclaration}
 {
+\begin{envMode}[\thesis]
 	\ifthenelse
 	{\equal{\getLanguage}{english}}
 	{
@@ -103,6 +106,7 @@
 		\end{flushright}
 	\end{minipage}\hspace{-\parfillskip}
 	}
+\end{envMode}
 }
 %
 \ifthenelse{\equal{\wOrM}{m}}
@@ -117,6 +121,7 @@
 %
 \newcommand{\sperrvermerk}[2]
 {
+\begin{envMode}[\thesis]
 	\ifthenelse{\equal{\getLanguage}{english}}{%
 		\chapter*{Blocking Note}
 %
@@ -149,6 +154,7 @@
 			}
 		\end{flushright}
 	\end{minipage}\hspace{-\parfillskip}
+\end{envMode}
 }
 %
 \newcommand{\newGlossaryEntryNEW}[4]
@@ -204,20 +210,20 @@
 }
 
 \newcommand{\glossaryAndBibliography}{
-	\ifthenelse{\equal{\mode}{\documentation} \or \equal{\mode}{\thesis}}{
+	\ifthenelse{\equal{\FHVmode}{\documentation} \or \equal{\FHVmode}{\thesis}}{
 	% Anything following the further research must not have a chapternumber
 	\renewcommand{\chaptername}{}
 	\renewcommand{\thechapter}{}
 	%
 	% Glossary
+%\renewcommand{\glsnamefont}[1]{\textbf{#1}}
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
-		{\printglossary[type=\acronymtype]}
-		{\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]}
+		{\printglossary[style=super,type=\acronymtype]}
+		{\printglossary[style=super,type=\acronymtype, title=Abkürzungsverzeichnis]}
 	%
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
 		{\printglossary}
 		{\printglossary[title=Glossar]} % if no option is supplied the default glossary is printed.
-	\printglossary[type=symbolslist,style=long]
 	}{}
 	%
 	\ifthenelse{\equal{\getLanguage}{english}}%
@@ -486,13 +492,13 @@
 	\setcounter{page}{2}
 }
 \renewcommand{\maketitle}{
-	\ifthenelse{\equal{\mode}{\thesis}}{
+	\ifthenelse{\equal{\FHVmode}{\thesis}}{
 		\maketitleThesis%
 	}{%
-	\ifx\titlePage\undefined
+	\ifx\FHVtitlePage\undefined
 		\maketitleReport
 	\else
-		\ifthenelse{\equal{\titlePage}{minimal}}{%
+		\ifthenelse{\equal{\FHVtitlePage}{minimal}}{%
 			\maketitleMinimal
 		}{%
 			\maketitleReport%

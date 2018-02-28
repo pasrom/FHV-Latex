@@ -1,0 +1,35 @@
+\documentclass[./\jobname.tex]{subfiles} 
+\begin{document}
+%
+\begin{envMode}[\presentations]
+%
+\frame{\titlepage \note{Ich bin eine Notiz}} 
+\frame{\frameTitle{Inhaltsverzeichnis}\tableofcontents \note{notiz}} 
+%
+\section[Aufgaben-stellung]{Aufgabenstellung} 
+\frame{\frameTitle{Aufgabestellung}
+	{\Large Ausarbeitung folgender Punkte:}
+	\hfill \\
+	\begin{itemize}
+		\item desdo
+		\item desdo
+		\item desdo
+	\end{itemize} 
+	%\note{\Aufgabenstellung}
+}
+%
+\subsection[Picture]{Beispiel Bild}
+\frame{\frameTitle{Beispiel Bild}
+	\def\bildA{true}
+	\begin{figure}[H]
+		\centering
+		\noindent\adjustbox{max width=0.6\linewidth}{%
+			\subfile{./img/tikz/escon-schaltplan.tex}
+			\unterschrift{Escon}{}{}
+		}
+	\end{figure}
+}
+%
+\end{envMode}
+%
+\end{document}

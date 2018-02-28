@@ -1,4 +1,5 @@
 
+
 [![Build Status](https://travis-ci.org/pasrom/FHV-Latex.svg?branch=master)](https://travis-ci.org/pasrom/FHV-Latex)
 #   FHV-Latex template
 
@@ -40,7 +41,7 @@ This is the main file, where all subfiles and packages are loaded.
 
 You can define here 
 
- 1. The mode of the layout can be spezified with`\def\mode{x}`. Where following arguments are working:
+ 1. The mode of the layout can be spezified with`\def\FHVmode{x}`. Where following arguments are working:
 
 	 `1`: **documentation**, e.g.: a documentation for a project done in a course
 	 
@@ -48,6 +49,8 @@ You can define here
 	 
 	`3`: **summary**, changes the layout. If you want to use all the space an the 
 	page, but take in mind, the typography is destroyed!
+
+	`5`: **presentation**, if an error is occurring, build twice or delete the build files!
 	
 	`9`: **paper**
 

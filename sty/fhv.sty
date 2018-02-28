@@ -2,13 +2,24 @@
 % we need this first
 \usepackage{ifthen}
 %
-\usepackage{./sty/layout}
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
+{
+\usepackage{pgfpages}
+\usepackage{makeidx}
+\makeindex
+\newenvironment{theindex}
+{\let\item\par
+	%definitions for subitem etc
+}{}
+\newcommand\indexspace{}
+}%
+{\usepackage{./sty/layout}}
 \usepackage[T1]{fontenc}
 %
 %necessary if german language is selected
 \usepackage[\newLanguage]{babel} %german hyphenation and headings
 %\selectlanguage{ngerman}
-\ifthenelse{\equal{\mode}{\presentation}}%
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
 {}%
 {\pagestyle{headings}}%
 %
@@ -42,7 +53,7 @@
 \usepackage{epstopdf}
 %coloring and so on
 %
-\ifthenelse{\equal{\mode}{\presentation}}%
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
 {}%
 {\usepackage[table,xcdraw,dvipsnames]{xcolor}}%
 %set the quotes
@@ -70,12 +81,8 @@
 %
 %\usepackage[ngerman]{babel} %german hyphenation and headings	
 %
-\usepackage[backend=biber,%
-style = authoryear,%
-citestyle = authoryear,
-dashed=false,
-backref=true,
-%maxitems=2
+\usepackage[
+\biblatexOptions
 ]{biblatex}
 %\setlength\bibitemsep{1.5\itemsep}
 \setlength\bibparsep{1.5\itemsep}
@@ -102,7 +109,8 @@ backref=true,
 %
 \usepackage{blindtext}
 %
-\usepackage[toc, acronym,automake]{glossaries } % need for table of contents, list of acronyms and glossary
+\usepackage[toc, acronym,automake]{glossaries} % need for table of contents, list of acronyms and glossary
+%
 \usepackage{multicol}
 %
 \usepackage{dirtree}
@@ -111,7 +119,9 @@ backref=true,
 %
 \usepackage{xspace}
 %
-\usepackage{enumitem}
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
+{}%
+{\usepackage{enumitem}}
 %
 \usepackage{latexsym}
 %
@@ -127,17 +137,28 @@ backref=true,
 % use for \toprule \bottomrule \middlerule for tables
 \usepackage{booktabs}
 %
+\usepackage{environ}
+%
 \usepackage{./sty/Tikz}
-\ifthenelse{\equal{\mode}{\presentation}}{}%
-{%
-\usepackage{./sty/Headers}%
-\usepackage{./sty/bibSettings}%
-\usepackage{./sty/CommandsFHV}%
+\ifthenelse{\equal{\FHVmode}{\presentations}}{%
+%	\usepackage{./sty/Presentation}
+}{%
+	\usepackage{./sty/Headers}%
+	\usepackage{./sty/bibSettings}%
 }
+\usepackage{./sty/CommandsFHV}%
+
 \usepackage{./sty/CommandsRoPa}
 \usepackage{./sty/Listings}
 \usepackage{./sty/Commands}
 \usepackage{./sty/Paper}
+\usepackage{./sty/Environments}
+%
+\ifthenelse{\equal{\debug}{true}}{
+	\usepackage{pagegrid}
+	\usepackage{showframe}
+	\usepackage{layout}
+}{}
 %
 \setlength{\extrarowheight}{3pt} % table space in front of line
 \patchcmd{\bibsetup}{\interlinepenalty=5000}{\interlinepenalty=10000}{}{}

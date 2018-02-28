@@ -11,7 +11,7 @@
 \sin(x)^{2} + \cos(x)^{2} &= 1\label{eq: cos sin}
 \end{align}
 %
-Ich bin eine super Referenzierung: \cref{eq: eigenwerte rueckfuehrung}. Oder noch besser wenn auf mehrere Gleichungen referenziert werden will: \cref{eq: eigenwerte rueckfuehrung,eq: cos sin}
+Ich bin eine super Referenzierung: \cref{eq: eigenwerte rueckfuehrung}. Oder noch besser wenn auf mehrere Gleichungen referenziert werden will: \cref{eq: eigenwerte rueckfuehrung,eq: cos sin}.
 %
 \chapter{BiB \& Acronyme}
 %
@@ -22,6 +22,20 @@ Ich bin eine super Referenzierung: \cref{eq: eigenwerte rueckfuehrung}. Oder noc
 	\item Dies ist eine Fußzeile\footnote{Das ISO/OSI Model kann in \cite[][S.2-9]{Mandl2010} nachgeschlagen werden.}.
 	\item \textcite[][S.2-9]{Mandl2010} nachgeschlagen werden.
 \end{itemize}
+%
+So kann direkt Zitiert werden:
+%
+\begin{quote}
+	\enquote{\textit{ich bin ein direktes Zitat}} \cite{Broster2001}
+\end{quote}
+%
+Acronym Tests: \enquote{ \glspl{fpsLabel} \glspl{fpsLabel}} für Plural.
+%
+\newpage
+%
+\gls{tsn} \gls{jtag} \gls{sram} \gls{slam}\par
+%
+\blindtext[1]
 %
 \chapter{Bilder}
 %
@@ -139,6 +153,6 @@ begin
 	{ comment } %(*\label{comment}*)
 end;
 \end{lstlisting}
-Line \ref{comment} shows a comment. Die Escape Operatoren können unter \enquote{./sty/Listings.sty} geändert werden.
+Line \ref{comment} shows a comment. Die Escape Operatoren können unter \enquote{./sty/Listings.sty} geändert werden. 
 %
 \end{document}

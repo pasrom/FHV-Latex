@@ -8,9 +8,9 @@
 \def\documentation{1}
 \def\thesis{2}
 \def\summary{3}
-\def\presentation{5}
+\def\presentations{5}
 \def\paper{9}
-%\def\titlePage{minimal}
+%\def\FHVtitlePage{minimal}
 %
 % english or ngerman
 %
@@ -27,6 +27,16 @@
 \def\supervisorSurname{Supervisor Surname\xspace}
 \def\paperName{KONFERENZ DER MECHATRONIK-PLATTFORM: Smart Factory\\
 							FH Technikum Wien,  24. November 2016\xspace}
+%
+% standard definiton for biblatex
+%
+\def\biblatexOptions{
+	backend=biber,%
+	style = authoryear,%
+	citestyle = authoryear,
+	dashed=false,
+	backref=true,
+}
 %
 % standard definiton for the document class
 %
@@ -46,7 +56,7 @@
 	%headinclude=false, %koma script seite 79 tabelle 3.7
 }
 %
-\if\paper\mode
+\if\paper\FHVmode
 	\def\komaScriptClass{%
 		scrartcl%
 	}%
@@ -59,13 +69,19 @@
 		numbers=enddot,%
 		bibliography=totocnumbered,%
 	}%
+	\def\biblatexOptions{
+		backend=biber,%
+		style = authoryear,%
+		citestyle = authoryear,%
+		dashed=false,%
+	}
 \fi
 %
-\if\summary\mode
+\if\summary\FHVmode
 \def\komaScriptClass{%
 	scrartcl%
 }%
-	\def\komaScriptClass{scrreprt}%
+\def\komaScriptClass{scrreprt}%
 \def\documentclassOptions{%
 	a4paper,%
 	oneside,%
@@ -78,6 +94,17 @@
 }
 \fi%
 %
+\if\presentations\FHVmode
+\def\komaScriptClass{%
+	beamer%
+}%
+\def\documentclassOptions{%
+	18pt,%
+	xcolor=dvipsnames,%
+	hyperref={breaklinks=true},%
+	xcolor=table,%
+}%
+\fi
 %
 % Define if the author is male (m) or female (w)
 %
@@ -99,12 +126,12 @@
 %
 \newcommand{\unterschrift}[3]%
 {%
-	\ifthenelse{\equal{\getLanguage}{english}} % english or german
+	\ifthenelse{\equal{\getLanguage}{english}}% english or german
 	{\def\quelle{Source}}%
 	{\def\quelle{Quelle}}%
-	\def\source{\ifthenelse{\equal{#2}{}}{}{\\\quelle: #2}}
+	\def\source{\ifthenelse{\equal{#2}{}}{}{\\\quelle: #2}}%
 	% if no source is given, don't use this
-	\ifthenelse{\equal{#3}{no}} % add to the table of contents? Standard is on
+	\ifthenelse{\equal{#3}{no}}% add to the table of contents? Standard is on
 		{\caption[]{#1\source}}%
 		{\caption[#1]{#1\source}}%
 }%
