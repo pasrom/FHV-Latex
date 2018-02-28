@@ -212,14 +212,14 @@
 	\renewcommand{\thechapter}{}
 	%
 	% Glossary
+%\renewcommand{\glsnamefont}[1]{\textbf{#1}}
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
-		{\printglossary[type=\acronymtype]}
-		{\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]}
+		{\printglossary[style=super,type=\acronymtype]}
+		{\printglossary[style=super,type=\acronymtype, title=Abkürzungsverzeichnis]}
 	%
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
 		{\printglossary}
 		{\printglossary[title=Glossar]} % if no option is supplied the default glossary is printed.
-	\printglossary[type=symbolslist,style=long]
 	}{}
 	%
 	\ifthenelse{\equal{\getLanguage}{english}}%
