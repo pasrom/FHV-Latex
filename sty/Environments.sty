@@ -1,0 +1,33 @@
+\NewEnviron{envMode}[1][]{%
+	\if#1\FHVmode
+	\BODY
+	\fi
+}
+
+\NewEnviron{envModeNot}[1][]{%
+	\ifthenelse{\equal{#1}{\FHVmode}}{%
+	}{
+		\BODY
+	}
+}
+
+\NewEnviron{envModeMulticols}[1][]{%
+	\if#1\FHVmode\expandafter
+	\begin{multicols}{2}[][7mm]\raggedcolumns
+		\BODY
+	\end{multicols}
+	\else
+	\BODY
+	\fi
+}
+\NewEnviron{envDebug}{%
+	\ifthenelse{\equal{\debug}{true}}{%
+		\BODY
+	}{}
+}
+
+\NewEnviron{envLanguage}[1][]{%
+	\ifthenelse{\equal{\newLanguage}{#1}}{%
+		\BODY
+	}{}
+}

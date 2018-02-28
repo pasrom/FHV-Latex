@@ -83,37 +83,36 @@
 	%
 	% for Backlinks to work properly
 	%
-	\if\presentations\FHVmode
-		\subfile{./tex/Presentation.tex}
-	\else
+	\subfile{./tex/Presentation.tex}
+	%
+	\begin{envModeNot}[\presentations]
+		%
 		\let\hypercontentsline=\contentsline
 		\renewcommand{\contentsline}[4]{\hypertarget{toc.#4}{}\hypercontentsline{#1}{#2}{#3}{#4}}%
 		%
 		\sisetup{output-decimal-marker = {,}}
-		% 
 		\pagenumbering{gobble} % used to prevent the page numbering
-		\ifthenelse{\equal{\debug}{true}}{
-				\layout
-				\textrm{Serif: \rmdefault}\par
-				\textsf{Sans-Serif: \sfdefault}\par
-				\texttt{Teletype: \ttdefault}
-		}{}
+		%
+		\begin{envDebug}
+			\layout
+			\textrm{Serif: \rmdefault}\par
+			\textsf{Sans-Serif: \sfdefault}\par
+			\texttt{Teletype: \ttdefault}
+		\end{envDebug}
 		%
 		\hypersetup{pageanchor=false}
 		%
-		\if\paper\FHVmode
-			\paperHeader
-			\begin{multicols}{2}[][7mm]
-			\raggedcolumns
-		\else
+		\paperHeader
+		%
+		\begin{envModeMulticols}[\paper]
+		%
+			\begin{envModeNot}[\paper]
 			%
 			% evtl. Sperrvermerkseite
 			% nur in begründeten Ausnahmefällen verwenden
 			% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
 			%
-			\ifthenelse{\equal{\FHVmode}{\thesis}}{%
-				\sperrvermerk{Bachmann electronic GmbH}{5}
-			}{}
+			\sperrvermerk{Bachmann electronic GmbH}{5}
 			%
 			\maketitle % creates the title page
 			%
@@ -123,50 +122,52 @@
 			\pagenumbering{Roman} 
 			%
 			% Abstracts
-			\ifthenelse{\equal{\newLanguage}{english}}{%
-				\subfile{./tex/Dedication.tex}
-			}{
-				\subfile{./tex/Widmung.tex}
-			}
+			\subfile{./tex/Dedication.tex}
+			%
+			\subfile{./tex/Widmung.tex}
+			%
 			\subfile{./tex/Kurzreferat.tex}
 			\subfile{./tex/Abstract.tex}
-			\ifthenelse{\equal{\newLanguage}{english}}{%
-				\subfile{./tex/Preface_Acknowledgement.tex}
-			}{
-				\subfile{./tex/Vorwort.tex}
-			}
+			%
+			\subfile{./tex/Preface_Acknowledgement.tex}
+			\subfile{./tex/Vorwort.tex}
 			\newpage
 			%
 			\fhvlists
-		\fi
-		%
-		% INSERT your .tex files
-		%
-		%\subfile{./tex/Hauptteil.tex}
-		\subfile{./tex/Examples.tex}
-		% The order of the chapters used
-		% final generated information
-		\glossaryAndBibliography
-		%
-		\if\paper\FHVmode
-			\end{multicols}
-			\subfile{./tex/Lebenslauf.tex}
-		\else%
+			\end{envModeNot}
 			%
+			% INSERT your .tex files
+			%
+			%\subfile{./tex/Hauptteil.tex}
+			%\subfile{./tex/xxx.tex}
+			\subfile{./tex/Examples.tex}
+			%
+			% END
+			%
+			% The order of the chapters used
+			% final generated information
+			\glossaryAndBibliography
+			%
+		\end{envModeMulticols}
+		%
+		\subfile{./tex/Lebenslauf.tex}
+		%
+		\begin{envModeNot}[\paper]
 			\newpage
 			\appendix
 			\addAppendix{
 			%
 			% INSERT your .tex files
 			%
-				\subfile{./tex/Anhang.tex}
-			}
+			\subfile{./tex/Anhang.tex}
 			%
+			% END
+			%
+			}
 			% Statuory Declaration
-			\ifthenelse{\equal{\FHVmode}{\thesis}}{%
-				\statuoryDeclaration
-			}{}%
-		\fi
-	\fi
+			\statuoryDeclaration
+			%
+		\end{envModeNot}
+	\end{envModeNot}
 	%
 \end{document}

@@ -81,12 +81,8 @@
 %
 %\usepackage[ngerman]{babel} %german hyphenation and headings	
 %
-\usepackage[backend=biber,%
-style = authoryear,%
-citestyle = authoryear,
-dashed=false,
-backref=true,
-%maxitems=2
+\usepackage[
+\biblatexOptions
 ]{biblatex}
 %\setlength\bibitemsep{1.5\itemsep}
 \setlength\bibparsep{1.5\itemsep}
@@ -141,6 +137,8 @@ backref=true,
 % use for \toprule \bottomrule \middlerule for tables
 \usepackage{booktabs}
 %
+\usepackage{environ}
+%
 \usepackage{./sty/Tikz}
 \ifthenelse{\equal{\FHVmode}{\presentations}}{%
 %	\usepackage{./sty/Presentation}
@@ -154,6 +152,7 @@ backref=true,
 \usepackage{./sty/Listings}
 \usepackage{./sty/Commands}
 \usepackage{./sty/Paper}
+\usepackage{./sty/Environments}
 %
 \ifthenelse{\equal{\debug}{true}}{
 	\usepackage{pagegrid}

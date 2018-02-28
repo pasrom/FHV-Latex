@@ -28,6 +28,16 @@
 \def\paperName{KONFERENZ DER MECHATRONIK-PLATTFORM: Smart Factory\\
 							FH Technikum Wien,  24. November 2016\xspace}
 %
+% standard definiton for biblatex
+%
+\def\biblatexOptions{
+	backend=biber,%
+	style = authoryear,%
+	citestyle = authoryear,
+	dashed=false,
+	backref=true,
+}
+%
 % standard definiton for the document class
 %
 \def\komaScriptClass{scrreprt}%
@@ -59,6 +69,12 @@
 		numbers=enddot,%
 		bibliography=totocnumbered,%
 	}%
+	\def\biblatexOptions{
+		backend=biber,%
+		style = authoryear,%
+		citestyle = authoryear,%
+		dashed=false,%
+	}
 \fi
 %
 \if\summary\FHVmode

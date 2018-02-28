@@ -73,6 +73,7 @@
 %
 \newcommand{\statuoryDeclaration}
 {
+\begin{envMode}[\thesis]
 	\ifthenelse
 	{\equal{\getLanguage}{english}}
 	{
@@ -105,6 +106,7 @@
 		\end{flushright}
 	\end{minipage}\hspace{-\parfillskip}
 	}
+\end{envMode}
 }
 %
 \ifthenelse{\equal{\wOrM}{m}}
@@ -119,6 +121,7 @@
 %
 \newcommand{\sperrvermerk}[2]
 {
+\begin{envMode}[\thesis]
 	\ifthenelse{\equal{\getLanguage}{english}}{%
 		\chapter*{Blocking Note}
 %
@@ -151,6 +154,7 @@
 			}
 		\end{flushright}
 	\end{minipage}\hspace{-\parfillskip}
+\end{envMode}
 }
 %
 \newcommand{\newGlossaryEntryNEW}[4]
