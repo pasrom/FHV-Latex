@@ -23,7 +23,9 @@
 		\addspace\bibsentence%
 		\mkbibparens{\usebibmacro{editorstrg}}%
 		\clearname{editor}%
-		\printunit{\addcolon\space}}}
+		\printunit{\addcolon\space}%
+	}%
+}
 %
 \xpatchbibdriver{inbook}
 {\usebibmacro{in:}%
@@ -31,7 +33,8 @@
 	\newunit\newblock
 	\usebibmacro{maintitle+booktitle}%
 	\newunit\newblock
-	\usebibmacro{byeditor+others}}
+	\usebibmacro{byeditor+others}%
+}
 {\usebibmacro{in:}%
 	\usebibmacro{bybookauthor}%
 	\newunit\newblock
@@ -39,21 +42,22 @@
 	\newunit\newblock
 	\usebibmacro{maintitle+booktitle}%
 	\newunit\newblock
-	\usebibmacro{byeditor+others}}
-{}{}
+	\usebibmacro{byeditor+others}%
+}{}{}
 %
 \xpatchbibdriver{incollection}
 {\usebibmacro{in:}%
 	\usebibmacro{maintitle+booktitle}%
 	\newunit\newblock
-	\usebibmacro{byeditor+others}}
+	\usebibmacro{byeditor+others}%
+}
 {\usebibmacro{in:}%
 	\usebibmacro{byeditor:in}%
 	\setunit{\labelnamepunct}\newblock
 	\usebibmacro{maintitle+booktitle}%
 	\newunit\newblock
-	\usebibmacro{byeditor}}
-{}{}
+	\usebibmacro{byeditor}%
+}{}{}
 %
 \xpatchbibdriver{inproceedings}
 {\usebibmacro{in:}%
@@ -61,7 +65,8 @@
 	\newunit\newblock
 	\usebibmacro{event+venue+date}%
 	\newunit\newblock
-	\usebibmacro{byeditor+others}}
+	\usebibmacro{byeditor+others}%
+}
 {\usebibmacro{in:}%
 	\usebibmacro{byeditor:in}%
 	\setunit{\labelnamepunct}\newblock
@@ -69,5 +74,5 @@
 	\newunit\newblock
 	\usebibmacro{event+venue+date}%
 	\newunit\newblock
-	\usebibmacro{byeditor+others}}
-{}{}
+	\usebibmacro{byeditor+others}%
+}{}{}

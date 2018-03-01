@@ -16,10 +16,10 @@
 \newcommand{\SperrvermerkDate}[1]{%
 	\ifthenelse{#1 > 5}%
 	{%
-	\setcounter{endDatum}{5+ \year}%
+		\setcounter{endDatum}{5+ \year}%
 	}%
 	{%
-	\setcounter{endDatum}{#1 + \year}%
+		\setcounter{endDatum}{#1 + \year}%
 	}%
 	10.\leadingzero{\month}.\theendDatum%
 }%
@@ -58,8 +58,7 @@
 \newcommand{\setSubtitle}[1]{\renewcommand{\getSubtitle}{#1}}
 \newcommand{\getInstituteLocation}
 {
-	\ifthenelse
-	{\equal{\getLanguage}{english}}
+	\ifthenelse{\equal{\getLanguage}{english}}
 	{
 		Dornbirn, Austria
 	}
@@ -72,11 +71,10 @@
 \newcommand{\setInstituteGraphic}[1]{\renewcommand{\getInstituteGraphic}{#1}}
 %
 \newcommand{\statuoryDeclaration}
-{
+{%
 \begin{envMode}[\thesis]
-	\ifthenelse
-	{\equal{\getLanguage}{english}}
-	{
+	\ifthenelse{\equal{\getLanguage}{english}}
+	{%
 	\chapter*{Statement of Affirmation }
 	I hereby declare that this thesis was in all parts exclusively prepared on my own, without using other resources than those stated. The thoughts taken directly or indirectly from external sources are properly marked as such. This thesis or parts of it were not previously submitted to another academic institution and have also not yet been published.\par
 	%
@@ -90,8 +88,7 @@
 	\getAuthor
 	\end{flushright}
 	\end{minipage}\hspace{-\parfillskip}
-	}
-	{
+	}{%
 	\chapter*{Eidesstattliche Erklärung}
 	Ich erkläre hiermit an Eides statt, dass ich vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.\par
 	%
@@ -216,7 +213,6 @@
 	\renewcommand{\thechapter}{}
 	%
 	% Glossary
-%\renewcommand{\glsnamefont}[1]{\textbf{#1}}
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
 		{\printglossary[style=super,type=\acronymtype]}
 		{\printglossary[style=super,type=\acronymtype, title=Abkürzungsverzeichnis]}
@@ -331,7 +327,6 @@
 			\vspace{0.8cm}
 			%
 			\textsc{\getThesistype}\par
-			%\vspace{0.4cm}
 			%
 			\textsc{\ifthenelse{\equal{\getLanguage}{english}}
 				{Submitted in Fulfillment of the Degree}
@@ -376,7 +371,7 @@
 				{\begin{flushleft}\noindent Handed in by\end{flushleft}}%
 				{\begin{flushleft}\noindent Vorgelegt von\end{flushleft}}%
 			}\par
-			%\vspace{0.25cm}%
+			%
 			\textsc{\Large\getAuthor}% 
 			\getAuthorId%
 			\vspace{0.5cm}%
@@ -438,16 +433,12 @@
 			}\par}
 			%
 			\vspace{0.25cm}
-			%\textsc{%\Large \getDegree
-			%}
-			
-			%\vspace{1.4cm}
+			%
 			\textsc{\ifthenelse{\equal{\getLanguage}{english}}
 				{University of Applied Sciences Vorarlberg}
 				{Fachhochschule Vorarlberg}
 			}\par
 			%
-			%\vspace{-0.2cm}
 			\textsc{\getStudyprogram}\par
 			%
 			\vspace{0.5cm}
@@ -457,11 +448,8 @@
 				\ifthenelse{\equal{\getLanguage}{english}}%
 				{\begin{flushleft}\noindent Submitted to\end{flushleft}}%
 				{\begin{flushleft}\noindent Eingereicht bei\end{flushleft}}%
-				{%\begin{flushleft}\noindent Betreuung Fachhochschule Vorarlberg\end{flushleft}
-				}%
 			}%
 			%
-			%\vspace{-0.5cm}
 			\noindent\textsc{\Large\getSupervisor}\par
 			%
 			\vspace{0.5cm}%
@@ -471,7 +459,6 @@
 				{\begin{flushleft}\noindent Vorgelegt von\end{flushleft}}%
 			}%
 			%
-			%\vspace{-0.5cm}
 			\noindent\textsc{\Large\getAuthor}% 
 			\vspace{1cm}%
 			%

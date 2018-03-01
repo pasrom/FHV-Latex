@@ -1,9 +1,9 @@
 %
 %
 \ifwindows
-\newcommand{\dataPath}{U:/Bachelorarbeit/Data}%
+	\newcommand{\dataPath}{U:/Bachelorarbeit/Data}%
 \else
-\newcommand{\dataPath}{/Users/roman/Documents/workspace/Wireshark/data/}%
+	\newcommand{\dataPath}{/Users/roman/Documents/workspace/Wireshark/data/}%
 \fi
 %
 \newcommand{\umlaut}[1]{{\"{#1}}}%
@@ -234,6 +234,7 @@
 		\draw[thick] (-1, -0.8) -- (-0.4, -0.8) -- (0.4, 0.8) -- (1, 0.8);
 	}{#5}{#6}
 }
+%
 % fuer zentrierter Text in Spalte, aber mit fixer Breite
 %
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}

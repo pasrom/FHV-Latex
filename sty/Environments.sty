@@ -1,6 +1,6 @@
 \NewEnviron{envMode}[1][]{%
 	\if#1\FHVmode
-	\BODY
+		\BODY
 	\fi
 }
 
@@ -13,11 +13,11 @@
 
 \NewEnviron{envModeMulticols}[1][]{%
 	\if#1\FHVmode\expandafter
-	\begin{multicols}{2}[][7mm]\raggedcolumns
-		\BODY
-	\end{multicols}
+		\begin{multicols}{2}[][7mm]\raggedcolumns
+			\BODY
+		\end{multicols}
 	\else
-	\BODY
+		\BODY
 	\fi
 }
 \NewEnviron{envDebug}{%
