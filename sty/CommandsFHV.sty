@@ -266,12 +266,12 @@
 			%
 			%Title
 			\vspace{0.4cm}%
-			{\setstretch{2}\textsc{\Huge \bfseries \getTitle}\par}%
+			\textsc{\Huge \bfseries \getTitle}%
 			\ifthenelse{\equal{\getSubtitle}{}}{
 				%
 			}{%
 				\par%
-				{\setstretch{2}\textsc{\Large \getSubtitle}\par}%
+				\textsc{\Large \getSubtitle}%
 			}\par%
 			%
 			\vspace{15.5cm}%
@@ -299,8 +299,8 @@
 \newcommand{\maketitleThesis}{
 	\newgeometry{
 		left= 3.5cm,
-		top=2.cm,
-		bottom=3.5cm,
+		top=2.5cm,
+		bottom=4.cm,
 		textwidth = 398pt,
 		headsep=1.0cm,
 		footskip = 1.cm,
@@ -313,17 +313,17 @@
 			\textsc~\getInstituteGraphic
 		\end{flushright}%
 		\begin{flushleft}%
-			\vspace{1cm}%
+			\vspace{1.25cm}%
 			%
 			%Title
 			\hrule%
 			\vspace{0.4cm}%
-			{\setstretch{2}\textsc{\Huge \bfseries \getTitle}\par}%
+			\textsc{\Huge \bfseries \getTitle}%
 			\ifthenelse{\equal{\getSubtitle}{}}{
 				%
 			}{%
 				\par%
-				{\setstretch{2}\textsc{\Large \getSubtitle}\par}%
+				\textsc{\Large \getSubtitle}%
 			}%
 			\vspace{0.625cm}%
 			\hrule%
@@ -421,12 +421,12 @@
 			%Title
 			\hrule%
 			\vspace{0.4cm}%
-			{\setstretch{2}\textsc{\Huge \bfseries \getTitle}\par}%
+			\textsc{\LARGE \bfseries \getTitle}%
 			\ifthenelse{\equal{\getSubtitle}{}}{
 			%
 			}{%
 				\par%
-				{\setstretch{2}\textsc{\Large \getSubtitle}\par}%
+				\textsc{\Large \getSubtitle}%
 			}%
 			\vspace{0.625cm}%
 			\hrule%
