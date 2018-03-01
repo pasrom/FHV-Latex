@@ -2,10 +2,12 @@
 IniMode=true
 
 [version]
-written_by_TXS_version=2.12.2
-written_by_TXS_hg_revision=6381:c3413e45ac96
+written_by_TXS_version=2.12.6
+written_by_TXS_hg_revision=6632:7777b2b8a906
 created_by_TXS_version=2.12.2
 created_by_TXS_hg_revision=6381:c3413e45ac96
+written_by_Qt_version=329985
+created_by_Qt_version=329985
 
 [texmaker]
 Tools\Commands\latex="latex.exe -src -interaction=nonstopmode -output-directory=./build/ %.tex"
@@ -48,7 +50,7 @@ Tools\Commands\internal-pre-compile=txs:///pre-compile | txs:///conditionally-re
 Tools\Commands\recompile-bibliography=txs:///compile | txs:///bibliography | txs:///compile
 Tools\Commands\svn=
 Tools\Commands\svnadmin=
-Tools\Commands\copypdf=\"?a)scripts\\copy_TeXstudio.bat\" \"%\" \"?a)\"
+Tools\Commands\copypdf=\"?a)scripts\\copy_TeXstudio.bat\" % \"?a)\"
 Startup\CheckLatexConfiguration=true
 ToolBar\CentralVisible=true
 StructureView\ShowLinenumbers=false
@@ -65,13 +67,13 @@ Common%20Encodings=UTF-8, ISO-8859-1, windows-1252, Apple Roman
 Files\Max%20Recent%20Files=5
 Files\Max%20Recent%20Projects=3
 Files\Max%20Recent%20Sessions=5
-Files\Recent%20Files=C:/Users/rom/Desktop/Doku XML/tex/2_XML_protocol.tex, C:/Users/rom/Desktop/Doku XML/Doku_XML.tex
+Files\Recent%20Files=C:/Users/romp/Documents/FHV-Latex master/Latex Vorlage.tex, C:/Users/romp/Documents/FHV-Latex-master/build/Latex Vorlage.toc, C:/Users/romp/Documents/FHV-Latex-master/Latex Vorlage.tex, C:/Users/romp/Documents/FHV-Latex-master/Latex-Vorlage.tex, C:/Users/rom/Desktop/Doku XML/tex/2_XML_protocol.tex
 Files\Recent%20Project%20Files=@Invalid()
 Files\Recent%20Session%20Files=@Invalid()
 Files\Remember%20File%20Filter=true
 Files\Recent%20Files%20Highlighting=@Variant(\0\0\0\x7f\0\0\0\x10StringStringMap\0\0\0\0\0)
 Files\RestoreSession=true
-Files\Last%20Document=C:/Users/rom/Desktop/Doku XML/tex/2_XML_protocol.tex
+Files\Last%20Document=C:/Users/romp/Documents/FHV-Latex master/Latex Vorlage.tex
 Files\Parse%20BibTeX=true
 Bibliography\BibFileEncoding=UTF-8
 Files\Parse%20Master=true
@@ -87,7 +89,7 @@ Editor\LogFileEncoding=Document
 Editor\ScanInstalledLatexPackages=true
 Tools\Insert%20Unicode%20From%20SymbolGrid=false
 Spell\DictionaryDir=C:\\Users\\rom\\AppData\\Roaming\\texstudio\\dictionaries
-Spell\Language=de_DE
+Spell\Language=<none>
 Spell\Dic=<dic not found>
 Thesaurus\Database=
 Update\AutoCheck=true
@@ -289,7 +291,7 @@ Tools\User%20Order=copypdf
 Tools\Preview%20Compile%20Time%20Out=15000
 Tools\Had%20Successful%20Process%20Start=true
 Files\Default%20File%20Filter=
-PDFSplitter=0.5
+PDFSplitter=0.5001736714136853
 Tools\Kind\LaTeX=latex, pdflatex, xelatex, lualatex, latexmk, compile
 Tools\Kind\Rerunnable=latex, pdflatex, xelatex, lualatex
 Tools\Kind\Pdf=pdflatex, xelatex, lualatex, latexmk, dvipdf, ps2pdf
@@ -325,7 +327,7 @@ Preview\Cursor%20Follows%20Scrolling=false
 Preview\Sync%20Multiple%20Views=true
 Preview\Invert%20Colors=false
 Preview\Grayscale=false
-Editor\Completion%20Files=acro.cwl, acronym.cwl, amsmath.cwl, amssymb.cwl, appendix.cwl, array.cwl, babel.cwl, biblatex.cwl, bm.cwl, calc.cwl, caption.cwl, circuitikz.cwl, "class-scrartcl,scrreprt,scrbook.cwl", color.cwl, csquotes.cwl, etoolbox.cwl, fancybox.cwl, fancyhdr.cwl, fhv.cwl, float.cwl, geometry.cwl, glossaries.cwl, graphicx.cwl, hyperref.cwl, ifthen.cwl, import.cwl, latex-dev.cwl, latex-document.cwl, latex-mathsymbols.cwl, layout.cwl, lipsum.cwl, listings.cwl, multicol.cwl, nameref.cwl, ngerman.cwl, pdfpages.cwl, pstricks.cwl, rotating.cwl, siunitx.cwl, subcaption.cwl, subfig.cwl, subfigure.cwl, subfiles.cwl, tex.cwl, tikz.cwl, url.cwl, xcolor.cwl, xspace.cwl
+Editor\Completion%20Files=acro.cwl, acronym.cwl, amsmath.cwl, amssymb.cwl, appendix.cwl, array.cwl, babel.cwl, biblatex.cwl, bm.cwl, calc.cwl, caption.cwl, circuitikz.cwl, "class-scrartcl,scrreprt,scrbook.cwl", color.cwl, csquotes.cwl, etoolbox.cwl, fancybox.cwl, fancyhdr.cwl, float.cwl, geometry.cwl, glossaries.cwl, graphicx.cwl, hyperref.cwl, ifthen.cwl, import.cwl, latex-dev.cwl, latex-document.cwl, latex-mathsymbols.cwl, layout.cwl, lipsum.cwl, listings.cwl, multicol.cwl, nameref.cwl, ngerman.cwl, pdfpages.cwl, pstricks.cwl, rotating.cwl, siunitx.cwl, subcaption.cwl, subfig.cwl, subfigure.cwl, subfiles.cwl, tex.cwl, tikz.cwl, url.cwl, xcolor.cwl, xspace.cwl
 qttwp\userwidth=700
 qttwp\compil=1
 qttwp\tocdepth=2
@@ -361,11 +363,15 @@ DiffToolBar=@Invalid()
 CentralToolBar=@Invalid()
 customIcons=@Variant(\0\0\0\b\0\0\0\0)
 customHighlighting=@Variant(\0\0\0\b\0\0\0\0)
-customCommands=customCommands=\\debug, \\newLanguage, \\paperHeader
+customCommands=\\paperHeader, \\newLanguage, "customCommands=\\debug"
 Symbols\Quantity=@Variant(\0\0\0\b\0\0\0\0)
 Symbols\Favorite%20IDs=@Invalid()
 Symbols\hiddenlists=
 StructureView\SingleDocMode=false
+Editor\CenterDocumentInEditor=false
+Editor\ShowShortcutsInTooltips=true
+Editor\todo%20comment%20regExp=%\\s*(TODO|todo)
+Tools\InterpetCommandDefinitionInMagicComment=true
 
 [formats]
 version=1.0
