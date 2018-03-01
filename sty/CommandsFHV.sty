@@ -353,9 +353,8 @@
 			%
 			% Author and supervisor
 			\textsc{%
-				%\ifthenelse{\equal{\getLanguage}{english}}%
-				%{\begin{flushleft}\noindent Submitted to\end{flushleft}}%
-				%{\begin{flushleft}\noindent Eingereicht bei\end{flushleft}}%
+				\ifthenelse{\equal{\getLanguage}{english}}%
+				{\begin{flushleft}\noindent Support University of Applied Sciences Vorarlberg\end{flushleft}}%
 				{\begin{flushleft}\noindent Betreuung Fachhochschule Vorarlberg\end{flushleft}}%
 			}\par
 			%
@@ -364,9 +363,8 @@
 			\vspace{0.5cm}
 			%
 			{%
-				%\ifthenelse{\equal{\getLanguage}{english}}%
-				%{\begin{flushleft}\noindent Submitted to\end{flushleft}}%
-				%{\begin{flushleft}\noindent Betreut von\end{flushleft}}%
+				\ifthenelse{\equal{\getLanguage}{english}}%
+				{\begin{flushleft}\noindent \textsc{Support \getCompany}\end{flushleft}}%
 				{\begin{flushleft}\noindent \textsc{Betreuung \getCompany}\end{flushleft}}%
 			}\par
 			%
