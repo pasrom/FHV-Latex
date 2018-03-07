@@ -96,6 +96,11 @@
 \setlength{\parindent}{0pt}
 % for lines in tables
 \usepackage{hhline}
+%
+% set space between lines
+%
+\usepackage{setspace} % this package has to be loaded before hyperref!
+%
 % load as late as possible, otherwise the footnote will not work!
 \usepackage{hyperxmp}
 \usepackage[\newLanguage]{varioref}
@@ -138,10 +143,6 @@
 \usepackage{booktabs}
 %
 \usepackage{environ}
-%
-% set space between lines
-%
-\RequirePackage{setspace}
 %
 \usepackage{./sty/Tikz}
 \ifthenelse{\equal{\FHVmode}{\presentations}}{%
