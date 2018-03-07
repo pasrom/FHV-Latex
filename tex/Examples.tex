@@ -145,6 +145,30 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 	\label{tab: Tabelle A}
 \end{table}
 %
+% Table with footnotes
+%
+\begin{table}[H]
+	\centering
+	\begin{threeparttable}
+		\makebox[\linewidth]{%
+			\begin{tabular}{c|p{5cm}}
+				\hline
+				\textbf{Typ} & \textbf{Eigenschaften}                                                                                                                                                                                                                                      \\ \hline
+				Table 2 & \enquote{Fußnote}\tnote{a}\\\hline
+				Table 2 & Fußnote\mtnote{b}\\\hline
+				
+			\end{tabular}}
+		\unterschrift{Fußnoten in einer Tabelle}{eigene Ausarbeitun}{}
+		\label{tab: Tabelle B}
+		%
+		\begin{tablenotes}
+			\item [a] Diese Fußnote mit \enquote{\(\backslash\)tnote} nach \enquote{\(\backslash\)enquote} Umgebung verwenden
+			\item [b] Ich bin die Fußnote zu b, für normalen Text.
+		\end{tablenotes}
+	\end{threeparttable}
+	%
+\end{table}
+%
 \chapter{Listing}
 %
 \begin{lstlisting}[caption={example}]
