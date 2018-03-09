@@ -163,11 +163,20 @@
 \usepackage{./sty/Commands}
 \usepackage{./sty/Paper}
 \usepackage{./sty/Environments}
+\if\presentations\FHVmode
+	\usepackage{./sty/Presentation}
+\fi
 %
 \ifthenelse{\equal{\debug}{true}}{
 	\usepackage{pagegrid}
 	\usepackage{showframe}
 	\usepackage{layout}
+% Display length in mm
+	\makeatletter
+		\renewcommand*{\lay@value}[2]{%
+			\strip@pt\dimexpr0.351459\dimexpr\csname#2\endcsname\relax\relax mm%
+		}
+	\makeatother
 }{}
 %
 \setlength{\extrarowheight}{3pt} % table space in front of line

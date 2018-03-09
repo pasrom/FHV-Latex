@@ -28,6 +28,21 @@
 \def\paperName{KONFERENZ DER MECHATRONIK-PLATTFORM: Smart Factory\\
 							FH Technikum Wien,  24. November 2016\xspace}
 %
+% Define if the author is male (m) or female (w)
+%
+\def\wOrM{m}
+%
+% pdf settings
+%
+\def\pdfSettings{%
+	\hypersetup{pdftitle={\getTitle},%
+		pdfauthor={\authorSurname\xmpcomma\ \authorName},%
+		pdfsubject={},%
+		pdfkeywords={Fachhochschule Vorarlberg : Title : \studyType : \supervisorSurname, \supervisorName},%
+		pdflang={de},%
+		unicode=true,}%
+}
+%
 % standard definiton for biblatex
 %
 \def\biblatexOptions{
@@ -57,9 +72,7 @@
 }
 %
 \if\paper\FHVmode
-	\def\komaScriptClass{%
-		scrartcl%
-	}%
+	\def\komaScriptClass{scrartcl}%
 	\def\documentclassOptions{%
 		a4paper,%
 		oneside,%
@@ -78,9 +91,7 @@
 \fi
 %
 \if\summary\FHVmode
-\def\komaScriptClass{%
-	scrartcl%
-}%
+%\def\komaScriptClass{scrartcl}%
 \def\komaScriptClass{scrreprt}%
 \def\documentclassOptions{%
 	a4paper,%
@@ -95,9 +106,7 @@
 \fi%
 %
 \if\presentations\FHVmode
-\def\komaScriptClass{%
-	beamer%
-}%
+\def\komaScriptClass{beamer}%
 \def\documentclassOptions{%
 	18pt,%
 	xcolor=dvipsnames,%
@@ -105,10 +114,6 @@
 	xcolor=table,%
 }%
 \fi
-%
-% Define if the author is male (m) or female (w)
-%
-\def\wOrM{m}
 %
 % Color for tables
 % 

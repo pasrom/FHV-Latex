@@ -10,7 +10,7 @@
 \fi
 \newcommand{\version}{v0.0}
 %
-\pdfminorversion=7 %use newer pdf version
+\pdfminorversion=7 % use newer pdf version
 \pdfobjcompresslevel=2
 %
 \input{./sty/overallDefines.sty}
@@ -18,16 +18,6 @@
 \documentclass[\documentclassOptions]{\komaScriptClass}
 %
 \usepackage{./sty/fhv}
-%
-%Display length in mm
-\makeatletter
-\ifthenelse{\equal{\debug}{true}}{
-	\renewcommand*{\lay@value}[2]{%
-		\strip@pt\dimexpr0.351459\dimexpr\csname#2\endcsname\relax\relax mm%
-	}
-}{}
-\makeatother
-%
 %
 \makeglossaries
 \renewcommand{\glsnamefont}[1]{\textbf{#1}}
@@ -37,9 +27,7 @@
 \setLanguage{\newLanguage}
 \setTitle{Title}
 \setThesistype{Masterthesis}
-\setAuthor{%
-	\authorSurname \authorName\\%
-}
+\setAuthor{\authorSurname \authorName}
 \setAuthorId{MATRIKELNUMMER}
 \setStudyprogram{Master Mechatronics}
 \setSupervisor{\supervisorSurname \supervisorName}
@@ -49,27 +37,10 @@
 \setDegree{Master of Science}
 \setCompany{Company Name GmbH}
 %
-\if\presentations\FHVmode
-	\usepackage{./sty/Presentation}
-\fi
+% PDF Settings
 %
-%% PDF Settings
+\pdfSettings
 %
-\hypersetup{
-	pdftitle={\getTitle},
-	pdfauthor={%
-		\authorSurname\xmpcomma\ \authorName%
-	},
-	pdfsubject={},
-	pdfkeywords={Fachhochschule Vorarlberg : Title : \studyType : \supervisorSurname, \supervisorName},
-	pdflang={de},
-	unicode=true,
-}
-%
-\if\presentations\FHVmode
-\else
-	\setkomafont{descriptionlabel}{\normalfont\bfseries} % for glossaries serif font
-\fi
 \allowdisplaybreaks
 %
 % hack to get the caption wider for a table

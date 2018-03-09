@@ -136,3 +136,9 @@
 	\renewcommand{\@pnumwidth}{3em}
 	\renewcommand{\@tocrmarg}{4em}
 \makeatother
+%
+\if\presentations\FHVmode
+\else
+	\setkomafont{descriptionlabel}{\normalfont\bfseries} % for glossaries serif font
+\fi
+%
