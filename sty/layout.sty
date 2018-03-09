@@ -130,3 +130,9 @@
 %
 }
 %
+% Fix overfull hbox if the page number is to long in the table of content.
+% https://tex.stackexchange.com/questions/196638/overfull-hbox-in-the-table-of-figures-when-using-custom-page-numbering
+\makeatletter
+	\renewcommand{\@pnumwidth}{3em}
+	\renewcommand{\@tocrmarg}{4em}
+\makeatother
