@@ -27,10 +27,10 @@
 \setLanguage{\newLanguage}
 \setTitle{Title}
 \setThesistype{Masterthesis}
-\setAuthor{\authorSurname \authorName}
+\setAuthor{\authorTitleBefore\authorSurname \authorName\authorTitleAfter}
 \setAuthorId{MATRIKELNUMMER}
 \setStudyprogram{Master Mechatronics}
-\setSupervisor{\supervisorSurname \supervisorName}
+\setSupervisor{\supervisorTitleBefore\supervisorSurname \supervisorName\supervisorTitleAfter}
 \setSupervisorCompany{SupervisorCompanyName}
 \setSubtitle{Subtitle}
 \setSubject{Subject}
@@ -84,7 +84,7 @@
 			% nur in begründeten Ausnahmefällen verwenden
 			% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
 			%
-			\sperrvermerk{XYZ GmbH}{5}
+			\sperrvermerk{5}
 			%
 			\maketitle % creates the title page
 			%
