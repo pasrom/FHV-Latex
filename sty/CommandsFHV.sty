@@ -34,31 +34,31 @@
 %
 % a few commands used to control author, etc., ...
 %
-\newcommand{\getThesistype}{Bachelorarbeit}
-\newcommand{\setThesistype}[1]{\renewcommand{\getThesistype}{#1 }}
+\newcommand{\getThesistype}{Bachelorarbeit\xspace}
+\newcommand{\setThesistype}[1]{\renewcommand{\getThesistype}{#1\xspace}}
 \newcommand{\getDegree}{Bachelor of Science}
-\newcommand{\getSubject}{Leadership \& Communication}
-\newcommand{\setSubject}[1]{\renewcommand{\getSubject}{#1}}
+\newcommand{\getSubject}{Leadership \& Communication\xspace}
+\newcommand{\setSubject}[1]{\renewcommand{\getSubject}{#1\xspace}}
 \newcommand{\setDegree}[1]{%
 	\renewcommand{\getDegree}{#1}%
-	\IfSubStr{\getDegree}{Master}{\def\studyType{MEM}}{\def\studyType{MEB}}%
+	\IfSubStr{\getDegree}{Master}{\def\studyType{MEM\xspace}}{\def\studyType{MEB\xspace}}%
 }
-\newcommand{\getStudyprogram}{Mechatronics Master}
-\newcommand{\setStudyprogram}[1]{\renewcommand{\getStudyprogram}{#1}}
-\newcommand{\getAuthor}{AUTHOR}
-\newcommand{\setAuthor}[1]{\renewcommand{\getAuthor}{#1}}
-\newcommand{\getAuthorId}{\begin{flushleft}\noindent12345\end{flushleft}}
-\newcommand{\setAuthorId}[1]{\renewcommand{\getAuthorId}{\begin{flushleft}\noindent#1\end{flushleft}}}
-\newcommand{\getSupervisor}{1234}
-\newcommand{\setSupervisor}[1]{\renewcommand{\getSupervisor}{#1}}
-\newcommand{\getSupervisorCompany}{1234}
-\newcommand{\setSupervisorCompany}[1]{\renewcommand{\getSupervisorCompany}{#1}}
-\newcommand{\getCompany}{Company Name GmbH}
-\newcommand{\setCompany}[1]{\renewcommand{\getCompany}{#1}}
-\newcommand{\getTitle}{TITLE}
-\newcommand{\setTitle}[1]{\renewcommand{\getTitle}{#1}}
-\newcommand{\getSubtitle}{Seminararbeit}
-\newcommand{\setSubtitle}[1]{\renewcommand{\getSubtitle}{#1}}
+\newcommand{\getStudyprogram}{Mechatronics Master\xspace}
+\newcommand{\setStudyprogram}[1]{\renewcommand{\getStudyprogram}{#1\xspace}}
+\newcommand{\getAuthor}{AUTHOR\xspace}
+\newcommand{\setAuthor}[1]{\renewcommand{\getAuthor}{#1\xspace}}
+\newcommand{\getAuthorId}{\begin{flushleft}\noindent12345\xspace\end{flushleft}}
+\newcommand{\setAuthorId}[1]{\renewcommand{\getAuthorId}{\begin{flushleft}\noindent#1\xspace\end{flushleft}}}
+\newcommand{\getSupervisor}{1234\xspace}
+\newcommand{\setSupervisor}[1]{\renewcommand{\getSupervisor}{#1\xspace}}
+\newcommand{\getSupervisorCompany}{1234\xspace}
+\newcommand{\setSupervisorCompany}[1]{\renewcommand{\getSupervisorCompany}{#1\xspace}}
+\newcommand{\getCompany}{Company Name GmbH\xspace}
+\newcommand{\setCompany}[1]{\renewcommand{\getCompany}{#1\xspace}}
+\newcommand{\getTitle}{TITLE\xspace}
+\newcommand{\setTitle}[1]{\renewcommand{\getTitle}{#1\xspace}}
+\newcommand{\getSubtitle}{Seminararbeit\xspace}
+\newcommand{\setSubtitle}[1]{\renewcommand{\getSubtitle}{#1\xspace}}
 \newcommand{\getInstituteLocation}
 {
 	\ifthenelse{\equal{\getLanguage}{english}}
@@ -265,7 +265,7 @@
 			%Title
 			\vspace{0.4cm}%
 			{\setstretch{2}\textsc{\Huge \bfseries \getTitle}\par}%
-			\ifthenelse{\equal{\getSubtitle}{}}{
+			\ifthenelse{\equal{\getSubtitle}{\xspace}}{
 				%
 			}{%
 				\par%
@@ -317,7 +317,7 @@
 			\hrule%
 			\vspace{0.4cm}%
 			{\setstretch{2}\textsc{\Huge \bfseries \getTitle}\par}%
-			\ifthenelse{\equal{\getSubtitle}{}}{
+			\ifthenelse{\equal{\getSubtitle}{\xspace}}{
 				%
 			}{%
 				\par%
@@ -417,7 +417,7 @@
 			\hrule%
 			\vspace{0.4cm}%
 			{\setstretch{2}\textsc{\Huge \bfseries \getTitle}\par}%
-			\ifthenelse{\equal{\getSubtitle}{}}{
+			\ifthenelse{\equal{\getSubtitle}{\xspace}}{
 			%
 			}{%
 				\par%
@@ -428,7 +428,7 @@
 			%
 			\vspace{2cm}
 			%
-			\ifthenelse{\equal{\getSubject}{}}{}{
+			\ifthenelse{\equal{\getSubject}{\xspace}}{}{
 				\textsc{\ifthenelse{\equal{\getLanguage}{english}}
 				{\textbf{\getSubject}}
 				{\textbf{\getSubject}}
