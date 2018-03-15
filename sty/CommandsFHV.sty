@@ -75,36 +75,31 @@
 \newcommand{\statuoryDeclaration}
 {%
 \begin{envMode}[\thesis]
-	\ifthenelse{\equal{\getLanguage}{english}}
-	{%
-	\chapter*{Statement of Affirmation }
-	I hereby declare that this thesis was in all parts exclusively prepared on my own, without using other resources than those stated. The thoughts taken directly or indirectly from external sources are properly marked as such. This thesis or parts of it were not previously submitted to another academic institution and have also not yet been published.\par
+	\begin{envLanguage}[english]
+		\chapter*{Statement of Affirmation}
+		I hereby declare that this thesis was in all parts exclusively prepared on my own, without using other resources than those stated. The thoughts taken directly or indirectly from external sources are properly marked as such. This thesis or parts of it were not previously submitted to another academic institution and have also not yet been published.
+	\end{envLanguage}
 	%
-	\vspace{3cm}
+	\begin{envLanguage}[ngerman]
+		\chapter*{Eidesstattliche Erklärung}
+		Ich erkläre hiermit an Eides statt, dass ich vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
+	\end{envLanguage}
 	%
-	\begin{minipage}[t]{0.5\columnwidth}
-		Dornbirn, am \todayX
-	\end{minipage}\hspace{-\parfillskip}
-	\begin{minipage}[t][][t]{0.5\columnwidth}
-	\begin{flushright}
-	\getAuthor
-	\end{flushright}
-	\end{minipage}\hspace{-\parfillskip}
-	}{%
-	\chapter*{Eidesstattliche Erklärung}
-	Ich erkläre hiermit an Eides statt, dass ich vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.\par
-	%
-	\vspace{3cm}
+	\par\vspace{3cm}
 	%
 	\begin{minipage}[t]{0.5\columnwidth}
-		Dornbirn, am \todayX
+		\begin{envLanguage}[english]
+			Dornbirn, \todayX
+		\end{envLanguage}
+		\begin{envLanguage}[ngerman]
+			Dornbirn, am \todayX
+		\end{envLanguage}
 	\end{minipage}\hspace{-\parfillskip}
 	\begin{minipage}[t][][t]{0.5\columnwidth}
 		\begin{flushright}
 			\getAuthor
 		\end{flushright}
 	\end{minipage}\hspace{-\parfillskip}
-	}
 \end{envMode}
 }
 %
