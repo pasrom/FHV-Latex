@@ -10,12 +10,17 @@
 \def\summary{3}
 \def\presentations{5}
 \def\paper{9}
-\def\FHVtitlePage{fhv}
+%
+% Uncomment this, if you want another styled title page
+%
+%\def\FHVtitlePage{fhv}
 %
 % english or ngerman
 %
-\def\newLanguage{ngerman} % build twice!!!
-%\def\newLanguage{english} % build twice!!!
+\ifx\newLanguage\undefined
+	\def\newLanguage{ngerman} % build twice!!!
+%	\def\newLanguage{english} % build twice!!!
+\fi
 %
 % Defines to make live easier...
 % ATTENTION: do not forget to put a \xspace after the command!
