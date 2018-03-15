@@ -31,7 +31,7 @@ script:
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{5} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{9} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
   "
-- ./dropbox_uploader.sh upload LatexVorlage.pdf ${BRANCH_NAME}/LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload LatexVorlage-built.pdf ${BRANCH_NAME}/LatexVorlage-latest.pdf
 - ls -l
 notifications:
   email: false
