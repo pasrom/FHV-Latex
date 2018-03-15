@@ -12,6 +12,7 @@ sudo: required
 services:
 - docker
 before_install:
+- openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~\/.dropbox_uploader -d
 - docker pull sumdoc/texlive-2017
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017 tail -f /dev/null
 - docker ps
@@ -23,14 +24,14 @@ script:
   biber --output_directory ./build/ LatexVorlage;
   makeglossaries ./build/LatexVorlage.idx;
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
-- docker exec -t ubuntu-test bash -c "cd travis;
-  ls -l;
+- docker exec -t ubuntu-test bash -c "cd travis; ls -l;
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{1} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{2} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{3} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{5} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{9} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
-  ls -l"
+  "
+- ls -l
 notifications:
   email: false
 deploy:
