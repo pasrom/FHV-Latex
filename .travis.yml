@@ -7,6 +7,7 @@ branches:
   only:
     - master
     - presentation
+    - FHV-Titlepage
 sudo: required
 services:
 - docker
@@ -15,18 +16,21 @@ before_install:
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017 tail -f /dev/null
 - docker ps
 script:
-- docker exec -t ubuntu-test bash -c "cd travis; pdflatex -shell-escape -recorder
-  -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/
-  LatexVorlage.tex; biber --output_directory ./build/ LatexVorlage; biber --output_directory
-  ./build/ LatexVorlage; makeglossaries ./build/LatexVorlage.idx; pdflatex -shell-escape
-  -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
-- docker exec -t ubuntu-test bash -c "cd travis; pdflatex -shell-escape -recorder
-  -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{1} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{2} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{3} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{5} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{9} \input{LatexVorlage.tex}'"
+- docker exec -t ubuntu-test bash -c "cd travis;
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
+  biber --output_directory ./build/ LatexVorlage;
+  biber --output_directory ./build/ LatexVorlage;
+  makeglossaries ./build/LatexVorlage.idx;
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
+- docker exec -t ubuntu-test bash -c "cd travis;
+  ls -l;
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{1} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{2} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{3} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{5} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{9} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
+  ls -l"
 notifications:
   email: false
 deploy:
