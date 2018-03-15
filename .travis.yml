@@ -26,14 +26,14 @@ script:
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
 - docker exec -t ubuntu-test bash -c "cd travis;
   make clean;
-  make FHVMODE=2 LANGUAGE=ngerman;
-  ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/DE_LatexVorlage-latest.pdf;
-  ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/DE_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf;
+  make FHVMODE=2 LANGUAGE=ngerman;"
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/DE_LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/DE_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
+- docker exec -t ubuntu-test bash -c "cd travis;
   make clean;
-  make FHVMODE=2 LANGUAGE=english;
-  ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/EN_LatexVorlage-latest.pdf;
-  ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/EN_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf;
-  "
+  make FHVMODE=2 LANGUAGE=english;"
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/EN_LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/EN_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
 notifications:
   email: false
 deploy:
