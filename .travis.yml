@@ -7,6 +7,7 @@ branches:
   only:
     - master
     - presentation
+    - FHV-Titlepage
 sudo: required
 services:
 - docker
@@ -14,19 +15,25 @@ before_install:
 - docker pull sumdoc/texlive-2017
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017 tail -f /dev/null
 - docker ps
+- openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d
 script:
-- docker exec -t ubuntu-test bash -c "cd travis; pdflatex -shell-escape -recorder
-  -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/
-  LatexVorlage.tex; biber --output_directory ./build/ LatexVorlage; biber --output_directory
-  ./build/ LatexVorlage; makeglossaries ./build/LatexVorlage.idx; pdflatex -shell-escape
-  -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
-- docker exec -t ubuntu-test bash -c "cd travis; pdflatex -shell-escape -recorder
-  -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{1} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{2} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{3} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{5} \input{LatexVorlage.tex}';
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{9} \input{LatexVorlage.tex}'"
+- docker exec -t ubuntu-test bash -c "cd travis;
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
+  biber --output_directory ./build/ LatexVorlage;
+  biber --output_directory ./build/ LatexVorlage;
+  makeglossaries ./build/LatexVorlage.idx;
+  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
+- docker exec -t ubuntu-test bash -c "cd travis;
+  make clean;
+  make FHVMODE=2 LANGUAGE=ngerman;"
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/DE_LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/DE_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
+- docker exec -t ubuntu-test bash -c "cd travis;
+  make clean;
+  make FHVMODE=2 LANGUAGE=english;"
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/EN_LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/EN_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
 notifications:
   email: false
 deploy:

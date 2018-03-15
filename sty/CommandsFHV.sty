@@ -393,6 +393,104 @@
 	\setcounter{page}{2}
 }
 %
+\newcommand{\maketitleThesisFHV}{
+	\newgeometry{
+		left= 3.5cm,
+		top=2.8cm,
+		bottom=3.5cm,
+		textwidth = 398pt,
+		headsep=1.0cm,
+		footskip = 1.cm,
+		bindingoffset = \ValueBindingOffset
+	}
+	\begin{titlepage}
+		\def\edgeSpace{2.5cm}
+		\begin{tikzpicture}[remember picture, overlay]
+		\draw[line width = 1pt] ($(current page.north west) + (\edgeSpace,-\edgeSpace)$) rectangle ($(current page.south east) + (-\edgeSpace,\edgeSpace)$);
+		\end{tikzpicture}
+		\begin{center}
+			\Large{
+			FH Vorarlberg\\
+			Vorarlberg University of Applied Sciences\par
+			%
+			\vspace{1.75cm}
+			%
+			\getTitle\par
+			\ifthenelse{\equal{\getSubtitle}{\xspace}}{}{%
+				\getSubtitle\par
+			}
+			%
+			\vspace{1.75cm}
+			%
+			\getStudyprogram\par
+			%
+			\vspace{2cm}
+			%
+			\begin{envLanguage}[english]
+				\getThesistype for obtaining the academic degree
+			\end{envLanguage}
+			\begin{envLanguage}[ngerman]
+				\getThesistype zur Erlangung des akademischen Grades
+			\end{envLanguage}
+			\par
+			%
+			\vspace{0.5cm}
+			%
+			\getDegree\par
+			%
+			\vspace{1cm}
+			%
+			\begin{envLanguage}[english]
+				Dornbirn,
+			\end{envLanguage}
+			\begin{envLanguage}[ngerman]
+				Dornbirn, den
+			\end{envLanguage}
+			\todayX\par
+			%
+			\vspace{1cm}
+			%
+			\begin{envLanguage}[english]
+				Created by
+			\end{envLanguage}
+			\begin{envLanguage}[ngerman]
+				Erarbeitet von
+			\end{envLanguage}
+			\par
+			\getAuthor\par
+			%
+			\vspace{1cm}
+			%
+			\begin{envLanguage}[english]
+				Maintained by
+			\end{envLanguage}
+			\begin{envLanguage}[ngerman]
+				Betreut von
+			\end{envLanguage}
+			\par
+			\getSupervisor\par
+			%
+			\vspace{1cm}
+			%
+			\begin{envLanguage}[english]
+				Conducted by
+			\end{envLanguage}%
+			\begin{envLanguage}[ngerman]
+				Durchgeführt bei
+			\end{envLanguage}%
+			\par
+			\getCompany\\
+			\getSupervisorCompany
+			}
+		\end{center}%
+	\end{titlepage}
+	%
+	\newpage
+	%
+	\pagenumbering{arabic}
+	\setcounter{page}{2}
+}
+%
 \newcommand{\maketitleReport}{
 	\newgeometry{
 		left= 3.5cm,
@@ -479,17 +577,18 @@
 	\setcounter{page}{2}
 }
 \renewcommand{\maketitle}{
-	\ifthenelse{\equal{\FHVmode}{\thesis}}{
-		\maketitleThesis%
-	}{%
 	\ifx\FHVtitlePage\undefined
-		\maketitleReport
+		\ifthenelse{\equal{\FHVmode}{\thesis}}{
+			\maketitleThesis%
+		}{%
+			\maketitleReport
+		}%
 	\else
+		\ifthenelse{\equal{\FHVtitlePage}{fhv}}{%
+			\maketitleThesisFHV
+		}{}
 		\ifthenelse{\equal{\FHVtitlePage}{minimal}}{%
 			\maketitleMinimal
-		}{%
-			\maketitleReport%
-		}
+		}{}%
 	\fi
-	}%
 }
