@@ -12,11 +12,10 @@ sudo: required
 services:
 - docker
 before_install:
-- ls -l
-- openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d
 - docker pull sumdoc/texlive-2017
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017 tail -f /dev/null
 - docker ps
+- openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d
 script:
 - docker exec -t ubuntu-test bash -c "cd travis;
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
@@ -32,6 +31,7 @@ script:
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{5} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
   pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ '\def\FHVmode{9} \def\newLanguage{ngerman} \input{LatexVorlage.tex}';
   "
+- ./dropbox_uploader.sh upload LatexVorlage.pdf ${BRANCH_NAME}/LatexVorlage-latest.pdf
 - ls -l
 notifications:
   email: false
