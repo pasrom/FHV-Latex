@@ -396,7 +396,7 @@
 \newcommand{\maketitleThesisFHV}{
 	\newgeometry{
 		left= 3.5cm,
-		top=4.cm,
+		top=2.8cm,
 		bottom=3.5cm,
 		textwidth = 398pt,
 		headsep=1.0cm,
@@ -404,6 +404,10 @@
 		bindingoffset = \ValueBindingOffset
 	}
 	\begin{titlepage}
+		\def\edgeSpace{2.5cm}
+		\begin{tikzpicture}[remember picture, overlay]
+		\draw[line width = 1pt] ($(current page.north west) + (\edgeSpace,-\edgeSpace)$) rectangle ($(current page.south east) + (-\edgeSpace,\edgeSpace)$);
+		\end{tikzpicture}
 		\begin{center}
 			\Large{
 			FH Vorarlberg\\
@@ -423,7 +427,7 @@
 			\vspace{2cm}
 			%
 			\begin{envLanguage}[english]
-				\getThesistype zur Erlangung des akademischen Grades
+				\getThesistype for obtaining the academic degree
 			\end{envLanguage}
 			\begin{envLanguage}[ngerman]
 				\getThesistype zur Erlangung des akademischen Grades
@@ -436,12 +440,18 @@
 			%
 			\vspace{1cm}
 			%
-			Dornbirn, den \todayX\par
+			\begin{envLanguage}[english]
+				Dornbirn,
+			\end{envLanguage}
+			\begin{envLanguage}[ngerman]
+				Dornbirn, den
+			\end{envLanguage}
+			\todayX\par
 			%
 			\vspace{1cm}
 			%
 			\begin{envLanguage}[english]
-				Erarbeitet von
+				Created by
 			\end{envLanguage}
 			\begin{envLanguage}[ngerman]
 				Erarbeitet von
@@ -452,7 +462,7 @@
 			\vspace{1cm}
 			%
 			\begin{envLanguage}[english]
-				Betreut von
+				Maintained by
 			\end{envLanguage}
 			\begin{envLanguage}[ngerman]
 				Betreut von
@@ -463,7 +473,7 @@
 			\vspace{1cm}
 			%
 			\begin{envLanguage}[english]
-				Durchgeführt bei
+				Conducted by
 			\end{envLanguage}%
 			\begin{envLanguage}[ngerman]
 				Durchgeführt bei
