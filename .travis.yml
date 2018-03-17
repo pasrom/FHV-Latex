@@ -18,12 +18,17 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d
 script:
 - docker exec -t ubuntu-test bash -c "cd travis;
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex;
-  biber --output_directory ./build/ LatexVorlage;
-  biber --output_directory ./build/ LatexVorlage;
-  makeglossaries ./build/LatexVorlage.idx;
-  pdflatex -shell-escape -recorder -synctex=1 -interaction=nonstopmode -output-directory=./build/ LatexVorlage.tex"
+  make clean;
+  make FHVMODE=1 LANGUAGE=ngerman;"
+- docker exec -t ubuntu-test bash -c "cd travis;
+  make clean;
+  make FHVMODE=3 LANGUAGE=ngerman;"
+- docker exec -t ubuntu-test bash -c "cd travis;
+  make clean;
+  make FHVMODE=5 LANGUAGE=ngerman;"
+- docker exec -t ubuntu-test bash -c "cd travis;
+  make clean;
+  make FHVMODE=9 LANGUAGE=ngerman;"
 - docker exec -t ubuntu-test bash -c "cd travis;
   make clean;
   make FHVMODE=2 LANGUAGE=ngerman;"

@@ -21,10 +21,8 @@ latex:
 	@echo "Second pass A (via bibtex) done!"
 	@makeglossaries -d $(BUILDDIR) $(PROJECT);
 	@echo "Second pass B (via makeglossaries) done!"
-	#@$(COMPILER) -shell-escape -recorder -synctex=1 -interaction=nonstopmode  -halt-on-error -output-directory=$(BUILDDIR) $(PROJECT).tex
 	@$(COMPILER) -shell-escape -recorder -synctex=1 -interaction=nonstopmode  -halt-on-error -output-directory=$(BUILDDIR) '\def\FHVmode{$(FHVMODE)} \def\newLanguage{$(LANGUAGE)}  \input{$(PROJECT).tex}'
 	@echo "Third pass (via $(COMPILER)) done!"
-	#@$(COMPILER) -shell-escape -recorder -synctex=1 -interaction=nonstopmode  -halt-on-error -output-directory=$(BUILDDIR) $(PROJECT).tex
 	@$(COMPILER) -shell-escape -recorder -synctex=1 -interaction=nonstopmode  -halt-on-error -output-directory=$(BUILDDIR) '\def\FHVmode{$(FHVMODE)} \def\newLanguage{$(LANGUAGE)}  \input{$(PROJECT).tex}'
 	@echo "Fourth pass (via $(COMPILER)) done!"
 	@echo "Compilation done. Output file can be seen in $(BUILDDIR)"
