@@ -1,6 +1,3 @@
-
-
-
 [![Build Status](https://travis-ci.org/pasrom/FHV-Latex.svg?branch=master)](https://travis-ci.org/pasrom/FHV-Latex)
 #   FHV-Latex template
 
@@ -29,12 +26,16 @@ Here you can define new commands (`./sty/overallDefines.sty`).
     ```
     This helps to lock at the page layout and to find `overfull \hbox` warnings.
  3. With the command `\def\newLanguage{ngerman}` you can choose between the language english and german, don't forget to build twice and don't panic if the first compilation throws an error.
- 4. Setting names of the author and supervisor:
+ 4. Setting names of the author, supervisor and titles:
     ```
     \def\authorName{Name\xspace}
     \def\authorSurname{Surname\xspace}
     \def\supervisorName{Supervisor Name\xspace}
     \def\supervisorSurname{Supervisor Surname\xspace}
+    \def\authorTitleBefore{Title B\xspace}
+    \def\authorTitleAfter{Title A\xspace}   
+    \def\supervisorTitleBefore{Title B\xspace}
+    \def\supervisorTitleAfter{Title A\xspace}
     ```
  5. Setting the gender of the author with the command `\def\wOrM{m}`
 
@@ -46,18 +47,26 @@ You can define here
 
  1. The mode of the layout can be spezified with`\def\FHVmode{x}`. Where following arguments are working:
 
-	 `1`: **documentation**, e.g.: a documentation for a project done in a course
-	 
-	 `2`: **thesis**, e.g.: a master thesis (standard). It changes the style of the title page.
-	 
-	`3`: **summary**, changes the layout. If you want to use all the space an the 
-	page, but take in mind, the typography is destroyed!
+    `1`: **documentation**, e.g.: a documentation for a project done in a course
+    
+    `2`: **thesis**, e.g.: a master thesis (standard). It changes the style of the title page.
+    
+    `3`: **summary**, changes the layout. If you want to use all the space an the 
+    page, but take in mind, the typography is destroyed!
 
-	`5`: **presentation**, if an error is occurring, build twice or delete the build files!
-	
-	`9`: **paper**
+    `5`: **presentation**, if an error is occurring, build twice or delete the build files!
+    
+    `9`: **paper**
 
- 2. `\newcommand{\version}{v0.0}` self explaining, version numbering.
+ 2. With the `\def\FHVtitlePage{fhv}` command it is possible to change the title layout:
+
+    `minimal`: only a title, name, version number and date.
+    
+    `fhv`: following the layout from [ilias](https://ilias.fhv.at/goto_ilias_fhv_at_file_350312_download.html).
+    
+    `comment out`: comment out this line to use the layout defined with `FHVmode`.
+    
+ 4. `\newcommand{\version}{v0.0}` self explaining, version numbering.
 
 ## Use autocompletion
 
