@@ -22,6 +22,7 @@ script:
 - docker exec -t ubuntu-test bash -c "cd travis;
   make clean;
   make FHVMODE=1 LANGUAGE=ngerman > log.txt;"
+- bash scripts/dropbox_uploader_deleting.sh
 - ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/${SHORT_COMMIT}-DE_DOC_LatexVorlage-latest.pdf
 - ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_DOC_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
 - ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_DOC_LatexVorlage.txt
