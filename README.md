@@ -1,9 +1,10 @@
 
 
+
 [![Build Status](https://travis-ci.org/pasrom/FHV-Latex.svg?branch=master)](https://travis-ci.org/pasrom/FHV-Latex)
 #   FHV-Latex template
 
-To use this template, it is recommened to work with [TeXstudio](http://texstudio.sourceforge.net). You can use the given profile provided in [scripts](https://github.com/pasrom/FHV-Latex/tree/master/scripts)  (Mac, Windows, Linux). 
+To use this template, it is recommened to work with [TeXstudio](http://texstudio.sourceforge.net). You can use the given profile provided in [scripts](https://github.com/pasrom/FHV-Latex/tree/master/scripts)  (Mac, Windows, Linux). If you like to add a dictionary here is a [link](https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries) where you can download one. To install the dictionary go to preference (TeXstudio), under Spell Checking Dictionary, change the directory to the folder you put your dictionary in and restart TeXstudio ([Source](https://tex.stackexchange.com/questions/87650/dictionary-for-texstudio-no-dictionary-available/87652)).
 
 The bibliography uses Biber to build and is adapted to FHV guidelines.
 
