@@ -20,44 +20,44 @@ script:
 - docker exec -t ubuntu-test bash -c "cd travis;
   make clean;
   make FHVMODE=1 LANGUAGE=ngerman > log.txt;"
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/DE_DOC_LatexVorlage-latest.pdf
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/DE_DOC_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}_DE_DOC_LatexVorlage.txt
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/${TRAVIS_COMMIT}-DE_DOC_LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${TRAVIS_COMMIT}-DE_DOC_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
+- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${TRAVIS_COMMIT}_DE_DOC_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd travis;
   make clean;
   make FHVMODE=3 LANGUAGE=ngerman > log.txt;"
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/DE_SUMMARY_LatexVorlage-latest.pdf
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/DE_SUMMARY_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}_DE_SUMMARY_LatexVorlage.txt
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/${TRAVIS_COMMIT}-DE_SUMMARY_LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${TRAVIS_COMMIT}-DE_SUMMARY_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
+- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${TRAVIS_COMMIT}_DE_SUMMARY_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd travis;
   make clean;
   make FHVMODE=5 LANGUAGE=ngerman > log.txt;"
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/DE_PRE_LatexVorlage-latest.pdf
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/DE_PRE_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}_DE_PRE_LatexVorlage.txt
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/${TRAVIS_COMMIT}-DE_PRESENTATION_LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${TRAVIS_COMMIT}-DE_PRESENTATION_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
+- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${TRAVIS_COMMIT}_DE_PRESENTATION_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd travis;
   make clean;
   make FHVMODE=9 LANGUAGE=ngerman > log.txt;"
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/DE_PAPER_LatexVorlage-latest.pdf
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/DE_PAPER_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}_DE_PAPER_LatexVorlage.txt
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/${TRAVIS_COMMIT}-DE_PAPER_LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${TRAVIS_COMMIT}-DE_PAPER_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
+- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${TRAVIS_COMMIT}_DE_PAPER_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd travis;
   make clean;
   make FHVMODE=2 LANGUAGE=ngerman > log.txt;"
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/DE_LatexVorlage-latest.pdf
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/DE_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}_DE_LatexVorlage.txt
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/${TRAVIS_COMMIT}-DE_LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${TRAVIS_COMMIT}-DE_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
+- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${TRAVIS_COMMIT}_DE_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd travis;
   make clean;
   make FHVMODE=2 LANGUAGE=english > log.txt;"
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/EN_LatexVorlage-latest.pdf
-- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/EN_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}_EN_LatexVorlage.txt
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${BRANCH_NAME}/${TRAVIS_COMMIT}-EN_LatexVorlage-latest.pdf
+- ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${TRAVIS_COMMIT}-EN_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
+- ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${TRAVIS_COMMIT}_EN_LatexVorlage.txt
 notifications:
   email: false
 deploy:
