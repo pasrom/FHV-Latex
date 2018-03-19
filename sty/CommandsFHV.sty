@@ -46,11 +46,24 @@
 \newcommand{\getStudyprogram}{Mechatronics Master\xspace}
 \newcommand{\setStudyprogram}[1]{\renewcommand{\getStudyprogram}{#1\xspace}}
 \newcommand{\getAuthor}{AUTHOR\xspace}
-\newcommand{\setAuthor}[1]{\renewcommand{\getAuthor}{#1\xspace}}
+\newcommand{\setAuthor}[1]{\renewcommand{\getAuthor}{%
+	\ifx\authorTitleBefore\undefined\else\authorTitleBefore\fi%
+	#1%
+	\ifx\authorTitleAfter\undefined%
+	\else%
+	,~\authorTitleAfter%
+	\fi\xspace}%
+}
 \newcommand{\getAuthorId}{\begin{flushleft}\noindent12345\xspace\end{flushleft}}
 \newcommand{\setAuthorId}[1]{\renewcommand{\getAuthorId}{\begin{flushleft}\noindent#1\xspace\end{flushleft}}}
 \newcommand{\getSupervisor}{1234\xspace}
-\newcommand{\setSupervisor}[1]{\renewcommand{\getSupervisor}{#1\xspace}}
+\newcommand{\setSupervisor}[1]{\renewcommand{\getSupervisor}{%
+	\ifx\supervisorTitleBefore\undefined\else\supervisorTitleBefore\fi%
+	#1%
+	\ifx\supervisorTitleAfter\undefined\else%
+	,~\supervisorTitleAfter%
+	\fi\xspace}%
+}
 \newcommand{\getSupervisorCompany}{1234\xspace}
 \newcommand{\setSupervisorCompany}[1]{\renewcommand{\getSupervisorCompany}{#1\xspace}}
 \newcommand{\getCompany}{Company Name GmbH\xspace}
