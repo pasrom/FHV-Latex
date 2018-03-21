@@ -21,6 +21,7 @@ script:
 - docker exec -t ubuntu-test bash -c "ls -l;
     cd /travis;
     ls -l;
+    make clean;
     make FHVMODE=1 LANGUAGE=ngerman;"
 #- if [ "$TRAVIS_BRANCH" = "master" ]; then
 #  bash scripts/dropbox_uploader_deleting.sh;
