@@ -22,7 +22,7 @@ script:
   cd /travis;
   ls;
   #make clean;
-  make FHVMODE=1 LANGUAGE=ngerman;"
+  make FHVMODE=1 LANGUAGE=ngerman"
 #- if [ "$TRAVIS_BRANCH" = "master" ]; then
 #  bash scripts/dropbox_uploader_deleting.sh;
 #  ./dropbox_uploader.sh upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_DOC_LatexVorlage-latest.pdf;
