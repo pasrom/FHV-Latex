@@ -6,22 +6,25 @@ branches:
 branches:
   only:
     - master
-    - presentation
-    - FHV-Titlepage
+    - fix-travis
 sudo: required
 services:
 - docker
 before_install:
+#- docker pull sumdoc/texlive-2017@sha256:5b05b641f2b85329e8123f759282330c1f566a66966f01d491ae024e3a66e521
+#- docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017@sha256:5b05b641f2b85329e8123f759282330c1f566a66966f01d491ae024e3a66e521 tail -f /dev/null
 - docker pull sumdoc/texlive-2017
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017 tail -f /dev/null
+
 - docker ps
 - openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d
 before_script:
 - export SHORT_COMMIT="$(git rev-parse --short $TRAVIS_COMMIT)"
 script:
-- docker exec -t ubuntu-test bash -c "cd travis;
-  make clean;
-  make FHVMODE=1 LANGUAGE=ngerman > log.txt;"
+- docker exec -t ubuntu-test bash -c "apt-get update && apt-get -y install ghostscript"
+- docker exec -t ubuntu-test bash -c "cd /travis;
+    make clean;
+    make FHVMODE=1 LANGUAGE=ngerman > log.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ]; then
   bash scripts/dropbox_uploader_deleting.sh;
   ./dropbox_uploader.sh upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_DOC_LatexVorlage-latest.pdf;
@@ -29,7 +32,7 @@ script:
 - ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_DOC_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
 - ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_DOC_LatexVorlage.txt
 
-- docker exec -t ubuntu-test bash -c "cd travis;
+- docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
   make FHVMODE=3 LANGUAGE=ngerman > log.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ]; then
@@ -38,7 +41,7 @@ script:
 - ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_SUMMARY_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
 - ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_SUMMARY_LatexVorlage.txt
 
-- docker exec -t ubuntu-test bash -c "cd travis;
+- docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
   make FHVMODE=5 LANGUAGE=ngerman > log.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ]; then
@@ -47,7 +50,7 @@ script:
 - ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_PRESENTATION_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
 - ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_PRESENTATION_LatexVorlage.txt
 
-- docker exec -t ubuntu-test bash -c "cd travis;
+- docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
   make FHVMODE=9 LANGUAGE=ngerman > log.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ]; then
@@ -56,7 +59,7 @@ script:
 - ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_PAPER_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
 - ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_PAPER_LatexVorlage.txt
 
-- docker exec -t ubuntu-test bash -c "cd travis;
+- docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
   make FHVMODE=2 LANGUAGE=ngerman > log.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ]; then
@@ -65,7 +68,7 @@ script:
 - ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
 - ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_LatexVorlage.txt
 
-- docker exec -t ubuntu-test bash -c "cd travis;
+- docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
   make FHVMODE=2 LANGUAGE=english > log.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ]; then
@@ -74,7 +77,7 @@ script:
 - ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-EN_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
 - ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_EN_LatexVorlage.txt
 
-- docker exec -t ubuntu-test bash -c "cd travis;
+- docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
   make FHVMODE=2 LANGUAGE=ngerman FHVTITLEPAGE=fhv > log.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ]; then
@@ -83,7 +86,7 @@ script:
 - ./dropbox_uploader.sh upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_LatexVorlage-fhv-${TRAVIS_JOB_NUMBER}.pdf
 - ./dropbox_uploader.sh upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_LatexVorlage-fhv.txt
 
-- docker exec -t ubuntu-test bash -c "cd travis;
+- docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
   make FHVMODE=2 LANGUAGE=english FHVTITLEPAGE=fhv > log.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ]; then
