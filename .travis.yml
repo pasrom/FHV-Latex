@@ -17,14 +17,14 @@ before_install:
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017 tail -f /dev/null
 
 - docker ps
-#- openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d
+- openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d
 #before_script:
-#- export SHORT_COMMIT="$(git rev-parse --short $TRAVIS_COMMIT)"
+- export SHORT_COMMIT="$(git rev-parse --short $TRAVIS_COMMIT)"
 script:
 - docker exec -t ubuntu-test bash -c "apt-get update && apt-get -y install ghostscript"
 - docker exec -t ubuntu-test bash -c "cd /travis;
     make clean;
-    make FHVMODE=1 LANGUAGE=ngerman;"
+    make FHVMODE=1 LANGUAGE=ngerman > log.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ]; then
   bash scripts/dropbox_uploader_deleting.sh;
   ./dropbox_uploader.sh upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_DOC_LatexVorlage-latest.pdf;
