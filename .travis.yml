@@ -19,10 +19,9 @@ before_install:
 #- export SHORT_COMMIT="$(git rev-parse --short $TRAVIS_COMMIT)"
 script:
 - docker exec -t ubuntu-test bash -c "ls -l;
-  cd /travis;
-  ls -l;
-  #make clean;
-  make FHVMODE=1 LANGUAGE=ngerman;"
+    cd /travis;
+    ls -l;
+    make FHVMODE=1 LANGUAGE=ngerman;"
 #- if [ "$TRAVIS_BRANCH" = "master" ]; then
 #  bash scripts/dropbox_uploader_deleting.sh;
 #  ./dropbox_uploader.sh upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_DOC_LatexVorlage-latest.pdf;
