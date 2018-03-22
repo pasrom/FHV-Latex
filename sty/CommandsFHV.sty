@@ -219,13 +219,14 @@
 \newcommand{\glossaryAndBibliography}{
 	\ifthenelse{\equal{\FHVmode}{\documentation} \or \equal{\FHVmode}{\thesis}}{
 	% Anything following the further research must not have a chapternumber
-	\renewcommand{\chaptername}{}
-	\renewcommand{\thechapter}{}
+%	\renewcommand{\chaptername}{}
+%	\renewcommand{\thechapter}{}
 	%
 	% Glossary
+\setlength\LTleft{-7pt}
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
-		{\printglossary[style=super,type=\acronymtype]}
-		{\printglossary[style=super,type=\acronymtype, title=Abkürzungsverzeichnis]}
+		{\printglossary[type=\acronymtype]}
+		{\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]}
 	%
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
 		{\printglossary}
