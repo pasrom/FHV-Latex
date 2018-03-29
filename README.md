@@ -25,8 +25,8 @@ Here you can define new commands (`./sty/overallDefines.sty`).
     \usepackage{layout}
     ```
     This helps to lock at the page layout and to find `overfull \hbox` warnings.
- 3. With the command `\def\newLanguage{ngerman}` you can choose between the language english and german, don't forget to build twice and don't panic if the first compilation throws an error.
- 4. Setting names of the author, supervisor and titles:
+ 2. With the command `\def\newLanguage{ngerman}` you can choose between the language english and german, don't forget to build twice and don't panic if the first compilation throws an error.
+ 3. Setting names of the author, supervisor and titles:
     ```
     \def\authorName{Name\xspace}
     \def\authorSurname{Surname\xspace}
@@ -37,8 +37,12 @@ Here you can define new commands (`./sty/overallDefines.sty`).
     \def\supervisorTitleBefore{Title B\xspace}
     \def\supervisorTitleAfter{Title A\xspace}
     ```
- 5. Setting the gender of the author with the command `\def\wOrM{m}`
+ 4. Setting the gender of the author with the command `\def\wOrM{m}`
+ 5. With the command `\def\notesFHV{}` you can add notes beside or under a paragraph. Following input is allowed:
 
+    `disable`: notes not showed
+    `draft`: notes showed
+    
 # LatexVorlage.tex
 
 This is the main file, where all subfiles and packages are loaded.
