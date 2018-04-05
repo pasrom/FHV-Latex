@@ -9,9 +9,6 @@
 	\def\FHVmode{2}
 \fi
 %
-\ifx\appendixFHV\undefined
-	\def\appendixFHV{false} % Fix for #28
-\fi
 \newcommand{\version}{v0.0}
 %
 \pdfminorversion=7 % use newer pdf version
@@ -131,7 +128,6 @@
 		\begin{envModeNot}[\paper]
 			\newpage
 			\appendix
-			\def\appendixFHV{true} % Fix for #28
 			\addAppendix{
 			%
 			% INSERT your .tex files
@@ -143,7 +139,6 @@
 			}
 			% Statuory Declaration
 			\statuoryDeclaration
-			\def\appendixFHV{false} % Fix for #28
 		\end{envModeNot}
 	\end{envModeNot}
 	%

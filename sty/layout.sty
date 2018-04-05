@@ -108,7 +108,8 @@
 \def\starchapter{\hyperchapter*}
 \newcommand{\mychapter}[2][\@empty]% #1=optional (toc and top of page), #2=title
 {%
-	\IfSubStr{\appendixFHV}{false}%
+	\StrLeft{\thechapter}{1}[\firstletter]%
+	\IfInteger{\firstletter}%
 	{\def\nameOfChapter{chapter}}%
 	{\def\nameOfChapter{appendix}}%
 	\ifx#1\@empty \hyperchapter[#2]{\hyperlink{toc.\nameOfChapter.\thechapter}{#2}}
@@ -120,7 +121,8 @@
 \def\starsection{\hypersection*}
 \newcommand{\mysection}[2][\@empty]% #1=optional (toc), #2=title
 {%
-\IfSubStr{\appendixFHV}{false}%
+\StrLeft{\thesection}{1}[\firstletter]%
+\IfInteger{\firstletter}%
 {\def\nameOfSection{section}}%
 {\def\nameOfSection{appendix}}%
 	\ifx#1\@empty \hypersection[#2]{\hyperlink{toc.\nameOfSection.\thesection}{#2}}
@@ -132,7 +134,8 @@
 \def\starsubsection{\hypersubsection*}
 \newcommand{\mysubsection}[2][\@empty]% #1=optional (toc), #2=title
 {
-	\IfSubStr{\appendixFHV}{false}%
+	\StrLeft{\thesubsection}{1}[\firstletter]%
+	\IfInteger{\firstletter}%
 	{\def\nameOfSubsection{subsection}}%
 	{\def\nameOfSubsection{appendix}}%
 	\ifx#1\@empty \hypersubsection[#2]{\hyperlink{toc.\nameOfSubsection.\thesubsection}{#2}}
