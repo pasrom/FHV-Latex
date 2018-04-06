@@ -33,7 +33,7 @@ If you are compiling with TexStudio and you get this error
 Befehl konnte nicht gestartet werden: "/Users/roman/Documents/workspace/FHV-Latex-diff/scripts/copy_TeXstudio.sh" "LatexVorlage" "/Users/roman/Documents/workspace/FHV-Latex-diff/"
 ```
 
-make sure the script is runable.
+make sure the copy script is runable.
 
 ```
 chmod +x scripts/copy_TeXstudio.sh
