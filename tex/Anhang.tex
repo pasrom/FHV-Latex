@@ -1,10 +1,24 @@
 \documentclass[.\jobname.tex]{subfiles}
 \begin{document}
+	%
+\chapter{Test für Akronyme mit Verlinkung in den Anhang}
+	%
+\gls{http} \acrshort{http}
+%
+\section{test 2}
+%
+\gls{http} \acrshort{http}
+%
 \chapter{Test Anhang}\label{sec: test anhang}
 %
-Ich bin ein test und das ist gut so.
+Ich bin ein test und das ist gut so.\par
+%
+Test der Referenzierung mit Akronymen aus dem Anhang: \gls{bluecom}, \acrshort{bluecom}
 %
 \section{test}
 %
+\acrshort{bluecom}
+%
 \blinddocument
+%
 \end{document}
