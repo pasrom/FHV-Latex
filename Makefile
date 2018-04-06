@@ -29,6 +29,8 @@ latex:
 	@makeglossaries -d $(BUILDDIR) $(PROJECT);
 	@echo "Second pass B (via makeglossaries) done!"
 	@$(COMPILER) $(COMMAND)
+	@biber --output_directory=$(BUILDDIR) $(PROJECT)
+	@makeglossaries -d $(BUILDDIR) $(PROJECT);
 	@echo "Third pass (via $(COMPILER)) done!"
 	@$(COMPILER) $(COMMAND)
 	@echo "Fourth pass (via $(COMPILER)) done!"

@@ -73,7 +73,6 @@
 			\texttt{Teletype: \ttdefault}
 		\end{envDebug}
 		%
-		\hypersetup{pageanchor=false}
 		%
 		\paperHeader
 		%
@@ -85,12 +84,13 @@
 			% nur in begründeten Ausnahmefällen verwenden
 			% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
 			%
+			\hypersetup{pageanchor=false}
 			\sperrvermerk{5}
 			%
 			\maketitle % creates the title page
+			\hypersetup{pageanchor=true}
 			%
 			\end{envModeNot}
-			\hypersetup{pageanchor=true}
 			\begin{envModeNot}[\paper]
 			\pagenumbering{Roman} 
 			%
