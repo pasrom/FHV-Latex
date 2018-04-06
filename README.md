@@ -13,6 +13,33 @@ An easy to use [tablegenerator.](http://www.tablesgenerator.com).
 
 If you like to have a preview of the output mentioned in [LatexVorlage](https://github.com/pasrom/FHV-Latex#latexvorlagetex), [here](https://www.dropbox.com/sh/zu01sy61kavxjt9/AAAtWiXSjG5IDLw3g8G1s3Yka?dl=0) you will find the different builds.
 
+# How to compile?
+
+ 1. `pdflatex`
+ 2. `biber`
+ 3. `makeglossaries`
+ 4. `pdflatex`
+ 5. `biber`
+ 6. `makeglossaries`
+ 7. `pdflatex`
+
+For a more detailed description see the makefile.
+
+Steps 5 and 6 are only necessary if you are using acronyms in the appendix.
+
+If you are compiling with TexStudio and you get this error
+
+```
+Befehl konnte nicht gestartet werden: "/Users/roman/Documents/workspace/FHV-Latex-diff/scripts/copy_TeXstudio.sh" "LatexVorlage" "/Users/roman/Documents/workspace/FHV-Latex-diff/"
+```
+
+make sure the script is runable.
+
+```
+chmod +x scripts/copy_TeXstudio.sh
+```
+
+
 # overallDefines.sty
 
 Here you can define new commands (`./sty/overallDefines.sty`).
@@ -41,6 +68,7 @@ Here you can define new commands (`./sty/overallDefines.sty`).
  5. With the command `\def\notesFHV{}` you can add notes beside or under a paragraph. Following input is allowed:
 
     `disable`: notes not showed
+    
     `draft`: notes showed
     
 # LatexVorlage.tex
