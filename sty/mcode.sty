@@ -88,131 +88,131 @@
 %%      1.2  --  Added \lstset{showstringspaces=false}
 %%      1.1  --  Added \mcode command and [final] option
 %%      1.0  --  Release
-
-
+%
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %              D O N ' T    T O U C H    T H I S                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\fileversion{2.3}
 \def\filedate{2012/08/31}
-
+%
 \typeout{-- Package: `mcode' \fileversion\space <\filedate> --}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{mcode}[\filedate\space\fileversion]
-
+%
 % for bw-option
 \newif\ifbw
 \DeclareOption{bw}{\bwtrue}
-
+%
 % numbered option
 \newif\ifnumbered
 \DeclareOption{numbered}{\numberedtrue}
-
+%
 % final option
 \newif\iffinal
 \DeclareOption{final}{\finaltrue}
-
+%
 % autolinebreaks option
 \newif\ifautolinebreaks
 \DeclareOption{autolinebreaks}{\autolinebreakstrue}
-
+%
 % literate programming (replace certain characters/relations
 \newif\ifuseliterate
 \DeclareOption{useliterate}{\useliteratetrue}
-
+%
 % framed option
 \newif\ifframed
 \DeclareOption{framed}{\framedtrue}
-
+%
 \DeclareOption*{% default
-  \PackageWarning{mcode}{Unknown option `\CurrentOption' !}%
+	\PackageWarning{mcode}{Unknown option `\CurrentOption' !}%
 }
 \ProcessOptions
-
+%
 \ifbw\typeout{ - settings optimized for printing (bw formating)}
 \else\typeout{ - settings optimized for display (colour formating)}\fi
 \ifnumbered\typeout{ - line numbering enabled}\else\fi
 \ifuseliterate\typeout{ - literate programming (character replacements) enabled}\else\fi
 \ifautolinebreaks\typeout{ - automatic line breaking enabled (careful, buggy!)}\else\fi
 \ifframed\typeout{ - framed listings}\else\fi
-
+%
 % This command allows you to typeset syntax highlighted Matlab
 % code ``inline''.  The font size \small seems to look best...
 \newcommand{\mcode}[1]{\lstinline[basicstyle=\lstbasicfont\small]|#1|}
-
+%
 % check if color command exists
 \ifx\color\undefined%
-  \RequirePackage{xcolor}%
+	\RequirePackage{xcolor}%
 \fi
-
+%
 % check if listings has been loaded
 \ifx\lstset\undefined%
-  \iffinal
-    \RequirePackage[final]{listings}
-  \else
-    \RequirePackage{listings}
-  \fi
+	\iffinal
+		\RequirePackage[final]{listings}
+	\else
+		\RequirePackage{listings}
+	\fi
 \fi
-
+%
 % Check if textcomp has been loaded (this package is needed for
 % upright quotes '' (instead of typographic ones `´)...
 \ifx\textquotesingle\undefined% 
-  \RequirePackage{textcomp}%
+	\RequirePackage{textcomp}%
 \fi
-
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                C U S T O M I S E   B E L O W                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%
 % ---------------------------------------------------------------------------------
 % default font
 \def\lstbasicfont{\fontfamily{pcr}\selectfont\footnotesize}
-
+%
 % ---------------------------------------------------------------------------------
 % matlat languate definition
 \lstdefinelanguage{matlabfloz}{%
-  alsoletter={...},%
-  morekeywords={%                             % keywords
-  break,case,catch,continue,elseif,else,end,%
-    for,function,global,if,otherwise,persistent,%
-      return,switch,try,while,methods,properties,%
-        events,classdef,...},%
-  comment=[l]\%,                              % comments
-  morecomment=[l]...,                         % comments
-  morecomment=[s]{\%\{}{\%\}},                % block comments
-  morestring=[m]'                             % strings 
+	alsoletter={...},%
+	morekeywords={%                             % keywords
+	break,case,catch,continue,elseif,else,end,%
+	for,function,global,if,otherwise,persistent,%
+	return,switch,try,while,methods,properties,%
+	events,classdef,...},%
+	comment=[l]\%,                              % comments
+	morecomment=[l]...,                         % comments
+	morecomment=[s]{\%\{}{\%\}},                % block comments
+	morestring=[m]'                             % strings 
 }[keywords,comments,strings]%
-
+%
 % ---------------------------------------------------------------------------------
 % general definitions
 \lstset{%
-  basicstyle={\lstbasicfont},                 % set font
-  showstringspaces=false,                     % do not emphasize spaces in strings
-  tabsize=4,                                  % number of spaces of a TAB
-  mathescape=false,escapechar=§,              % escape to latex with §...§
-  upquote=true,                               % upright quotes
-  aboveskip={1.5\baselineskip},               % a bit of space above listings
-  columns=fixed                               % nice spacing
+	basicstyle={\lstbasicfont},                 % set font
+	showstringspaces=false,                     % do not emphasize spaces in strings
+	tabsize=4,                                  % number of spaces of a TAB
+	mathescape=false,escapechar=§,              % escape to latex with §...§
+	upquote=true,                               % upright quotes
+	aboveskip={1.5\baselineskip},               % a bit of space above listings
+	columns=fixed                               % nice spacing
 }
-
+%
 % ---------------------------------------------------------------------------------
 % define colours and styles
 \ifbw % use font formating and gray 'colors'
 	\def\mcommentfont{\color[gray]{.75}\itshape} %comments light gray and italic
-  \lstset{language=matlabfloz,                % use our version of highlighting
-    keywordstyle=\bfseries,                   % keywords in bold
-    commentstyle=\mcommentfont,               % comments 
-    stringstyle=\color[gray]{0.5}             % strings darker gray
-  }
+	\lstset{language=matlabfloz,                % use our version of highlighting
+		keywordstyle=\bfseries,                   % keywords in bold
+		commentstyle=\mcommentfont,               % comments 
+		stringstyle=\color[gray]{0.5}             % strings darker gray
+}
 \else% notbw => use colors : )
 	\def\mcommentfont{\color[rgb]{.133,.545,.133}} %comments in green
-  \lstset{language=matlabfloz,                % use our version of highlighting
-    keywordstyle=\color[rgb]{0,0,1},          % keywords in blue
-    commentstyle=\mcommentfont,               % comments
-    stringstyle=\color[rgb]{.627,.126,.941}   % strings in purple
-  } 
+	\lstset{language=matlabfloz,                % use our version of highlighting
+		keywordstyle=\color[rgb]{0,0,1},          % keywords in blue
+		commentstyle=\mcommentfont,               % comments
+		stringstyle=\color[rgb]{.627,.126,.941}   % strings in purple
+}
 \fi%bw
-
+%
 % ---------------------------------------------------------------------------------
 % automatic line breaking --- warning, this is buggy and
 % doesn't break comments correctly!
@@ -220,7 +220,7 @@
 	\newsavebox{\lbreakdots}\sbox{\lbreakdots}{\lstbasicfont\mcommentfont...}
 	\lstset{breaklines=true,breakatwhitespace=true,prebreak=\usebox{\lbreakdots}}
 \fi
-
+%
 % ---------------------------------------------------------------------------------
 % literate replacements
 % the following is for replacing some matlab relations like >= or ~=
@@ -259,25 +259,25 @@
 			{,{ }end}{\lstbasicfont ,{ }end}{5}
 	}
 \fi%literates
-
+%
 % ---------------------------------------------------------------------------------
 % line numbering
 \ifnumbered% numbered option
-  \lstset{%
-    numbersep=3mm, numbers=left, numberstyle=\tiny, % number style
-  }
+	\lstset{%
+		numbersep=3mm, numbers=left, numberstyle=\tiny, % number style
+	}
 \fi
-
+%
 \ifframed%   framed option
-  \lstset{%
-    frame=single,                             % frame
-  }
-  \ifnumbered%
-    \lstset{%
-      framexleftmargin=6mm, xleftmargin=6mm   % tweak margins
-    }
-  \fi
+	\lstset{%
+		frame=single,                             % frame
+	}
+	\ifnumbered%
+		\lstset{%
+			framexleftmargin=6mm, xleftmargin=6mm   % tweak margins
+		}
+	\fi
 \fi
-
+%
 \endinput
 %% End of file `mcode.sty'.
