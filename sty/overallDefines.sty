@@ -154,3 +154,16 @@
 		{\caption[]{#1\source}}%
 		{\caption[#1]{#1\source}}%
 }%
+%
+\newcommand{\FHVcheckbox}[1]%
+{%
+	\def\checked{1}
+	\def\unchecked{0}
+	\if#1\checked
+		\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}\(\checkmark\)}
+	\fi
+	\if#1\unchecked
+		\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}}\hspace{1em}
+	\fi
+}
+%
