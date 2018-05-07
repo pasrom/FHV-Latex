@@ -1,0 +1,3 @@
+[submodule "scripts/InkscapeConverter"]
+	path = scripts/InkscapeConverter
+	url = https://gist.github.com/0965be641547b34618926d404773cd94.git

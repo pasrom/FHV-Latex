@@ -3,6 +3,8 @@
 
 To use this template, it is recommened to work with [TeXstudio](http://texstudio.sourceforge.net). You can use the given profile provided in [scripts](https://github.com/pasrom/FHV-Latex/tree/master/scripts)  (Mac, Windows, Linux). If you like to add a dictionary here is a [link](https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries) where you can download one. To install the dictionary go to preference (TeXstudio), under Spell Checking Dictionary, change the directory to the folder you put your dictionary in and restart TeXstudio ([Source](https://tex.stackexchange.com/questions/87650/dictionary-for-texstudio-no-dictionary-available/87652)).
 
+If you like to convert svg files to pdf you can use [Inkscape](https://inkscape.org) and the given scripts in the [InkscapeConverter](https://gist.github.com/pasrom/0965be641547b34618926d404773cd94) Submodule Folder.
+
 The bibliography uses Biber to build and is adapted to FHV guidelines.
 
 I also recommend to use [TeX Live](https://www.tug.org/texlive/) Latex distribution. 
@@ -12,6 +14,13 @@ I also recommend to use [TeX Live](https://www.tug.org/texlive/) Latex distribut
 An easy to use [tablegenerator.](http://www.tablesgenerator.com).
 
 If you like to have a preview of the output mentioned in [LatexVorlage](https://github.com/pasrom/FHV-Latex#latexvorlagetex), [here](https://www.dropbox.com/sh/zu01sy61kavxjt9/AAAtWiXSjG5IDLw3g8G1s3Yka?dl=0) you will find the different builds.
+
+# How to clone?
+
+```
+git clone --recurse-submodules https://github.com/pasrom/FHV-Latex.git
+```
+
 
 # How to compile?
 
