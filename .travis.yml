@@ -6,7 +6,7 @@ branches:
 branches:
   only:
     - master
-    - fix-travis
+    - submodule-dropbox-uploader
 sudo: required
 
 env:
