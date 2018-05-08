@@ -5,6 +5,8 @@ To use this template, it is recommened to work with [TeXstudio](http://texstudio
 
 If you like to convert svg files to pdf you can use [Inkscape](https://inkscape.org) and the given scripts in the [InkscapeConverter](https://gist.github.com/pasrom/0965be641547b34618926d404773cd94) Submodule Folder.
 
+To count words in the document, follow this [link](https://tex.stackexchange.com/a/236448).
+
 The bibliography uses Biber to build and is adapted to FHV guidelines.
 
 I also recommend to use [TeX Live](https://www.tug.org/texlive/) Latex distribution. 
