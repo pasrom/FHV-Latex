@@ -101,8 +101,6 @@
 \usepackage{adjustbox,lipsum}
 \usepackage{multirow}
 \usepackage{forloop}
-% prevent indent of first line (section)
-\setlength{\parindent}{0pt}
 % for lines in tables
 \usepackage{hhline}
 %
@@ -188,6 +186,10 @@
 		}
 	\makeatother
 }{}
+%
+% config as late as possible (https://golatex.de/algorithm2e-und-parindent-t13310.html)
+% 
+\KOMAoptions{parskip=half-}
 %
 \setlength{\extrarowheight}{3pt} % table space in front of line
 \patchcmd{\bibsetup}{\interlinepenalty=5000}{\interlinepenalty=10000}{}{}
