@@ -50,6 +50,14 @@
 %
 \begin{document}
 	%
+	% Select the language defined in \newLanguage
+	%
+	\ifx\newLanguage\ngerman
+		\selectlanguage{ngerman}
+	\else
+		\selectlanguage{english} 
+	\fi %
+	%
 	% Import the acronyms
 	%
 	\input{./util/Acronym.tex} % provide the defined acronyms to be used
