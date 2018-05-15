@@ -4,7 +4,11 @@
 \blindmathtrue
 \blinddocument
 %
-\chapter{Mathemodus}
+\if\paper\FHVmode
+	\section{Mathemodus}
+\else
+	\chapter{Mathemodus}
+\fi
 %
 \begin{align}
 \text{det}(\lambda \cdot \mathds{1} -A) &= 0 \underbrace{\longrightarrow}_{\substack{\text{Zustands-} \\ \text{rückführung}}} \text{det}\left[\lambda\cdot \mathds{1} - \left(A-b\cdot k\right)\right]=0\label{eq: eigenwerte rueckfuehrung}\\
@@ -13,7 +17,11 @@
 %
 Ich bin eine super Referenzierung: \cref{eq: eigenwerte rueckfuehrung}. Oder noch besser wenn auf mehrere Gleichungen referenziert werden will: \cref{eq: eigenwerte rueckfuehrung,eq: cos sin}.
 %
-\chapter{BiB \& Acronyme}
+\if\paper\FHVmode
+	\section{BiB \& Acronyme}
+\else
+	\chapter{BiB \& Acronyme}
+\fi
 %
 \begin{itemize}
 	\item Dies ist eine Qullenangabe: \parencite[Vgl.][S.220-224]{IEEE802.1Q2014}.
@@ -37,7 +45,11 @@ Acronym Tests: \enquote{ \glspl{fpsLabel} \glspl{fpsLabel}} für Plural.
 %
 \blindtext[1]
 %
-\chapter{Bilder}
+\if\paper\FHVmode
+	\section{Bilder}
+\else
+	\chapter{Bilder}
+\fi
 %
 In \autoref{fig: example-image} ist ein Beispiel einer Abbildung dargestellt.
 %
@@ -76,7 +88,11 @@ In \Cref{fig: Bild A,fig: Bild A} (oder mit Abkürzung \cref{fig: Bild A,fig: Bi
 	\label{fig: Bild A und B}
 \end{figure}
 %
-\section{Spezial}
+\if\paper\FHVmode
+	\subsection{Spezial}
+\else
+	\section{Spezial}
+\fi
 %
 \def\spaceX{1.5}
 \begin{figure}[H]
@@ -127,7 +143,11 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 	\label{fig: blockschaltbild-state-space.tex A}
 \end{figure}
 %
-\chapter{Tabellen}
+\if\paper\FHVmode
+	\section{Tabellen}
+\else
+	\chapter{Tabellen}
+\fi
 %
 \begin{table}[H]
 	\centering
@@ -169,7 +189,11 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 	%
 \end{table}
 %
-\chapter{Listing}
+\if\paper\FHVmode
+	\section{Listing}
+\else
+	\chapter{Listing}
+\fi
 %
 \begin{lstlisting}[caption={example}]
 for i:=maxint to 0 do
@@ -180,7 +204,11 @@ end;
 %
 Line \ref{comment} shows a comment. Die Escape Operatoren können unter \enquote{./sty/Listings.sty} geändert werden. 
 %
-\chapter{Todo List}
+\if\paper\FHVmode
+	\section{Todo List}
+\else
+	\chapter{Todo List}
+\fi
 %
 \lipsum[1] 
 \todo{This is a to do note at margin}
@@ -188,7 +216,11 @@ Line \ref{comment} shows a comment. Die Escape Operatoren können unter \enquote
 \todo[inline]{This is a todo note inline} 
 \lipsum[3]
 %
-\chapter{SVG Beispiel}
+\if\paper\FHVmode
+	\section{SVG Beispiel}
+\else
+	\chapter{SVG Beispiel}
+\fi
 %
 \begin{enumerate}
 	\item Installiere Inkscape
@@ -204,7 +236,11 @@ Line \ref{comment} shows a comment. Die Escape Operatoren können unter \enquote
 	\label{fig: beispiel svg}
 \end{figure}
 %
-\chapter{Algorithmen}
+\if\paper\FHVmode
+	\section{Algorithmen}
+\else
+	\chapter{Algorithmen}
+\fi
 %
 Der \autoref{algo: first algo} ist gut.\par
 %
@@ -227,10 +263,17 @@ Der \autoref{algo: first algo} ist gut.\par
 	\label{algo: first algo}
 \end{algorithm}
 %
-\chapter{Referenzieren in den Anhang}
+\if\paper\FHVmode
+	\section{Referenzieren in den Anhang}
+\else
+	\chapter{Referenzieren in den Anhang}
+\fi
 %
-\section{test}
-%
-\autoref{sec: test anhang}
+\if\paper\FHVmode
+	\subsection{test}
+\else
+	\section{test}
+	\autoref{sec: test anhang}
+\fi
 %
 \end{document}
