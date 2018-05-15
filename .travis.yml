@@ -22,6 +22,7 @@ before_install:
 #- docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017@sha256:5b05b641f2b85329e8123f759282330c1f566a66966f01d491ae024e3a66e521 tail -f /dev/null
 - docker pull sumdoc/texlive-2018
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2018 tail -f /dev/null
+- docker exec -t ubuntu-test bash -c "tlmgr update --all"
 
 - docker ps
 - openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d
