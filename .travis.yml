@@ -6,6 +6,7 @@ branches:
 branches:
   only:
     - master
+    - texlive-2018
 sudo: required
 
 env:
