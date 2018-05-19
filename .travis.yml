@@ -11,7 +11,7 @@ sudo: required
 
 env:
   global:
-    PATH_TO_UPLOADER="./scripts/Dropbox-Uploader/dropbox_uploader.sh"
+    - PATH_TO_UPLOADER="./scripts/Dropbox-Uploader/dropbox_uploader.sh"
 services:
 - docker
 git:
