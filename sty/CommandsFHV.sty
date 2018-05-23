@@ -195,6 +195,7 @@
 %
 \newcommand{\fhvlists}{
 	% add table of contents
+	\citetrackerfalse\pagetrackerfalse\backtrackerfalse
 	\tableofcontents
 	%
 	\iftotalfigures
@@ -218,6 +219,7 @@
 		\listofalgorithms
 		\newpage
 	\fi
+	\citetrackertrue\pagetrackertrue\backtrackertrue
 	% start arabic page numbering from here
 	\pagenumbering{arabic}
 }
