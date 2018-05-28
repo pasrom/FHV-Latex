@@ -231,7 +231,12 @@
 %	\renewcommand{\thechapter}{}
 	%
 	% Glossary
-	\setlength\LTleft{-7pt}
+	\makeatletter
+		\renewenvironment{theglossary}%
+			{\begin{longtable}{@{}l p{\glsdescwidth}@{}}}%
+			{\end{longtable}}
+	\makeatother
+	\setlength{\glsdescwidth}{0.75\textwidth}
 	\ifthenelse{\equal{\getLanguage}{english}} % prints just the list of acronyms
 		{\printglossary[type=\acronymtype]}
 		{\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]}
