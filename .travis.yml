@@ -6,7 +6,7 @@ branches:
 branches:
   only:
     - master
-    - texlive-2018
+    - fix-table-of-contents
 sudo: required
 
 env:

@@ -211,11 +211,20 @@
 	\iftotallstlistings
 		\cleardoublepage
 		\phantomsection
-		\addcontentsline{toc}{chapter}{Listings}
+		\ifthenelse{\equal{\newLanguage}{ngerman}}{%
+			\addcontentsline{toc}{chapter}{\lstlistlistingname}
+		}{}
 		\lstlistoflistings
 		\newpage
 	\fi
 	\iftotalalgocfs
+		\cleardoublepage
+		\phantomsection
+		\ifthenelse{\equal{\newLanguage}{ngerman}}{%
+			\addcontentsline{toc}{chapter}{\listalgorithmcfname}
+		}{%
+			\addcontentsline{toc}{chapter}{\listalgorithmcfname}
+		}
 		\listofalgorithms
 		\newpage
 	\fi
