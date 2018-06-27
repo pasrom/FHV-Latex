@@ -214,8 +214,8 @@
 		\ifthenelse{\equal{\newLanguage}{ngerman}}{%
 			\addcontentsline{toc}{chapter}{\lstlistlistingname}
 		}{}
-		\lstlistoflistings
 		\newpage
+		\lstlistoflistings
 	\fi
 	\iftotalalgocfs
 		\cleardoublepage
@@ -225,9 +225,10 @@
 		}{%
 			\addcontentsline{toc}{chapter}{\listalgorithmcfname}
 		}
-		\listofalgorithms
 		\newpage
+		\listofalgorithms
 	\fi
+	\newpage
 	\citetrackertrue\pagetrackertrue\backtrackertrue
 	% start arabic page numbering from here
 	\pagenumbering{arabic}
