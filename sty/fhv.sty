@@ -18,7 +18,6 @@
 \newcommand\indexspace{}
 }%
 {\usepackage{./sty/layout}}
-\usepackage[T1]{fontenc}
 %
 %necessary if german language is selected
 \usepackage[ngerman, english]{babel} %german hyphenation and headings
@@ -30,6 +29,9 @@
 \RequirePackage{currfile}
 %
 \usepackage[linesnumbered,ruled,commentsnumbered,\newLanguage]{algorithm2e}
+%
+% load after algorithm2e ref: https://www.mrunix.de/forums/showthread.php?71717-Algorithm2e-Zeilennummern-Bug
+\usepackage[T1]{fontenc}
 %
 \usepackage{amsmath} % need for subequations
 \usepackage{graphicx} % need for figures
