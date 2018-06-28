@@ -204,11 +204,19 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 \begin{lstlisting}[caption={example}]
 for i:=maxint to 0 do
 begin
-	{ comment } %(*\label{comment}*)
+	{ comment } %(*\label{comment a}*)
+end;
+for i:=maxint to 0 do
+begin
+{ comment } %(*\label{comment b}*)
+end;
+for i:=maxint to 0 do
+begin
+{ comment } %(*\label{comment c}*)
 end;
 \end{lstlisting}
 %
-Line \ref{comment} shows a comment. Die Escape Operatoren können unter \enquote{./sty/Listings.sty} geändert werden. 
+Line \ref{comment a} shows a comment. Die Escape Operatoren können unter \enquote{./sty/Listings.sty} geändert werden. 
 %
 \if\paper\FHVmode
 	\section{Todo List}
