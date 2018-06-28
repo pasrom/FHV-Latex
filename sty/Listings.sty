@@ -5,7 +5,10 @@
 \ifthenelse{\equal{\newLanguage}{ngerman}}{%
 	\renewcommand\lstlistlistingname{Liste der Quellcodes}
 	\renewcommand{\lstlistingname}{Quellcode}
-}{}
+}{
+	\renewcommand\lstlistlistingname{Listings}
+	\renewcommand{\lstlistingname}{Listing}
+}
 %
 \usepackage[framed,numbered]{matlab-prettifier}
 %\lstset{breakatwhitespace=false}
