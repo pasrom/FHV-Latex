@@ -152,3 +152,15 @@
 \SetNlSty{}{}{}
 %\SetAlgoCaptionSeparator{:}
 %
+% fix for the alignment of the line numbers is outside of the paragraph #39
+%
+\newlength\listingnumberwidth
+\setlength\listingnumberwidth{\widthof{00} + 1ex * 60/45}
+\newlength\listingRigthMargin
+\setlength\listingRigthMargin{1ex/2}
+\lstset{
+	numbers=left,
+	framexleftmargin=1ex,
+	xleftmargin=\listingnumberwidth,
+	xrightmargin=\listingRigthMargin,
+}
