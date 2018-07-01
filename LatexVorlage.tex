@@ -63,14 +63,14 @@
 	%
 	\input{./util/Acronym.tex} % provide the defined acronyms to be used
 	%
-	% for Backlinks to work properly
-	%
 	\subfile{./tex/Presentation.tex}
 	%
 	\begin{envModeNot}[\presentations]
 		%
+		% for Backlinks to work properly
+		%
 		\let\hypercontentsline=\contentsline
-		\renewcommand{\contentsline}[4]{\hypertarget{toc.#4}{}\hypercontentsline{#1}{#2}{#3}{#4}}%
+		\renewcommand{\contentsline}[4]{\hypertarget{toc.#4}{}\hypercontentsline{#1}{#2}{#3}{#4}}
 		%
 		\sisetup{output-decimal-marker = {,}}
 		\pagenumbering{gobble} % used to prevent the page numbering
@@ -123,10 +123,8 @@
 			%\subfile{./tex/xxx.tex}
 			\subfile{./tex/Examples.tex}
 			%
-			% END
+			% END INSERT
 			%
-			% The order of the chapters used
-			% final generated information
 			\glossaryAndBibliography
 			%
 		\end{envModeMulticols}
