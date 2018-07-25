@@ -6,7 +6,6 @@ branches:
 branches:
   only:
     - master
-    - fix-table-of-contents
 sudo: required
 
 env:
