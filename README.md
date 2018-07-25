@@ -2,7 +2,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/pasrom/FHV-Latex/blob/master/LICENSE)
 #   FHV-Latex template
 
-To use this template, it is recommened to work with [TeXstudio](http://texstudio.sourceforge.net). You can use the given profile provided in [scripts](https://github.com/pasrom/FHV-Latex/tree/master/scripts)  (Mac, Windows, Linux). If you like to add a dictionary here is a [link](https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries) where you can download one. To install the dictionary go to preference (TeXstudio), under Spell Checking Dictionary, change the directory to the folder you put your dictionary in and restart TeXstudio ([Source](https://tex.stackexchange.com/questions/87650/dictionary-for-texstudio-no-dictionary-available/87652)).
+To use this template, it is recommened to work with [TeXstudio](http://texstudio.sourceforge.net). You can use the given profile provided in [scripts](https://github.com/pasrom/FHV-Latex/tree/master/scripts)  (Mac, Windows, Linux). Install instructions can be found [here](https://tex.stackexchange.com/a/211363). If you like to add a dictionary here is a [link](https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries) where you can download one. To install the dictionary go to preference (TeXstudio), under Spell Checking Dictionary, change the directory to the folder you put your dictionary in and restart TeXstudio ([Source](https://tex.stackexchange.com/questions/87650/dictionary-for-texstudio-no-dictionary-available/87652)).
 
 If you like to convert svg files to pdf you can use [Inkscape](https://inkscape.org) and the given scripts in the [InkscapeConverter](https://gist.github.com/pasrom/0965be641547b34618926d404773cd94) Submodule Folder.
 
@@ -27,9 +27,9 @@ git clone --recurse-submodules https://github.com/pasrom/FHV-Latex.git
 
 # How to compile?
 
- 1. `pdflatex`
- 2. `biber`
- 3. `makeglossaries`
+ 1. `pdflatex`         (F5 / F6)
+ 2. `biber`            (F8) 
+ 3. `makeglossaries`   (F9)
  4. `pdflatex`
  5. `biber`
  6. `makeglossaries`
