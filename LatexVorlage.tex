@@ -56,12 +56,20 @@
 	\ifx\newLanguage\ngerman
 		\selectlanguage{ngerman}
 	\else
-		\selectlanguage{english} 
+		\selectlanguage{english}
 	\fi %
 	%
+	\if\FHVmode\paper
+		\SetAlgorithmName{Algorithmus}{Alg.}
+	\makeatletter
+		\crefname{equation}{Gl.}{Gln.}
+	\makeatother
+	\fi
 	% Import the acronyms
 	%
 	\input{./util/Acronym.tex} % provide the defined acronyms to be used
+	%
+	% for Backlinks to work properly
 	%
 	\subfile{./tex/Presentation.tex}
 	%
@@ -70,7 +78,7 @@
 		% for Backlinks to work properly
 		%
 		\let\hypercontentsline=\contentsline
-		\renewcommand{\contentsline}[4]{\hypertarget{toc.#4}{}\hypercontentsline{#1}{#2}{#3}{#4}}
+		\renewcommand{\contentsline}[4]{\hypertarget{toc.#4}{}\hypercontentsline{#1}{#2}{#3}{#4}}%
 		%
 		\sisetup{output-decimal-marker = {,}}
 		\pagenumbering{gobble} % used to prevent the page numbering
@@ -129,7 +137,8 @@
 			%
 		\end{envModeMulticols}
 		%
-		\subfile{./tex/Lebenslauf.tex}
+		% uncomment this if you like a short CV
+		% \subfile{./tex/Lebenslauf.tex}
 		%
 		\begin{envModeNot}[\paper]
 			\newpage

@@ -2,8 +2,6 @@
 \newcommand{\abstandvor}{0.3}
 \newcommand{\abstandnach}{0.1}
 %
-\usepackage[draft=false,kerning=true]{microtype}
-%
 \setkomafont{disposition}{\normalcolor\bfseries}
 %
 \ifthenelse{\equal{\FHVmode}{\paper}}{%
@@ -13,10 +11,6 @@
 	left=2cm,
 	right=2cm,
 	]{geometry}
-	\setlength{\columnsep}{7mm}
-	\usepackage[draft=false,kerning=true]{microtype}
-	\setkomafont{section}{\normalsize}
-	\setuptoc{toc}{leveldown}
 }{%
 %
 \ifthenelse{\equal{\FHVmode}{\documentation} \or \equal{\FHVmode}{\thesis}}{

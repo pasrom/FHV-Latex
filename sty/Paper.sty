@@ -1,15 +1,14 @@
 %
 \def\paperHeader{%
 \begin{envMode}[\paper]
-\large \noindent \paperName
+\ifx\paperName\undefined%
+\else%
+	\large \noindent \paperName%
+\fi%
 \vskip 10pt%
 \begin{center}
 	\textbf{%
-		\Large{FACHHOCHSCHULE VORARLBERG: TIME SENSITIVE NETWORKING}}%\\
-	\vskip 1pt
-	\textbf{%
-		\Large{ZEITKRITISCHES NETZWERK}%
-	}
+		\Large{FACHHOCHSCHULE VORARLBERG: \\ \MakeUppercase{\getTitle}}}%\\
 	\vskip 10pt
 	\textbf{%
 		\Large{\authorName \authorSurname}%
@@ -21,3 +20,48 @@
 \end{envMode}
 }
 %
+\if\FHVmode\paper
+	% align environment
+	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{0pt}
+	\setlength{\abovedisplayshortskip}{0pt}
+	\setlength{\belowdisplayshortskip}{0pt}
+	\setlength{\jot}{0pt}% tweak
+	\SetAlFnt{\scriptsize}
+	%
+	\setlist[itemize]{leftmargin=*}
+	\setlist[enumerate]{leftmargin =*}
+	\setlist[description]{style=unboxed,leftmargin=0cm}
+	\setkomafont{section}{\normalsize}
+	\setlist{itemsep=1pt,topsep=2pt,parsep=0pt}
+	% Bilder Abstand
+	\setlength{\textfloatsep}{0pt}
+	\setlength{\floatsep}{0pt}
+	\setlength{\intextsep}{9pt}
+	% Mathe Gleichung Abstand
+	\setlength\abovedisplayshortskip{0pt}
+	\setlength\belowdisplayshortskip{0pt}
+	\setlength\abovedisplayskip{0pt}
+	\setlength\belowdisplayskip{0pt}
+	% Abstand Caption
+	\setlength{\abovecaptionskip}{2pt}
+	\setlength{\belowcaptionskip}{0pt}
+	\captionsetup[subfigure]{aboveskip=2pt}
+	\captionsetup[subfigure]{belowskip=0pt}
+	\setlength{\parskip}{0pt}
+	%
+	\addto\captionsngerman{
+		\renewcommand{\figurename}{Abb.}
+		\renewcommand{\tablename}{Tab.}
+	}
+	\setkomafont{captionlabel}{\normalsize\bfseries} 
+	\renewcaptionname{ngerman}{\figurename}{Abb.}% nach Bedarf
+	\renewcaptionname{ngerman}\figureautorefname{Abb.}
+	\renewcaptionname{ngerman}{\tablename}{Tab.}% nach Bedarf
+	\renewcaptionname{ngerman}\tableautorefname{Tab.}
+	%
+	\setlength{\parindent}{6.3mm} 
+	\setlength{\footnotemargin}{0pt} %fussnoten nicht einruecken!
+	%
+	\renewcommand{\arraystretch}{0.8}%tabelle vertikaler abstand verringern
+\fi
