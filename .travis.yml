@@ -6,6 +6,7 @@ branches:
 branches:
   only:
     - master
+    - rework-paper
 sudo: required
 
 env:

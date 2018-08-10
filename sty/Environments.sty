@@ -13,6 +13,7 @@
 
 \NewEnviron{envModeMulticols}[1][]{%
 	\if#1\FHVmode\expandafter
+		\pagenumbering{arabic}
 		\begin{multicols}{2}[][7mm]\raggedcolumns
 			\BODY
 		\end{multicols}

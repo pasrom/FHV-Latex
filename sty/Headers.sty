@@ -8,11 +8,15 @@ automark
 %
 \ifthenelse{\equal{\FHVmode}{\paper}}{%
 	%
-	\definecolor{greyFoot}{HTML}{CCCCCC}
-	\lofoot{\textcolor{greyFoot}{\normalfont\small \paperName}
+	\ifx\paperName\undefined
+		\cfoot[\pagemark]{\pagemark}
+	\else
+		\definecolor{greyFoot}{HTML}{CCCCCC}
+		\lofoot{\textcolor{greyFoot}{\normalfont\small \paperName}
+		}
+		\lefoot{\textcolor{greyFoot}{\normalfont\small \paperName}
 	}
-	\lefoot{\textcolor{greyFoot}{\normalfont\small \paperName}
-	}
+	\fi
 	%
 }{%
 	\ifthenelse{\equal{\FHVmode}{\documentation} \or \equal{\FHVmode}{\thesis}}{

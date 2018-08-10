@@ -20,7 +20,7 @@
 {\usepackage{./sty/layout}}
 %
 %necessary if german language is selected
-\usepackage[ngerman, english]{babel} %german hyphenation and headings
+\usepackage[english, ngerman]{babel} %german hyphenation and headings
 %
 \ifthenelse{\equal{\FHVmode}{\presentations}}%
 {}%
@@ -81,7 +81,7 @@
 \usepackage{footnote}
 \usepackage{threeparttable}
 
-\usepackage[draft=false,kerning=true]{microtype}	
+\usepackage[draft=false,kerning=true]{microtype}
 \usepackage{lscape} % landscape verwenden
 % use other pdfs in this document
 \usepackage{pdfpages}
@@ -146,7 +146,11 @@
 %
 \usepackage{dsfont}
 %
-\usepackage[\newLanguage,nameinlink,capitalize,noabbrev]{cleveref}
+\ifthenelse{\equal{\FHVmode}{\paper}}{%
+	\usepackage[\newLanguage,nameinlink,capitalize]{cleveref}
+}{
+	\usepackage[\newLanguage,nameinlink,capitalize,noabbrev]{cleveref}
+}
 %
 \addbibresource{./bib/Bibliography.bib}
 %
