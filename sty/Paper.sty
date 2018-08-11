@@ -1,25 +1,4 @@
 %
-\def\paperHeader{%
-\begin{envMode}[\paper]
-\ifx\paperName\undefined%
-\else%
-	\large \noindent \paperName%
-\fi%
-\vskip 10pt%
-\begin{center}
-	\textbf{%
-		\Large{FACHHOCHSCHULE VORARLBERG: \\ \MakeUppercase{\getTitle}}}%\\
-	\vskip 10pt
-	\textbf{%
-		\Large{\authorName \authorSurname}%
-	}%
-\end{center}
-\vskip 20pt
-%
-\normalfont\normalsize%
-\end{envMode}
-}
-%
 \if\FHVmode\paper
 	% align environment
 	\setlength{\abovedisplayskip}{0pt}

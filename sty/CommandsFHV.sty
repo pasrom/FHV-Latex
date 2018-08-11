@@ -602,20 +602,59 @@
 	\pagenumbering{arabic}
 	\setcounter{page}{2}
 }
+\newcommand{\maketitlePaper}{
+	\pagenumbering{Roman} 
+	\begin{titlepage}
+		\thispagestyle{scrheadings}
+		\ifx\paperName\undefined%
+		\else%
+		\large \noindent \paperName%
+		\vskip 10pt%
+		\fi%
+		\begin{center}
+			\textbf{%
+				\Large{%
+					\ifx\paperName\undefined%
+					\else%
+					FACHHOCHSCHULE VORARLBERG: \\%
+					\fi%
+					\MakeUppercase{\getTitle}}}%\\
+			\vskip 10pt
+			\textbf{%
+				\large{\authorName \authorSurname}%
+			}%
+		\end{center}%
+		\ifx\paperName\undefined%
+		\vskip 10pt%
+		\else%
+		\vskip 20pt%
+		\fi
+	\end{titlepage}
+	\normalfont\normalsize%
+}
 \renewcommand{\maketitle}{
-	\ifx\FHVtitlePage\undefined
-		\ifthenelse{\equal{\FHVmode}{\thesis}}{
-			\maketitleThesis%
-		}{%
-			\maketitleReport
-		}%
+	\ifx\FHVmode\paper
+		\twocolumn[{%
+			\begin{@twocolumnfalse}
+				\maketitlePaper
+			\end{@twocolumnfalse}
+		}]
+		\pagenumbering{arabic}
 	\else
-		\ifthenelse{\equal{\FHVtitlePage}{fhv}}{%
-			\maketitleThesisFHV
-		}{}
-		\ifthenelse{\equal{\FHVtitlePage}{minimal}}{%
-			\maketitleMinimal
-		}{}%
+		\ifx\FHVtitlePage\undefined
+			\ifthenelse{\equal{\FHVmode}{\thesis}}{
+				\maketitleThesis%
+			}{%
+				\maketitleReport
+			}%
+		\else
+			\ifthenelse{\equal{\FHVtitlePage}{fhv}}{%
+				\maketitleThesisFHV
+			}{}
+			\ifthenelse{\equal{\FHVtitlePage}{minimal}}{%
+				\maketitleMinimal
+			}{}%
+		\fi
+		\restoregeometry
 	\fi
-	\aftergroup\restoregeometry
 }

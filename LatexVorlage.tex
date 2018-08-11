@@ -90,52 +90,48 @@
 			\texttt{Teletype: \ttdefault}
 		\end{envDebug}
 		%
-		\paperHeader
+		\begin{envModeNot}[\paper]
 		%
-		\begin{envModeMulticols}[\paper]
+		% evtl. Sperrvermerkseite
+		% nur in begründeten Ausnahmefällen verwenden
+		% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
 		%
-			\begin{envModeNot}[\paper]
-			%
-			% evtl. Sperrvermerkseite
-			% nur in begründeten Ausnahmefällen verwenden
-			% Aufgrund gesetzlicher Bestimmungen ist eine Sperre maximal für fünf Jahre möglich
-			%
-			\hypersetup{pageanchor=false}
-			\sperrvermerk{5}
-			%
-			\maketitle % creates the title page
-			\hypersetup{pageanchor=true}
-			%
-			\end{envModeNot}
-			\begin{envModeNot}[\paper]
-			\pagenumbering{Roman} 
-			%
-			% Abstracts
-			\subfile{./tex/Dedication.tex}
-			%
-			\subfile{./tex/Widmung.tex}
-			%
-			\subfile{./tex/Kurzreferat.tex}
-			\subfile{./tex/Abstract.tex}
-			%
-			\subfile{./tex/Preface_Acknowledgement.tex}
-			\subfile{./tex/Vorwort.tex}
-			\newpage
-			%
-			\fhvlists
-			\end{envModeNot}
-			%
-			% INSERT your .tex files
-			%
-			%\subfile{./tex/Hauptteil.tex}
-			%\subfile{./tex/xxx.tex}
-			\subfile{./tex/Examples.tex}
-			%
-			% END INSERT
-			%
-			\glossaryAndBibliography
-			%
-		\end{envModeMulticols}
+		\hypersetup{pageanchor=false}
+		\sperrvermerk{5}
+		%
+		\end{envModeNot}
+		%
+		\maketitle % creates the title page
+		%
+		\begin{envModeNot}[\paper]
+		%
+		\hypersetup{pageanchor=true}
+		\pagenumbering{Roman} 
+		%
+		% Abstracts
+		\subfile{./tex/Dedication.tex}
+		%
+		\subfile{./tex/Widmung.tex}
+		%
+		\subfile{./tex/Kurzreferat.tex}
+		\subfile{./tex/Abstract.tex}
+		%
+		\subfile{./tex/Preface_Acknowledgement.tex}
+		\subfile{./tex/Vorwort.tex}
+		\newpage
+		%
+		\fhvlists
+		\end{envModeNot}
+		%
+		% INSERT your .tex files
+		%
+		%\subfile{./tex/Hauptteil.tex}
+		%\subfile{./tex/xxx.tex}
+		\subfile{./tex/Examples.tex}
+		%
+		% END INSERT
+		%
+		\glossaryAndBibliography
 		%
 		% uncomment this if you like a short CV
 		% \subfile{./tex/Lebenslauf.tex}
