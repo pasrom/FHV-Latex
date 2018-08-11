@@ -90,8 +90,6 @@
 			\texttt{Teletype: \ttdefault}
 		\end{envDebug}
 		%
-		\paperHeader
-		%
 		\begin{envModeMulticols}[\paper]
 		%
 			\begin{envModeNot}[\paper]
@@ -103,11 +101,13 @@
 			\hypersetup{pageanchor=false}
 			\sperrvermerk{5}
 			%
-			\maketitle % creates the title page
-			\hypersetup{pageanchor=true}
-			%
 			\end{envModeNot}
+			%
+			\maketitle % creates the title page
+			%
 			\begin{envModeNot}[\paper]
+			%
+			\hypersetup{pageanchor=true}
 			\pagenumbering{Roman} 
 			%
 			% Abstracts
