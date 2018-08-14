@@ -4,6 +4,29 @@
 	urlseen = {Zugriff am:}, 
 }
 %
+% Hrsg. Patch https://www.mrunix.de/forums/showthread.php?71869-DRINGEND-Biblatex-(Hrsg-)
+%
+\renewbibmacro*{bbx:editor}[1]{%
+	\ifboolexpr{
+		test \ifuseeditor
+		and
+		not test {\ifnameundef{editor}}
+	}
+	{\usebibmacro{bbx:dashcheck}
+		{\bibnamedash}
+		{\printnames{editor}%
+			\setunit{\addspace}% statt: \setunit{\addcomma\space}
+			\usebibmacro{bbx:savehash}}%
+		\printtext[parens]{\usebibmacro{#1}}% "Hrsg." in Klammern –*Originalzeile: \usebibmacro{#1}
+		\clearname{editor}%
+		%		\setunit{\addspace}
+	}%
+	{\global\undef\bbx@lasthash
+		\usebibmacro{labeltitle}%
+		%		\setunit*{\addspace}
+	}%
+	\usebibmacro{date+extrayear}}
+%
 % http://tex.stackexchange.com/questions/54644/name-delimiters-in-biblatex
 %
 \AtBeginBibliography{%
