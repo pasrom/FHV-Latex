@@ -1,10 +1,14 @@
 %
+ \usepackage{scrhack}
+%
 % https://tex.stackexchange.com/questions/289734/special-package-combination-gives-no-room-for-new-write
 \usepackage{morewrites}
 \morewritessetup{allocate=10}
 %
 % we need this first
 \usepackage{ifthen}
+%
+\usepackage{listings}
 %
 \ifthenelse{\equal{\FHVmode}{\presentations}}%
 {
@@ -55,7 +59,6 @@
 \usepackage{mathtools}
 %labels anzeigen
 %\usepackage{showlabels}
- \usepackage{scrhack}
 % for the appendix patch needed
 \usepackage{appendix}
 %eps to pdf automatic
