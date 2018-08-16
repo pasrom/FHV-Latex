@@ -3,6 +3,7 @@
 %
  \usepackage{scrhack}
 %
+\usepackage[titles]{tocloft}
 % https://tex.stackexchange.com/questions/289734/special-package-combination-gives-no-room-for-new-write
 \usepackage{morewrites}
 \morewritessetup{allocate=10}
@@ -15,7 +16,62 @@
 	\renewcommand{\@tocrmarg}{3.5em}
 \makeatother
 %
+% https://tex.stackexchange.com/questions/396661/list-of-algorithms-not-spaced-like-list-of-figures-tables
+%
+%\makeatletter
+%\patchcmd{\listof}% <cmd>
+%{\float@listhead}% <search>
+%{\@namedef{l@#1}{\l@figure}\float@listhead}% <replace>
+%{}{}% <success><failure>
+%\makeatother
+%
+% https://stackoverflow.com/a/3029507
+%
+%\makeatletter
+%\let\my@chapter\@chapter
+%\renewcommand*{\@chapter}{%
+%%	\addtocontents{lol}{\protect\addvspace{35pt}}%
+%	\addtocontents{loa}{\protect\addvspace{0pt}}%
+%	\my@chapter}
+%\makeatother
+%
+\ifthenelse{\equal{\FHVmode}{\paper}}{%
+	\usepackage[linesnumbered,ruled,commentsnumbered,\newLanguage]{algorithm2e}%
+}{%
+	\usepackage[linesnumbered,ruled,commentsnumbered,algochapter,\newLanguage]{algorithm2e}%
+}
+%
+%\RedeclareSectionCommand{chapter}
+%
 \usepackage{listings}
+%
+% https://tex.stackexchange.com/a/381303
+%
+\makeatletter
+\renewcommand*\l@algocf{\l@figure}
+%\renewcommand*\l@algocf{\@dottedtocline{1}{1em}{3em}}
+\renewcommand*\l@lstlisting{\l@figure}
+\makeatother
+%
+\makeatletter
+\addtocontents{loa}{\protect\addvspace{30pt}}%
+\renewcommand\listofalgorithms{%
+	\chapter*{\listalgorithmcfname}%
+%		\protect\vspace{10pt}%
+		\setlength{\parskip}{0pt}%
+		\@starttoc{loa}%
+}
+\makeatother
+%
+% https://tex.stackexchange.com/a/88563
+%
+%\makeatletter
+%\patchcmd{\@chapter}% <cmd>
+%{\chaptermark{#1}}% <search>
+%{\chaptermark{#1}%	
+%	\addtocontents{loa}{\protect\addvspace{10\p@}}}% replace
+%{}{}% <success><failure>
+%\makeatother
 %
 \ifthenelse{\equal{\FHVmode}{\presentations}}%
 {
@@ -38,8 +94,6 @@
 {\pagestyle{headings}}%
 %
 \RequirePackage{currfile}
-%
-\usepackage[linesnumbered,ruled,commentsnumbered,\newLanguage]{algorithm2e}
 %
 % load after algorithm2e ref: https://www.mrunix.de/forums/showthread.php?71717-Algorithm2e-Zeilennummern-Bug
 \usepackage[T1]{fontenc}
@@ -196,6 +250,7 @@
 % config as late as possible (https://golatex.de/algorithm2e-und-parindent-t13310.html)
 % 
 	\KOMAoptions{parskip=half-}
+%	\setlength{\parindent}{0pt} % better use this, to prevent missbehaving of the algorithm2e package (the LOA)
 \fi
 %
 \ifthenelse{\equal{\debug}{true}}{
