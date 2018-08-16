@@ -129,6 +129,7 @@
 \newcommand{\sperrvermerk}[1]
 {
 \begin{envMode}[\thesis]
+	\hypersetup{pageanchor=false}
 	% add list of todos
 	\listoftodos
 	\ifthenelse{\equal{\getLanguage}{english}}{%
@@ -634,6 +635,7 @@
 	\normalfont\normalsize%
 }
 \renewcommand{\maketitle}{
+	\hypersetup{pageanchor=false}
 	\ifx\FHVmode\paper
 		\twocolumn[{%
 			\begin{@twocolumnfalse}
