@@ -211,7 +211,7 @@
 	\iftotallstlistings
 		\cleardoublepage
 		\phantomsection
-		\addcontentsline{toc}{chapter}{\lstlistlistingname}
+		%\addcontentsline{toc}{chapter}{\lstlistlistingname}
 		\newpage
 		\lstlistoflistings
 	\fi
@@ -223,6 +223,7 @@
 		\listofalgorithms
 	\fi
 	\newpage
+	%\setlength\parskip{\bigskipamount}
 	\citetrackertrue\pagetrackertrue\backtrackertrue
 	% start arabic page numbering from here
 	\pagenumbering{arabic}
