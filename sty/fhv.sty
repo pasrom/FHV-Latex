@@ -10,6 +10,11 @@
 % we need this first
 \usepackage{ifthen}
 %
+\makeatletter
+	\renewcommand{\@pnumwidth}{2.5em}
+	\renewcommand{\@tocrmarg}{3.5em}
+\makeatother
+%
 \usepackage{listings}
 %
 \ifthenelse{\equal{\FHVmode}{\presentations}}%
