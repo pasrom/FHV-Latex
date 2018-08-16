@@ -2,8 +2,6 @@
 \usepackage{etoolbox} %
 %
  \usepackage{scrhack}
-%
-\usepackage[titles]{tocloft}
 % https://tex.stackexchange.com/questions/289734/special-package-combination-gives-no-room-for-new-write
 \usepackage{morewrites}
 \morewritessetup{allocate=10}
@@ -11,10 +9,15 @@
 % we need this first
 \usepackage{ifthen}
 %
+\ifthenelse{\equal{\FHVmode}{\presentations}}{}{%
+%
+\usepackage[titles]{tocloft}
+%
 \makeatletter
 	\renewcommand{\@pnumwidth}{2.5em}
 	\renewcommand{\@tocrmarg}{3.5em}
 \makeatother
+}
 %
 % https://tex.stackexchange.com/questions/396661/list-of-algorithms-not-spaced-like-list-of-figures-tables
 %
@@ -35,7 +38,7 @@
 %	\my@chapter}
 %\makeatother
 %
-\ifthenelse{\equal{\FHVmode}{\paper}}{%
+\ifthenelse{\equal{\FHVmode}{\paper} \OR \equal{\FHVmode}{\presentations}}{%
 	\usepackage[linesnumbered,ruled,commentsnumbered,\newLanguage]{algorithm2e}%
 }{%
 	\usepackage[linesnumbered,ruled,commentsnumbered,algochapter,\newLanguage]{algorithm2e}%
@@ -44,6 +47,8 @@
 %\RedeclareSectionCommand{chapter}
 %
 \usepackage{listings}
+%
+%\ifthenelse{\equal{\FHVmode}{\presentations}}{}{%
 %
 % https://tex.stackexchange.com/a/381303
 %
@@ -72,6 +77,8 @@
 %	\addtocontents{loa}{\protect\addvspace{10\p@}}}% replace
 %{}{}% <success><failure>
 %\makeatother
+%
+%}
 %
 \ifthenelse{\equal{\FHVmode}{\presentations}}%
 {
