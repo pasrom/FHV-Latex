@@ -7,6 +7,7 @@ branches:
   only:
     - master
     - rework-paper
+    - fix-lol-loa
 sudo: required
 
 env:

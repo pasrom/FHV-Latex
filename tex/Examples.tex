@@ -217,6 +217,21 @@ begin
 end;
 \end{lstlisting}
 %
+\begin{lstlisting}[caption={example}]
+for i:=maxint to 0 do
+begin
+{ comment } 
+end;
+for i:=maxint to 0 do
+begin
+{ comment }
+end;
+for i:=maxint to 0 do
+begin
+{ comment }
+end;
+\end{lstlisting}
+%
 Line \ref{comment a} shows a comment. Die Escape Operatoren können unter \enquote{./sty/Listings.sty} geändert werden. 
 %
 \if\paper\FHVmode
@@ -276,6 +291,25 @@ Der \autoref{algo: first algo} ist gut.\par
 	}
 	\unterschrift{How to write algorithms}{\url{https://en.wikibooks.org/wiki/LaTeX/Algorithms}}{}
 	\label{algo: first algo}
+\end{algorithm}
+%
+\begin{algorithm}
+	\SetAlgoNoLine
+	\DontPrintSemicolon
+	\KwData{this text}
+	\KwResult{how to write algorithm with \LaTeX2e }
+	initialization\;
+	\While{not at end of this document}{
+		read current\;
+		\eIf{understand}{
+			go to next section\;
+			current section becomes this one\;
+		}{
+			go back to the beginning of current section\;
+		}
+	}
+	\unterschrift{How to write algorithms}{\url{https://en.wikibooks.org/wiki/LaTeX/Algorithms}}{}
+	\label{algo: second algo}
 \end{algorithm}
 %
 \if\paper\FHVmode

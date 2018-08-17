@@ -1,10 +1,84 @@
 %
+\usepackage{etoolbox} %
+%
+ \usepackage{scrhack}
 % https://tex.stackexchange.com/questions/289734/special-package-combination-gives-no-room-for-new-write
 \usepackage{morewrites}
 \morewritessetup{allocate=10}
 %
 % we need this first
 \usepackage{ifthen}
+%
+\ifthenelse{\equal{\FHVmode}{\presentations}}{}{%
+%
+\usepackage[titles]{tocloft}
+%
+\makeatletter
+	\renewcommand{\@pnumwidth}{2.5em}
+	\renewcommand{\@tocrmarg}{3.5em}
+\makeatother
+}
+%
+% https://tex.stackexchange.com/questions/396661/list-of-algorithms-not-spaced-like-list-of-figures-tables
+%
+%\makeatletter
+%\patchcmd{\listof}% <cmd>
+%{\float@listhead}% <search>
+%{\@namedef{l@#1}{\l@figure}\float@listhead}% <replace>
+%{}{}% <success><failure>
+%\makeatother
+%
+% https://stackoverflow.com/a/3029507
+%
+%\makeatletter
+%\let\my@chapter\@chapter
+%\renewcommand*{\@chapter}{%
+%%	\addtocontents{lol}{\protect\addvspace{35pt}}%
+%	\addtocontents{loa}{\protect\addvspace{0pt}}%
+%	\my@chapter}
+%\makeatother
+%
+\ifthenelse{\equal{\FHVmode}{\paper} \OR \equal{\FHVmode}{\presentations}}{%
+	\usepackage[linesnumbered,ruled,commentsnumbered,\newLanguage]{algorithm2e}%
+}{%
+	\usepackage[linesnumbered,ruled,commentsnumbered,algochapter,\newLanguage]{algorithm2e}%
+}
+%
+%\RedeclareSectionCommand{chapter}
+%
+\usepackage{listings}
+%
+%\ifthenelse{\equal{\FHVmode}{\presentations}}{}{%
+%
+% https://tex.stackexchange.com/a/381303
+%
+\makeatletter
+\renewcommand*\l@algocf{\l@figure}
+%\renewcommand*\l@algocf{\@dottedtocline{1}{1em}{3em}}
+\renewcommand*\l@lstlisting{\l@figure}
+\makeatother
+%
+\makeatletter
+\addtocontents{loa}{\protect\addvspace{30pt}}%
+\renewcommand\listofalgorithms{%
+	\chapter*{\listalgorithmcfname}%
+%		\protect\vspace{10pt}%
+		\setlength{\parskip}{0pt}%
+		\@starttoc{loa}%
+}
+\makeatother
+%
+% https://tex.stackexchange.com/a/88563
+%
+%\makeatletter
+%\patchcmd{\@chapter}% <cmd>
+%{\chaptermark{#1}}% <search>
+%{\chaptermark{#1}%	
+%	\addtocontents{loa}{\protect\addvspace{10\p@}}}% replace
+%{}{}% <success><failure>
+%\makeatother
+%
+%}
 %
 \ifthenelse{\equal{\FHVmode}{\presentations}}%
 {
@@ -27,8 +101,6 @@
 {\pagestyle{headings}}%
 %
 \RequirePackage{currfile}
-%
-\usepackage[linesnumbered,ruled,commentsnumbered,\newLanguage]{algorithm2e}
 %
 % load after algorithm2e ref: https://www.mrunix.de/forums/showthread.php?71717-Algorithm2e-Zeilennummern-Bug
 \usepackage[T1]{fontenc}
@@ -55,7 +127,6 @@
 \usepackage{mathtools}
 %labels anzeigen
 %\usepackage{showlabels}
- \usepackage{scrhack}
 % for the appendix patch needed
 \usepackage{appendix}
 %eps to pdf automatic
@@ -81,7 +152,7 @@
 \usepackage{footnote}
 \usepackage{threeparttable}
 
-\usepackage[draft=false,kerning=true]{microtype}
+\usepackage[draft=false,kerning=true,babel]{microtype}
 \usepackage{lscape} % landscape verwenden
 % use other pdfs in this document
 \usepackage{pdfpages}
@@ -120,11 +191,10 @@
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{footnotebackref}
 \usepackage{nameref}
-\usepackage{etoolbox} % Paket unbekannter Funktion, ohne funktioniert aber das hinzufügen weiterer Umbruchstellen für das URL-Paket in der nächsten Zeile nicht!
 {\setlength{\emergencystretch}{1em}%
 \appto\UrlBreaks{\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9}
 %
-\usepackage[nottoc]{tocbibind}  % no `Contents` in TOC
+%\usepackage[nottoc]{tocbibind}  % no `Contents` in TOC
 %
 \usepackage{blindtext}
 %
@@ -180,13 +250,18 @@
 \usepackage{./sty/Commands}
 \usepackage{./sty/Paper}
 \usepackage{./sty/Environments}
-\if\presentations\FHVmode
-\usepackage{./sty/Presentation}
-\else
+\if\presentations\FHVmode%
+	\usepackage{./sty/Presentation}%
+\else%
 %
 % config as late as possible (https://golatex.de/algorithm2e-und-parindent-t13310.html)
-% 
-	\KOMAoptions{parskip=half-}
+%
+	\if\FHVmode\paper%
+		\usepackage{indentfirst}% https://tex.stackexchange.com/a/39228
+	\else%
+		\KOMAoptions{parskip=half-}%
+		%\setlength{\parindent}{0pt} % better use this, to prevent missbehaving of the algorithm2e package (the LOA)
+	\fi%
 \fi
 %
 \ifthenelse{\equal{\debug}{true}}{
