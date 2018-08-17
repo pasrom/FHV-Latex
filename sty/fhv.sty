@@ -255,9 +255,13 @@
 \else%
 %
 % config as late as possible (https://golatex.de/algorithm2e-und-parindent-t13310.html)
-% 
-	\KOMAoptions{parskip=half-}
-%	\setlength{\parindent}{0pt} % better use this, to prevent missbehaving of the algorithm2e package (the LOA)
+%
+	\if\FHVmode\paper%
+		\usepackage{indentfirst}% https://tex.stackexchange.com/a/39228
+	\else%
+		\KOMAoptions{parskip=half-}%
+		%\setlength{\parindent}{0pt} % better use this, to prevent missbehaving of the algorithm2e package (the LOA)
+	\fi%
 \fi
 %
 \ifthenelse{\equal{\debug}{true}}{
