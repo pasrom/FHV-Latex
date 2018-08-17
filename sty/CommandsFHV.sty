@@ -96,24 +96,24 @@
 	\begin{envLanguage}[ngerman]
 		\chapter*{Eidesstattliche Erklärung}
 		Ich erkläre hiermit an Eides statt, dass ich vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
-	\end{envLanguage}
+	\end{envLanguage}%
 	%
-	\par\vspace{3cm}
+	\par\vspace{3cm}%
 	%
-	\begin{minipage}[t]{0.5\columnwidth}
-		\begin{envLanguage}[english]
-			Dornbirn, \todayX
-		\end{envLanguage}
-		\begin{envLanguage}[ngerman]
-			Dornbirn, am \todayX
-		\end{envLanguage}
-	\end{minipage}\hspace{-\parfillskip}
-	\begin{minipage}[t][][t]{0.5\columnwidth}
-		\begin{flushright}
-			\getAuthor
-		\end{flushright}
-	\end{minipage}\hspace{-\parfillskip}
-\end{envMode}
+	\begin{minipage}[t]{0.5\columnwidth}%
+		\begin{envLanguage}[english]%
+			Dornbirn, \todayX%
+		\end{envLanguage}%
+		\begin{envLanguage}[ngerman]%
+			Dornbirn, am \todayX%
+		\end{envLanguage}%
+	\end{minipage}\hspace{-\parfillskip}%
+	\begin{minipage}[t][][t]{0.5\columnwidth}%
+		\begin{flushright}%
+			\getAuthor%
+		\end{flushright}%
+	\end{minipage}\hspace{-\parfillskip}%
+\end{envMode}%
 }
 %
 \ifthenelse{\equal{\wOrM}{m}}
@@ -144,27 +144,27 @@
 		Auf Wunsch der Firma \getCompany ist die vorliegende Arbeit bis zum \SperrvermerkDate{#1} für die öffentliche Nutzung zu sperren.\par
 %
 		Veröffentlichung, Vervielfältigung und Einsichtnahme sind ohne ausdrückliche Genehmigung der oben genannten Firma und \VerfasserA nicht gestattet. Der Titel der Arbeit sowie das Kurzreferat / Abstract dürfen jedoch veröffentlicht werden.\par
-}
+}%
 %
-	\vspace{3cm}
+	\vspace{3cm}%
 %
-	\begin{minipage}[t]{0.5\columnwidth}
-		Dornbirn, \todayX
-	\end{minipage}\hspace{-\parfillskip}
-	\begin{minipage}[t][][t]{0.5\columnwidth}
-		\begin{flushright}
+	\begin{minipage}[t]{0.5\columnwidth}%
+		Dornbirn, \todayX%
+	\end{minipage}\hspace{-\parfillskip}%
+	\begin{minipage}[t][][t]{0.5\columnwidth}%
+		\begin{flushright}%
 			\ifthenelse{\equal{\getLanguage}{english}}{%
-				signature of the author\par
-				\vspace{1.5cm}
-				company stamp
+				signature of the author\par%
+				\vspace{1.5cm}%
+				company stamp%
 			}{
-				Unterschrift \VerfasserB\par
-				\vspace{1.5cm}
-				Firmenstempel
-			}
-		\end{flushright}
-	\end{minipage}\hspace{-\parfillskip}
-\end{envMode}
+				Unterschrift \VerfasserB\par%
+				\vspace{1.5cm}%
+				Firmenstempel%
+			}%
+		\end{flushright}%
+	\end{minipage}\hspace{-\parfillskip}%
+\end{envMode}%
 }
 %
 \newcommand{\newGlossaryEntryNEW}[4]
