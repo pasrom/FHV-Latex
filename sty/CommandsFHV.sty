@@ -41,7 +41,7 @@
 \newcommand{\setSubject}[1]{\renewcommand{\getSubject}{#1\xspace}}
 \newcommand{\setDegree}[1]{%
 	\renewcommand{\getDegree}{#1}%
-	\IfSubStr{\getDegree}{Master}{\def\studyType{MEM\xspace}}{\def\studyType{MEB\xspace}}%
+	\IfSubStr{\getDegree}{Master}{\def\studyType{MEM}}{\def\studyType{MEB}}%
 }
 \newcommand{\getStudyprogram}{Mechatronics Master\xspace}
 \newcommand{\setStudyprogram}[1]{\renewcommand{\getStudyprogram}{#1\xspace}}
