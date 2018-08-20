@@ -1,5 +1,7 @@
 %
 \if\FHVmode\paper
+	% for multicols sep
+	\setlength{\columnsep}{7mm}
 	% align environment
 	\setlength{\abovedisplayskip}{0pt}
 	\setlength{\belowdisplayskip}{0pt}
@@ -43,4 +45,25 @@
 	\setlength{\footnotemargin}{0pt} %fussnoten nicht einruecken!
 	%
 	\renewcommand{\arraystretch}{0.8}%tabelle vertikaler abstand verringern
+	% Bib. space settings
+	\setlength{\bibhang}{6.3mm} 
+%	\setlength\bibitemsep{-6pt}
+	\setlength\bibnamesep{0pt}
+	% Section space settings
+	\RedeclareSectionCommand[
+	beforeskip=9pt,
+	afterskip=9pt]{section}
+	\RedeclareSectionCommand[
+	beforeskip=9pt,
+	afterskip=9pt]{subsection}
+	\RedeclareSectionCommand[%
+	beforeskip=9pt,%
+	afterskip=-2pt%
+	]{paragraph}
+	%
+\else
+	%\setlength\bibitemsep{1.5\itemsep}
+	\setlength\bibparsep{1.5\itemsep}
+	%\setlength\bibinitsep{1.5\itemsep}
+	\setlength\bibnamesep{1.5\itemsep}
 \fi
