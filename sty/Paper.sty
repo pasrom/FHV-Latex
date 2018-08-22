@@ -1,45 +1,49 @@
 %
-\if\FHVmode\paper
+\if\FHVmode\paper%
 	% for multicols sep
-	\setlength{\columnsep}{7mm}
+	\ifx\paperStyle\undefined%
+		\setlength{\columnsep}{7mm}%
+	\fi%
 	% align environment
-	\setlength{\abovedisplayskip}{0pt}
-	\setlength{\belowdisplayskip}{0pt}
-	\setlength{\abovedisplayshortskip}{0pt}
-	\setlength{\belowdisplayshortskip}{0pt}
+	\setlength{\abovedisplayskip}{0pt}%
+	\setlength{\belowdisplayskip}{0pt}%
+	\setlength{\abovedisplayshortskip}{0pt}%
+	\setlength{\belowdisplayshortskip}{0pt}%
+	\setlength{\belowdisplayskip}{0pt}%
+	\setlength{\belowdisplayshortskip}{0pt}%
 	\setlength{\jot}{0pt}% tweak
-	\SetAlFnt{\scriptsize}
+	\SetAlFnt{\scriptsize}%
 	%
-	\setlist[itemize]{leftmargin=*}
-	\setlist[enumerate]{leftmargin =*}
-	\setlist[description]{style=unboxed,leftmargin=0cm}
-	\setkomafont{section}{\normalsize}
-	\setlist{itemsep=1pt,topsep=2pt,parsep=0pt}
+	\setlist[itemize]{leftmargin=*}%
+	\setlist[enumerate]{leftmargin =*}%
+	\setlist[description]{style=unboxed,leftmargin=0cm}%
+	\setkomafont{section}{\normalsize}%
+	\setlist{itemsep=1pt,topsep=2pt,parsep=0pt}%
 	% Bilder Abstand
-	\setlength{\textfloatsep}{0pt}
-	\setlength{\floatsep}{0pt}
-	\setlength{\intextsep}{9pt}
+	\setlength{\textfloatsep}{0pt}%
+	\setlength{\floatsep}{0pt}%
+	\setlength{\intextsep}{\spaceNine}%
 	% Mathe Gleichung Abstand
-	\setlength\abovedisplayshortskip{0pt}
-	\setlength\belowdisplayshortskip{0pt}
-	\setlength\abovedisplayskip{0pt}
-	\setlength\belowdisplayskip{0pt}
+	\setlength\abovedisplayshortskip{0pt}%
+	\setlength\belowdisplayshortskip{0pt}%
+	\setlength\abovedisplayskip{0pt}%
+	\setlength\belowdisplayskip{0pt}%
 	% Abstand Caption
-	\setlength{\abovecaptionskip}{2pt}
-	\setlength{\belowcaptionskip}{0pt}
-	\captionsetup[subfigure]{aboveskip=2pt}
-	\captionsetup[subfigure]{belowskip=0pt}
-	\setlength{\parskip}{0pt}
+	\setlength{\abovecaptionskip}{2pt}%
+	\setlength{\belowcaptionskip}{0pt}%
+	\captionsetup[subfigure]{aboveskip=2pt}%
+	\captionsetup[subfigure]{belowskip=0pt}%
+	\setlength{\parskip}{0pt}%
 	%
-	\addto\captionsngerman{
-		\renewcommand{\figurename}{Abb.}
-		\renewcommand{\tablename}{Tab.}
-	}
-	\setkomafont{captionlabel}{\normalsize\bfseries} 
+	\addto\captionsngerman{%
+		\renewcommand{\figurename}{Abb.}%
+		\renewcommand{\tablename}{Tab.}%
+	}%
+	\setkomafont{captionlabel}{\normalsize\bfseries} %
 	\renewcaptionname{ngerman}{\figurename}{Abb.}% nach Bedarf
 	\renewcaptionname{ngerman}\figureautorefname{Abb.}
 	\renewcaptionname{ngerman}{\tablename}{Tab.}% nach Bedarf
-	\renewcaptionname{ngerman}\tableautorefname{Tab.}
+	\renewcaptionname{ngerman}\tableautorefname{Tab.}%
 	%
 	\setlength{\parindent}{6.3mm} 
 	\setlength{\footnotemargin}{0pt} %fussnoten nicht einruecken!
@@ -51,13 +55,13 @@
 	\setlength\bibnamesep{0pt}
 	% Section space settings
 	\RedeclareSectionCommand[
-	beforeskip=9pt,
-	afterskip=9pt]{section}
+	beforeskip=\spaceNine,
+	afterskip=\spaceNine]{section}
 	\RedeclareSectionCommand[
-	beforeskip=9pt,
-	afterskip=9pt]{subsection}
+	beforeskip=\spaceNine,
+	afterskip=\spaceNine]{subsection}
 	\RedeclareSectionCommand[%
-	beforeskip=9pt,%
+	beforeskip=\spaceNine,%
 	afterskip=-2pt%
 	]{paragraph}
 	%

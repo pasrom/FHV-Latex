@@ -6,8 +6,9 @@
 % 9: paper
 %
 \ifx\FHVmode\undefined
-	\def\FHVmode{2}
+	\def\FHVmode{9}
 \fi
+%\def\paperStyle{fhv}
 %
 \newcommand{\version}{v0.0}
 %
@@ -18,7 +19,7 @@
 \input{./sty/overallDefines.sty}
 %
 \documentclass[\documentclassOptions]{\komaScriptClass}
-%
+%\part{title}
 \usepackage{./sty/fhv}
 %
 \makeglossaries
@@ -48,6 +49,9 @@
 % hack to get the caption wider for a table
 %
 \renewcommand{\TPTminimum}{\linewidth}
+%
+\usepackage[sfdefault,lf]{carlito}
+\usepackage{sansmathfonts}
 %
 \begin{document}
 	%
@@ -122,18 +126,25 @@
 		\fhvlists
 		\end{envModeNot}
 		%
+		\begin{multicols}{2}[][7mm]\raggedcolumns%
+		%
 		% INSERT your .tex files
 		%
-		%\subfile{./tex/Hauptteil.tex}
-		%\subfile{./tex/xxx.tex}
-		\subfile{./tex/Examples.tex}
+		\subfile{./tex/Paper_FHV_Campus/0b-Abstract.tex}
+		\subfile{./tex/Paper_FHV_Campus/1-Einleitung.tex}
+		\subfile{./tex/Paper_FHV_Campus/2-Problemst-Aufgabenstellung.tex}
+		\subfile{./tex/Paper_FHV_Campus/3-Materialien-Methoden.tex}
+		\subfile{./tex/Paper_FHV_Campus/4-Praktische-Durchfuerung.tex}
+		\subfile{./tex/Paper_FHV_Campus/5-Ergebnisse.tex}
+		\subfile{./tex/Paper_FHV_Campus/6-Zusammenfassung-Ausblick.tex}
 		%
 		% END INSERT
 		%
 		\glossaryAndBibliography
+		\end{multicols}%
 		%
 		% uncomment this if you like a short CV
-		% \subfile{./tex/Lebenslauf.tex}
+		\subfile{./tex/Lebenslauf.tex}
 		%
 		\begin{envModeNot}[\paper]
 			\newpage

@@ -1,32 +1,50 @@
-\documentclass[./\jobname.tex]{subfiles} 
-\begin{document}
-\begin{envMode}[\paper]
+\documentclass[./\jobname.tex]{subfiles}%
+\begin{document}%
+\begin{envMode}[\paper]%
 %
-	\setkomafont{section}{\large}
-	\RedeclareSectionCommand[
-	beforeskip=10pt,
-	afterskip=9pt]{section}
-	\section*{Autor}
-	\vskip 9pt
-	%
-	\noindent
-	\begin{minipage}{0.1\columnwidth}%
-		\frame{\includegraphics[width=1\textwidth]{example-image-a}}
-	\end{minipage}\hspace{5mm}\hfill
-	\begin{minipage}{0.9\columnwidth}%
-		\authorName \authorSurname%
-		\vskip 9pt%
-		Firma, %
-		Straße Hausnummer, %
-		Postleitzahl Ort, %
-		tel. nummer, %
-		\href{mailto:mail@address.com}{mail@address.com}%
-		\vskip 9pt%
+\def\OwnDot{\;$\vcenter{\hbox{\scalebox{.5}{$\bullet$}}}$\;}%
+\def\bindestrich{\,--\,}%
+%
+{\ifx\paperName\undefined%
+\else%
+		\setkomafont{section}{\large}%
+		\RedeclareSectionCommand[%
+		beforeskip=\spaceTen,%
+		afterskip=\spaceNine]{section}%
+\ifx\paperStyle\undefined\else%
+\twocolumn[{\begin{@twocolumnfalse}%
+\fi%
+%	\begin{abstract}
+		\section*{Autor}%
+		\vskip \spaceNine%
+		%
+		\noindent%
+		\begin{minipage}{0.13\textwidth}%
+			\frame{%
+			\begin{adjustbox}{margin=0.05cm 0.05cm 0.05cm 0.05cm}%
+					\includegraphics[width=1\textwidth]{example-image-a}%
+			\end{adjustbox}%
+			}%
+		\end{minipage}\hspace{5mm}\hfill%
+		\begin{minipage}{0.87\textwidth}%
+			\authorName \authorSurname%
+			\vskip \spaceNine%
+			Bachmann electronic GmbH, %
+			Kreuzäckerweg 33, %
+			6800 Feldkirch, %
+%			tel. nummer, %
+			\href{mailto:roman.passler@bachmann.info}{roman.passler@bachmann.info}%
+			\vskip 9pt%
 		\begin{tabular}{@{}ll}
 			2013 – 2016	& Studiengang Mechatronik, FH Vorarlberg, Dornbirn\\ 
 			2011 – 2014	& usw. \(\ldots\)
 		\end{tabular}
-	\end{minipage}
+		\end{minipage}%
+%	\end{abstract}
+\ifx\paperStyle\undefined\else%
+	\end{@twocolumnfalse}}]%
+\fi%
+	\fi}%
 %
-\end{envMode}
-\end{document}
+\end{envMode}%
+\end{document}%

@@ -252,19 +252,36 @@
 		{\printglossary[title=Glossar]} % if no option is supplied the default glossary is printed.
 	}{}
 	%
-	\ifthenelse{\equal{\getLanguage}{english}}%
-	{%
-		\printbibliography[notkeyword=normen,heading=bibintoc]
-	}{%
-		\printbibliography[notkeyword=normen,title={Literaturverzeichnis},heading=bibintoc]
-	}
+	\setlength{\emergencystretch}{3em}
+	\if\FHVmode\paper%
+		\def\SourceName{LITERATURVERZEICHNIS}
+		\ifthenelse{\equal{\getLanguage}{english}}%
+		{%
+			\printbibliography[heading=bibintoc]
+		}{%
+			\printbibliography[title={\SourceName},heading=bibintoc]
+		}
+	\else%
+		\def\SourceName{Literaturverzeichnis}
+		\ifthenelse{\equal{\getLanguage}{english}}%
+		{%
+			\printbibliography[notkeyword=normen,heading=bibintoc]
+		}{%
+			\printbibliography[notkeyword=normen,title={\SourceName},heading=bibintoc]
+		}
+	\fi%
 	%
-	\ifthenelse{\equal{\getLanguage}{english}}%
-	{%
-		\printbibliography[keyword=normen,title={IEEE}, heading=bibintoc]
-	}{%
-		\printbibliography[keyword=normen,title={IEEE Standardverzeichnis}, heading=bibintoc]
-	}%
+	\if\FHVmode\paper%
+%		\def\IeeeSourceName{IEEE STANDARDVERZEICHNIS}
+	\else%
+		\def\IeeeSourceName{IEEE Standardverzeichnis}
+		\ifthenelse{\equal{\getLanguage}{english}}%
+		{%
+			\printbibliography[keyword=normen,title={IEEE}, heading=bibintoc]
+		}{%
+			\printbibliography[keyword=normen,title={\IeeeSourceName}, heading=bibintoc]
+		}%
+	\fi%
 }
 %
 \usepackage{xparse}
@@ -605,13 +622,13 @@
 	\setcounter{page}{2}
 }
 \newcommand{\maketitlePaper}{
-	\pagenumbering{Roman} 
+	\pagenumbering{Roman}
 	\begin{titlepage}
 		\thispagestyle{scrheadings}
 		\ifx\paperName\undefined%
 		\else%
 		\large \noindent \paperName%
-		\vskip 10pt%
+		\vskip \spaceTen%
 		\fi%
 		\begin{center}
 			\textbf{%
@@ -621,15 +638,16 @@
 					FACHHOCHSCHULE VORARLBERG: \\%
 					\fi%
 					\MakeUppercase{\getTitle}}}%\\
-			\vskip 10pt
+			\vskip \spaceTen
 			\textbf{%
 				\large{\authorName \authorSurname}%
 			}%
 		\end{center}%
 		\ifx\paperName\undefined%
-		\vskip 10pt%
+		\vskip \spaceTen%
 		\else%
-		\vskip 20pt%
+		\vskip \spaceTen%
+		\vskip \spaceTen%
 		\fi
 	\end{titlepage}
 	\normalfont\normalsize%
@@ -637,11 +655,16 @@
 \renewcommand{\maketitle}{
 	\hypersetup{pageanchor=false}
 	\ifx\FHVmode\paper
-		\twocolumn[{%
-			\begin{@twocolumnfalse}
-				\maketitlePaper
-			\end{@twocolumnfalse}
-		}]
+		\ifx\paperStyle\undefined%
+			\let\endtitlepage\relax
+			\maketitlePaper%
+		\else%
+			\twocolumn[{%
+			\begin{@twocolumnfalse}%
+				\maketitlePaper%
+			\end{@twocolumnfalse}%
+			}]%
+		\fi%
 		\pagenumbering{arabic}
 	\else
 		\ifx\FHVtitlePage\undefined

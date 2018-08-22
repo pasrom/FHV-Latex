@@ -43,8 +43,10 @@
 %
 % uncomment this if you like a title, e.g. for the mechatronik plattform
 %
-%\def\paperName{KONFERENZ DER MECHATRONIK-PLATTFORM: Smart Factory\\
-%							FH Technikum Wien,  24. November 2016\xspace}
+\ifx\paperStyle\undefined
+\def\paperName{KONFERENZ DER MECHATRONIK-PLATTFORM: Autonome mechatronische Systeme\\
+							FH CAMPUS 02,  22. November 2018\xspace}
+\fi
 %
 % Define if the author is male (m) or female (w)
 %
@@ -101,7 +103,7 @@
 		DIV=calc,%
 %		draft=\debug,%
 		numbers=enddot,%
-		twocolumn,
+		\ifx\paperStyle\undefined\else twocolumn,\fi%
 		bibliography=totocnumbered,%
 	}%
 	\def\biblatexOptions{
@@ -109,6 +111,9 @@
 		style = authoryear,%
 		citestyle = authoryear,%
 		dashed=false,%
+		\ifx\paperStyle\undefined%
+		doi=false,isbn=false,url=false,%
+		\else\fi%
 	}
 \fi
 %
@@ -181,3 +186,7 @@
 	\fi
 }
 %
+\newlength{\spaceNine}
+\newlength{\spaceTen}
+\setlength{\spaceNine}{8.8pt}
+\setlength{\spaceTen}{9.8pt}
