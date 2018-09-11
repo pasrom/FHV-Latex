@@ -37,10 +37,16 @@
 %
 % Notes
 %
-\setbeameroption{show notes on second screen}
-\setbeamertemplate{note page}[plain]
-%\setbeameroption{show only notes}
-\definecolor{bachmannGrau}{cmyk}{.57,.47,.41,.25} 
+\ifx\PresentationMode\PresentationAll
+	\setbeameroption{show notes on second screen}
+	\setbeamertemplate{note page}[plain]
+\fi
+%
+\ifx\PresentationMode\PresentationNotes
+	\setbeamertemplate{note page}[plain]
+	\setbeameroption{show only notes}
+\fi
+%
 \newcommand{\frameTitle}[1]
 {%
 	\frametitle{\textcolor{bachmannGrau}{\textbf{#1}}}%
