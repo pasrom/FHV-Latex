@@ -95,7 +95,7 @@
 	%
 	\begin{envLanguage}[ngerman]
 		\chapter*{Eidesstattliche Erklärung}
-		Ich erkläre hiermit an Eides statt, dass ich vorliegende Arbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
+		Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende Masterthesis selbstständig angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind als solche kenntlich gemacht. Die Arbeit wurde bisher keiner anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
 	\end{envLanguage}%
 	%
 	\par\vspace{3cm}%
@@ -128,22 +128,26 @@
 %
 \newcommand{\sperrvermerk}[1]
 {
-\begin{envMode}[\thesis]
-	\hypersetup{pageanchor=false}
+\begin{envMode}[\thesis]%
+	\hypersetup{pageanchor=false}%
 	% add list of todos
-	\listoftodos
+	\listoftodos%
 	\ifthenelse{\equal{\getLanguage}{english}}{%
-		\chapter*{Blocking Note}
+		\chapter*{Blocking Note}%
 %
-		The Company \getCompany requests that this master thesis should be blocked from public use until \SperrvermerkDate{#1}.\par
+		The Company \getCompany requests that this master thesis should be blocked from public use until \SperrvermerkDate{#1}.\par%
 %
-		Publication, photocopying and viewing may be possible only with consent from the company and the author. The title of the master thesis and the abstract can be published.\par
+		Publication, photocopying and viewing may be possible only with consent from the company and the author. The title of the master thesis and the abstract can be published.\par%
 	}{%
-		\chapter*{Sperrvermerk}
+		\chapter*{Sperrvermerk}%
 %
-		Auf Wunsch der Firma \getCompany ist die vorliegende Arbeit bis zum \SperrvermerkDate{#1} für die öffentliche Nutzung zu sperren.\par
+Auf Wunsch der Firma \getCompany ist die vorliegende Masterarbeit \textit{\getTitle} verfasst von \textit{\authorName \authorSurname} bis zum \SperrvermerkDate{#1} für die öffentliche Nutzung gesperrt.\par%
 %
-		Veröffentlichung, Vervielfältigung und Einsichtnahme sind ohne ausdrückliche Genehmigung der oben genannten Firma und \VerfasserA nicht gestattet. Der Titel der Arbeit sowie das Kurzreferat/Abstract dürfen jedoch veröffentlicht werden.\par
+Veröffentlichung, Vervielfältigung und Einsichtnahme sind ohne ausdrückliche Genehmigung der Firma \getCompany und der Verfasserin bzw. des Verfassers nicht gestattet. Der Titel der Arbeit, das Abstract, die Kurzfassung, die Präsentation im Rahmen der zugehörigen kommissionellen Prüfung und das zugehörige Plakat sind davon ausgenommen.\par%
+%
+%		Auf Wunsch der Firma \getCompany ist die vorliegende Arbeit bis zum \SperrvermerkDate{#1} für die öffentliche Nutzung zu sperren.\par
+%
+%		Veröffentlichung, Vervielfältigung und Einsichtnahme sind ohne ausdrückliche Genehmigung der oben genannten Firma und \VerfasserA nicht gestattet. Der Titel der Arbeit sowie das Kurzreferat/Abstract dürfen jedoch veröffentlicht werden.\par
 }%
 %
 	\vspace{3cm}%

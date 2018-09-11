@@ -1,8 +1,16 @@
-\usetheme{Berkeley}
+%
+% here is a nice overview of the beamer styles: http://deic.uab.es/~iblanes/beamer_gallery/
+% the width defines the left space
+%
+\usetheme[width=2.8\baselineskip]{Berkeley}
 \usecolortheme{seagull}
 \usefonttheme{serif}
 %
-\author{\getAuthor}
+\makeatletter
+	\beamer@headheight=1.75\baselineskip
+\makeatother
+%
+\author{\authorName \authorSurname}
 \title{\getTitle}
 \subtitle{\getSubtitle}
 \logo{%
@@ -32,25 +40,35 @@
 	\usebeamerfont{footline}%
 	\usebeamercolor[fg]{footline}%
 	\hspace{0.5em}%
-	\makebox[0.6cm]{\insertframenumber/16}
+	\makebox[0.6cm]{\insertframenumber/\inserttotalframenumber}
 }
 %
 % Notes
 %
-\setbeameroption{show notes on second screen}
-\setbeamertemplate{note page}[plain]
-%\setbeameroption{show only notes}
-\definecolor{bachmannGrau}{cmyk}{.57,.47,.41,.25} 
+\ifx\PresentationMode\PresentationAll
+	\setbeameroption{show notes on second screen}
+	\setbeamertemplate{note page}[plain]
+\fi
+%
+\ifx\PresentationMode\PresentationNotes
+	\setbeamertemplate{note page}[plain]
+	\setbeameroption{show only notes}
+\fi
+%
 \newcommand{\frameTitle}[1]
 {%
-	\frametitle{\textcolor{bachmannGrau}{\textbf{#1}}}%
+	\frametitle{\textbf{#1}}%
 }
+\setbeamerfont{frametitle}{series=\bfseries}
 %
 \setbeamertemplate{itemize item}[square]
 \setbeamertemplate{itemize subitem}[triangle]
 \setbeamertemplate{itemize subsubitem}[circle]
 \setbeamertemplate{caption}[numbered]
-\setbeamerfont{section in sidebar}{size=\fontsize{1pt}{5}\selectfont}
-\setbeamerfont{subsection in sidebar}{size=\fontsize{1pt}{5}\selectfont}
-\setbeamerfont{subsubsection in sidebar}{size=\fontsize{1pt}{5}\selectfont}
-\setbeamerfont{section in sidebar shaded}{size=\fontsize{1pt}{5}\selectfont}
+\setbeamerfont{section in sidebar}{size=\fontsize{6}{5}\selectfont}
+\setbeamerfont{section in sidebar shaded}{size=\fontsize{6}{5}\selectfont}
+\setbeamerfont{subsection in sidebar}{size=\fontsize{5}{4}\selectfont}
+\setbeamerfont{subsubsection in sidebar}{size=\fontsize{5}{4}\selectfont}
+%
+\usepackage{appendixnumberbeamer}
+%
