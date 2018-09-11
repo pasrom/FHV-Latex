@@ -18,6 +18,33 @@
 	%\note{\Aufgabenstellung}
 }
 %
+\section{Literatur Beispiele} 
+\frame{\frameTitle{Literatur Beispiele}
+	\hfill \\
+	\begin{itemize}
+		\item \textcite{Broster2001}
+		\item \parencite[vgl.][S. 10]{Preemptive2012}
+	\end{itemize} 
+	%\note{\Aufgabenstellung}
+}
+%
+\subsection[Picture]{Beispiel Bild}
+\frame{\frameTitle{Beispiel Bild}
+	\def\bildA{true}
+	\begin{figure}[H]
+		\centering
+		\noindent\adjustbox{max width=0.6\linewidth}{%
+			\subfile{./img/tikz/escon-schaltplan.tex}
+			\unterschrift{Escon}{}{}
+		}
+	\end{figure}
+}
+%
+\begin{frame}[allowframebreaks]
+	\frametitle[Literatur-verzeichnis]{\textbf{Literaturverzeichnis}}
+	\printbibliography[title={Literatur"-verzeichnis},heading=bibintoc]
+\end{frame}
+%
 \section*{Anhang}\addcontentsline{toc}{section}{\par Anhang}
 %
 \appendix
