@@ -20,10 +20,10 @@ git:
   submodules: false
 before_install:
 - git submodule update --init --recursive
-#- docker pull sumdoc/texlive-2017@sha256:5b05b641f2b85329e8123f759282330c1f566a66966f01d491ae024e3a66e521
-#- docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2017@sha256:5b05b641f2b85329e8123f759282330c1f566a66966f01d491ae024e3a66e521 tail -f /dev/null
-- docker pull sumdoc/texlive-2018
-- docker run -d --name ubuntu-test -v $(pwd):/travis sumdoc/texlive-2018 tail -f /dev/null
+#- docker pull sumankhanal/texlive-2017@sha256:5b05b641f2b85329e8123f759282330c1f566a66966f01d491ae024e3a66e521
+#- docker run -d --name ubuntu-test -v $(pwd):/travis sumankhanal/texlive-2017@sha256:5b05b641f2b85329e8123f759282330c1f566a66966f01d491ae024e3a66e521 tail -f /dev/null
+- docker pull sumankhanal/texlive-2018
+- docker run -d --name ubuntu-test -v $(pwd):/travis sumankhanal/texlive-2018 tail -f /dev/null
 - docker exec -t ubuntu-test bash -c "tlmgr update --self"
 - docker exec -t ubuntu-test bash -c "tlmgr update --all"
 - docker ps
