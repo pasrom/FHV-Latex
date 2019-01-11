@@ -9,6 +9,7 @@ branches:
     - rework-paper
     - fix-lol-loa
     - rework-presentation
+    - texlive-2017
 sudo: required
 
 env:
