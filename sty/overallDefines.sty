@@ -55,10 +55,21 @@
 %
 % pdf settings
 %
+\makeatletter
+	\immediate\write18{git log -1 --pretty=format:"\@backslashchar gdef\@backslashchar GITHash{\@percentchar h}\@percentchar n\@backslashchar gdef\@backslashchar GITDate{\@percentchar ad}" --date=short > build/git-info.txt}
+\makeatother
+\input{build/git-info.txt}
+%
 \def\pdfSettings{%
+	%
+	\def\tmpPdfSubject{\ifdefined\GITHash%
+		git-short:~\GITHash%
+	\fi\ifdefined\GITDate%
+		\xmpcomma~git-date:~\GITDate%
+	\fi}
 	\hypersetup{pdftitle={\getTitle},%
 		pdfauthor={\authorSurname\xmpcomma~\authorName},%
-		pdfsubject={},%
+		pdfsubject={\tmpPdfSubject},%
 		pdfkeywords={Fachhochschule Vorarlberg : \getThesistype~: \studyType~: \supervisorSurname, \supervisorName},%
 		pdflang={de},%
 		unicode=true,}%
