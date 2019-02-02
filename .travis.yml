@@ -28,7 +28,7 @@ before_install:
 before_script:
 - export SHORT_COMMIT="$(git rev-parse --short $TRAVIS_COMMIT)"
 script:
-- docker exec -t ubuntu-test bash -c "apt-get update && apt-get -y install ghostscript make"
+- docker exec -t ubuntu-test bash -c "apt-get update && apt-get -y install ghostscript make git"
 - docker exec -t ubuntu-test bash -c "cd /travis;
     make clean;
     make FHVMODE=1 LANGUAGE=ngerman > log.txt;"
