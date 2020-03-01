@@ -114,4 +114,25 @@ You can define here
 
 ## Use autocompletion
 
-Coppy [`fhv.cwl`](https://github.com/pasrom/FHV-Latex/blob/master/scripts/fhv.cwl) to `~/.config/texstudio/completion/user/` (Linux, Mac). For further information [FAQ: Where are cwl files stored?](https://sourceforge.net/p/texstudio/wiki/Frequently%20Asked%20Questions/#where-are-cwl-files-stored)
+Copy [`fhv.cwl`](https://github.com/pasrom/FHV-Latex/blob/master/scripts/fhv.cwl) to `~/.config/texstudio/completion/user/` (Linux, Mac). For further information [FAQ: Where are cwl files stored?](https://sourceforge.net/p/texstudio/wiki/Frequently%20Asked%20Questions/#where-are-cwl-files-stored)
+
+
+# Common errors and possible fixes
+
+In texstudio add the file:  
+FHV-Latex-master/scripts/tex_profile_win.txsprofile to   
+texstudio > options > load profile
+
+##### Error (Windows): pdfTeX error (font expansion): auto expansion is only possible with scalable fonts. \end{envModeNot}  
+Solution:  
+open miktex and install package cm-super
+
+##### Error (Windows): TeX capacity exceeded, sorry [main memory size=3000000].  
+Solution from: [`github wiki`](https://github.com/matlab2tikz/matlab2tikz/wiki/TeX-capacity-exceeded,-sorry)  
+open a command window and write:  
+initexmf --edit-config-file=pdflatex  
+opens file in editor C:/Users/"username"/AppData/Roaming/MiKTeX/2.9/miktex/config/pdflatex.ini  
+main_memory=5000000  
+save the file  
+update the settings by:   
+initexmf --dump=pdflatex
