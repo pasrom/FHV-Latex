@@ -18,90 +18,94 @@ git:
   submodules: false
 before_install:
 - git submodule update --init --recursive
-#- docker pull sumankhanal/texlive-2017@sha256:5b05b641f2b85329e8123f759282330c1f566a66966f01d491ae024e3a66e521
-#- docker run -d --name ubuntu-test -v $(pwd):/travis sumankhanal/texlive-2017@sha256:5b05b641f2b85329e8123f759282330c1f566a66966f01d491ae024e3a66e521 tail -f /dev/null
+- if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+    echo enable dropbox uploader!;
+    openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d;
+  fi
 - docker pull sumankhanal/texlive-2018
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumankhanal/texlive-2018 tail -f /dev/null
 - docker exec -t ubuntu-test bash -c "tlmgr update --self"
 - docker exec -t ubuntu-test bash -c "tlmgr update --all"
 - docker ps
-- openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d
 before_script:
 - export SHORT_COMMIT="$(git rev-parse --short $TRAVIS_COMMIT)"
 script:
 - docker exec -t ubuntu-test bash -c "apt-get update && apt-get -y install ghostscript make git"
 - docker exec -t ubuntu-test bash -c "cd /travis;
     make clean;
-    make FHVMODE=1 LANGUAGE=ngerman > log.txt;"
+    make FHVMODE=1 LANGUAGE=ngerman > log.txt;
+    cp build/LatexVorlage.pdf build/artifacts/${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_DOC_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf;
+    cp log.txt build/artifacts/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_DOC_LatexVorlage.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   bash scripts/dropbox_uploader_deleting.sh;
-  $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_DOC_LatexVorlage-latest.pdf;
+    $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_DOC_LatexVorlage-latest.pdf;
   fi
-- $PATH_TO_UPLOADER upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_DOC_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- $PATH_TO_UPLOADER upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_DOC_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
-  make FHVMODE=3 LANGUAGE=ngerman > log.txt;"
+  make FHVMODE=3 LANGUAGE=ngerman > log.txt;
+  cp build/LatexVorlage.pdf build/artifacts/${SHORT_COMMIT}-DE_SUMMARY_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf;
+  cp log.txt build/artifacts/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_SUMMARY_LatexVorlage.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-  $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_SUMMARY_LatexVorlage-latest.pdf;
+    $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_SUMMARY_LatexVorlage-latest.pdf;
   fi
-- $PATH_TO_UPLOADER upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_SUMMARY_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- $PATH_TO_UPLOADER upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_SUMMARY_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
-  make FHVMODE=5 LANGUAGE=ngerman > log.txt;"
+  make FHVMODE=5 LANGUAGE=ngerman > log.txt;
+  cp build/LatexVorlage.pdf build/artifacts/${SHORT_COMMIT}-DE_PRESENTATION_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf;
+  cp log.txt build/artifacts/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_PRESENTATION_LatexVorlage.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-  $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_PRESENTATION_LatexVorlage-latest.pdf;
+    $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_PRESENTATION_LatexVorlage-latest.pdf;
   fi
-- $PATH_TO_UPLOADER upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_PRESENTATION_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- $PATH_TO_UPLOADER upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_PRESENTATION_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
-  make FHVMODE=9 LANGUAGE=ngerman > log.txt;"
+  make FHVMODE=9 LANGUAGE=ngerman > log.txt;
+  cp build/LatexVorlage.pdf build/artifacts/${SHORT_COMMIT}-DE_PAPER_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf;
+  cp log.txt build/artifacts/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_PAPER_LatexVorlage.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-  $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_PAPER_LatexVorlage-latest.pdf;
+    $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_PAPER_LatexVorlage-latest.pdf;
   fi
-- $PATH_TO_UPLOADER upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_PAPER_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- $PATH_TO_UPLOADER upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_PAPER_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
-  make FHVMODE=2 LANGUAGE=ngerman > log.txt;"
+  make FHVMODE=2 LANGUAGE=ngerman > log.txt;
+  cp build/LatexVorlage.pdf build/artifacts/${SHORT_COMMIT}-DE_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf;
+  cp log.txt build/artifacts/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_LatexVorlage.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-  $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_LatexVorlage-latest.pdf;
+    $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-DE_LatexVorlage-latest.pdf;
   fi
-- $PATH_TO_UPLOADER upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- $PATH_TO_UPLOADER upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
-  make FHVMODE=2 LANGUAGE=english > log.txt;"
+  make FHVMODE=2 LANGUAGE=english > log.txt;
+  cp build/LatexVorlage.pdf build/artifacts/${SHORT_COMMIT}-EN_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf;
+  cp log.txt build/artifacts/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_EN_LatexVorlage.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-  $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-EN_LatexVorlage-latest.pdf;
+    $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-EN_LatexVorlage-latest.pdf;
   fi
-- $PATH_TO_UPLOADER upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-EN_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf
-- $PATH_TO_UPLOADER upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_EN_LatexVorlage.txt
 
 - docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
-  make FHVMODE=2 LANGUAGE=ngerman FHVTITLEPAGE=fhv > log.txt;"
+  make FHVMODE=2 LANGUAGE=ngerman FHVTITLEPAGE=fhv > log.txt;
+  cp build/LatexVorlage.pdf build/artifacts/${SHORT_COMMIT}-DE_LatexVorlage-fhv-${TRAVIS_JOB_NUMBER}.pdf;
+  cp log.txt build/artifacts/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_LatexVorlage-fhv.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-  $PATH_TO_UPLOADER upload build/LatexVorlage.pdf ${SHORT_COMMIT}-DE_LatexVorlage-fhv-latest.pdf;
+    $PATH_TO_UPLOADER upload build/LatexVorlage.pdf ${SHORT_COMMIT}-DE_LatexVorlage-fhv-latest.pdf;
   fi
-- $PATH_TO_UPLOADER upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_LatexVorlage-fhv-${TRAVIS_JOB_NUMBER}.pdf
-- $PATH_TO_UPLOADER upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_LatexVorlage-fhv.txt
 
 - docker exec -t ubuntu-test bash -c "cd /travis;
   make clean;
-  make FHVMODE=2 LANGUAGE=english FHVTITLEPAGE=fhv > log.txt;"
+  make FHVMODE=2 LANGUAGE=english FHVTITLEPAGE=fhv > log.txt;
+  cp build/LatexVorlage.pdf build/artifacts/${SHORT_COMMIT}-EN_LatexVorlage-fhv-${TRAVIS_JOB_NUMBER}.pdf;
+  cp log.txt build/artifacts/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_EN_LatexVorlage-fhv.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-  $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-EN_LatexVorlage-fhv-latest.pdf;
+    $PATH_TO_UPLOADER upload build/LatexVorlage.pdf /${SHORT_COMMIT}-EN_LatexVorlage-fhv-latest.pdf;
   fi
-- $PATH_TO_UPLOADER upload build/LatexVorlage.pdf ${TRAVIS_BRANCH}/${SHORT_COMMIT}-EN_LatexVorlage-fhv-${TRAVIS_JOB_NUMBER}.pdf
-- $PATH_TO_UPLOADER upload log.txt log/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_EN_LatexVorlage-fhv.txt
+- if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+    $PATH_TO_UPLOADER upload build/artifacts/*.pdf ${TRAVIS_BRANCH}/ && $PATH_TO_UPLOADER upload build/artifacts/*.txt;
+  fi
 notifications:
   email: false
 deploy:
