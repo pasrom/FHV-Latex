@@ -16,8 +16,8 @@ before_install:
     echo enable dropbox uploader!;
     openssl aes-256-cbc -K $encrypted_05f0f0336636_key -iv $encrypted_05f0f0336636_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d;
   fi
-- docker pull sumankhanal/texlive-2018
-- docker run -d --name ubuntu-test -v $(pwd):/travis sumankhanal/texlive-2018 tail -f /dev/null
+- docker pull sumankhanal/texlive-2019:full
+- docker run -d --name ubuntu-test -v $(pwd):/travis sumankhanal/texlive-2019:full tail -f /dev/null
 - docker exec -t ubuntu-test bash -c "tlmgr update --self"
 - docker exec -t ubuntu-test bash -c "tlmgr update --all"
 - docker ps
