@@ -18,8 +18,8 @@ before_install:
   fi
 - docker pull sumankhanal/texlive-2019:full
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumankhanal/texlive-2019:full tail -f /dev/null
-- docker exec -t ubuntu-test bash -c "tlmgr update --self"
-- docker exec -t ubuntu-test bash -c "tlmgr update --all"
+#- docker exec -t ubuntu-test bash -c "tlmgr update --self"
+#- docker exec -t ubuntu-test bash -c "tlmgr update --all"
 - docker ps
 before_script:
 - export SHORT_COMMIT="$(git rev-parse --short $TRAVIS_COMMIT)"
