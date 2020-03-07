@@ -145,3 +145,11 @@
 	\apptocmd{\subappendices}{\toggletrue{inappendix}}{}{\errmessage{failed to patch}}%
 	% end appendix autoref patch
 \fi
+%
+% for centered text in column, but with fixed width
+%
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{X}[1]{>{\centering}p{#1}}
+\newcolumntype{Y}[1]{>{\centering}m{#1}}
+%
