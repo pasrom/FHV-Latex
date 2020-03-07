@@ -72,3 +72,11 @@
 \newcolumntype{X}[1]{>{\centering}p{#1}}
 \newcolumntype{Y}[1]{>{\centering}m{#1}}
 %
+% make acronyms bold in '\printglossary'
+%
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+%
+% hack to get the caption wider for a table
+%
+\renewcommand{\TPTminimum}{\linewidth}
+%
