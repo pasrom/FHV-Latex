@@ -1,40 +1,4 @@
 %
-%
-\ifwindows
-	\newcommand{\dataPath}{U:/Bachelorarbeit/Data}%
-\else
-	\newcommand{\dataPath}{/Users/roman/Documents/workspace/Wireshark/data/}%
-\fi
-%
-\newcommand{\umlaut}[1]{{\"{#1}}}%
-%
-\newcommand{\refPage}[1]{%
-	\ifthenelse{\equal{\newLanguage}{english}}{%
-		Page \pageref{#1}%
-	}{%
-		Seite \pageref{#1}%
-	}%
-}%
-%
-\newcommand{\newAcronymAndGlossaryEntry}[4]{%
-	\newacronym[description={\glslink{#2}{#3}}]
-	{#1}{#2}{#3}%
-	\newglossaryentry{#2}{name=\glslink{#1}{#3},%
-	text={#3},%
-	description={#4},%
-	sort={#3}}%
-}
-%
-\newcommand{\Nmarginpar}[2][def]{%
-		\ifthenelse{\equal{\notes}{true}}{%
-		\marginpar[#1]{#2\\%
-		Notiz verwschwindet bei \enquote{notes\{false\}}%
-	}%
-	}{%
-		%
-	}%
-}%
-%
 %% Commands for Blockadiagrams
 %
 \newcommand{\Summationsstelle}[4][]{ %

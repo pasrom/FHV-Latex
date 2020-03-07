@@ -5,18 +5,30 @@
 \def\pathName{Programm}
 \def\ValueBindingOffset{0mm} 
 \def\debug{false}
+%
+% document types
+%
 \def\documentation{1}
 \def\thesis{2}
 \def\summary{3}
 \def\presentations{5}
 \def\paper{9}
+%
+% presentation build types
+%
 \def\PresentationOnly{1}
 \def\PresentationNotes{2}
 \def\PresentationAll{3}
+%
+% language types
+%
 \def\ngerman{ngerman}
-% define if you want to show
-\def\notesFHV{draft}   % disable: notes not showed
-                                    % draft:     notes showed
+%
+% define if you want to show notes
+% disable: notes not showed
+% draft:   notes showed
+%
+\def\notesFHV{draft}
 %
 % Uncomment this, if you want another styled title page
 %
@@ -98,17 +110,13 @@
 	fontsize=11pt,%
 	DIV=calc,%
 	headsepline,%
-	%%BCOR=10mm,
-%	parskip=half,%
 	headings=big,%
 	draft=\debug,%
 	numbers=noenddot,%
-%	toc=sectionentrywithdots,%
-%	chapterentrydots=true,%
 	listof=totoc,%
-	%bibliography=totoc,%
-	%headinclude=false, %koma script seite 79 tabelle 3.7
 }
+%
+% paper definitons
 %
 \if\paper\FHVmode
 	\def\komaScriptClass{scrartcl}%
@@ -130,24 +138,24 @@
 	}
 \fi
 %
+% summary definitions
+%
 \if\summary\FHVmode
-%\def\komaScriptClass{scrartcl}%
 \def\komaScriptClass{scrreprt}%
 \def\documentclassOptions{%
 	a4paper,%
 	oneside,%
 	fontsize=11pt,%
 	DIV=calc,%
-%	parskip=half,%
 	headings=big,%
 	draft=\debug,%
 	numbers=noenddot,%
-	%	toc=sectionentrywithdots,%
-	%	chapterentrydots=true,%
 	listof=totoc,%
 	numbers=noenddot,%
 }
 \fi%
+%
+% presentation definitions
 %
 \if\presentations\FHVmode
 \def\komaScriptClass{beamer}%
@@ -180,11 +188,9 @@
 	{\def\quelle{Quelle}}%
 	\def\source{\ifthenelse{\equal{#2}{}}{}{\\\quelle: #2}}%
 	% if no source is given, don't use this
-%	\citetrackerfalse\pagetrackerfalse\backtrackerfalse%
 	\ifthenelse{\equal{#3}{no}}% add to the table of contents? Standard is on
 	{\caption[]{#1\source}}%
 	{\caption[#1]{#1\source}}%
-%	\citetrackertrue\pagetrackertrue\backtrackertrue%
 }%
 %
 \newcommand{\FHVcheckbox}[1]%
