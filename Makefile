@@ -4,6 +4,7 @@
 
 # Default variables which can be edited via the terminal
 BUILDDIR = build
+ARTIFACTDIR = artifacts
 COMPILER = pdflatex
 PROJECT = LatexVorlage
 BIBLIOGRAPHY = bib/Bibliography
@@ -20,7 +21,9 @@ endif
 latex:
 	@echo "Building $(PROJECT) in $(BUILDDIR) directory using $(COMPILER)..."
 	@echo "Creating $(BUILDDIR) directory..."
-	@mkdir $(BUILDDIR)
+	@mkdir -p $(BUILDDIR)
+	@echo "Creating $(ARTIFACTDIR) directory..."
+	@mkdir -p $(ARTIFACTDIR)
 	@$(COMPILER) $(COMMAND)
 	@echo "First pass (via $(COMPILER)) done!"
 	#@cp $(BIBLIOGRAPHY).bib $(BUILDDIR)
