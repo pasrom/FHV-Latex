@@ -129,10 +129,12 @@ open miktex and install package cm-super
 
 ##### Error (Windows): TeX capacity exceeded, sorry [main memory size=3000000].  
 Solution from: [`github wiki`](https://github.com/matlab2tikz/matlab2tikz/wiki/TeX-capacity-exceeded,-sorry)  
-open a command window and write:  
-initexmf --edit-config-file=pdflatex  
-opens file in editor C:/Users/"username"/AppData/Roaming/MiKTeX/2.9/miktex/config/pdflatex.ini  
-main_memory=5000000  
-save the file  
-update the settings by:   
-initexmf --dump=pdflatex
+
+ 1. open a command window and write:  
+`initexmf --edit-config-file=pdflatex`
+opens file in editor `C:/Users/"username"/AppData/Roaming/MiKTeX/2.9/miktex/config/pdflatex.ini`
+ 2. change the line to:
+`main_memory=5000000`
+ 3. save the file
+ 4. update the settings by:
+`initexmf --dump=pdflatex`
