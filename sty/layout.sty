@@ -17,13 +17,11 @@
 	%change the layout
 	\usepackage[
 		left= 3.5cm,
-		%right = 3.5cm,
 		bottom = 4 cm,
 		top = 4.5 cm,
 		textwidth = 398pt,
 		headsep=1.0cm,
 		footskip = 1.5cm,
-		%\bindingOffset,
 		bindingoffset = \ValueBindingOffset
 	]{geometry}
 	\setkomafont{chapter}{\Huge\bfseries}
@@ -109,7 +107,7 @@
 	\ifx#1\@empty \hyperchapter[#2]{\hyperlink{toc.\nameOfChapter.\thechapter}{#2}}
 	\else \hyperchapter[#1]{\hyperlink{toc.\nameOfChapter.\thechapter}{#2}}
 	\fi}
-
+%
 \let\hypersection\section
 \def\section{\@ifstar\starsection\mysection}
 \def\starsection{\hypersection*}
@@ -122,7 +120,7 @@
 	\ifx#1\@empty \hypersection[#2]{\hyperlink{toc.\nameOfSection.\thesection}{#2}}
 	\else \hypersecton[#1]{\hyperlink{toc.\nameOfSection.\thesection}{#2}}
 	\fi}
-
+%
 \let\hypersubsection\subsection
 \def\subsection{\@ifstar\starsubsection\mysubsection}
 \def\starsubsection{\hypersubsection*}
