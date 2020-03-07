@@ -1,0 +1,85 @@
+%
+% gant chart commands and settings
+%
+\tikzset{Shift/.style 2 args={shift={(+#1.5\pgflinewidth,+#2.5\pgflinewidth)}}}
+%
+\newcommand*{\pgfkeysstylelet}[2]{\expandafter\let\csname pgfk@#1/.@cmd\expandafter\endcsname\csname pgfk@#2/.@cmd\endcsname}
+%
+\ganttset{
+	/tikz/broken/.style={
+		decoration={
+			name=zigzag,
+			amplitude=+1pt,
+			segment length=+2pt}},
+	broken right/.code={
+		\pgfkeysstylelet{/pgfgantt/bar backup}{/pgfgantt/bar}
+		\pgfkeysalso{
+			/pgfgantt/bar left shift=-.5\pgflinewidth/\ganttvalueof{x unit},
+			/pgfgantt/bar right shift=(.5\pgflinewidth+.5\pgfdecorationsegmentamplitude)/\ganttvalueof{x unit},
+			/pgfgantt/bar/.append style={
+				draw=none,
+				path picture={
+					\draw[/pgfgantt/bar backup, broken] ([Shift=+-] path picture bounding box.north west) |-
+					([Shift=-+, xshift=-\pgfdecorationsegmentamplitude-.6\pgflinewidth] path picture bounding box.south east)
+					decorate {-- ([Shift=--, xshift=-\pgfdecorationsegmentamplitude-.6\pgflinewidth] path picture bounding box.north east)}
+					-- cycle;}}}},
+	broken left/.code={
+		\pgfkeysstylelet{/pgfgantt/bar backup}{/pgfgantt/bar}
+		\pgfkeysalso{
+			/pgfgantt/bar right shift=.5\pgflinewidth/\ganttvalueof{x unit},
+			/pgfgantt/bar left shift=(-.5\pgflinewidth-.5\pgfdecorationsegmentamplitude)/\ganttvalueof{x unit},
+			/pgfgantt/bar/.append style={
+				draw=none,
+				path picture={
+					\draw[/pgfgantt/bar backup, broken] ([Shift=--] path picture bounding box.north east) |-
+					([Shift=++, xshift=\pgfdecorationsegmentamplitude+.6\pgflinewidth] path picture bounding box.south west)
+					decorate {-- ([Shift=+-, xshift=\pgfdecorationsegmentamplitude+.6\pgflinewidth] path picture bounding box.north west)}
+					-- cycle;}}}}}
+%
+\makeatletter
+\@gtt@keydef{anyday}{none}
+\@gtt@keydef{anyday offset}{1}
+\@gtt@stylekeydef{anyday rule}{dashed, line width=1pt}
+\@gtt@keydef{anyday label font}{\normalfont}
+\@gtt@stylekeydef{anyday label node}{%
+	anchor=north, font=\ganttvalueof{anyday label font}%
+}
+%
+\newcount\gtt@anyday@slot
+%
+\newcommand\gantText[2]{%
+	\gtt@tsstojulian{#1}{\gtt@anyday@slot}%
+	\gtt@juliantotimeslot{\gtt@anyday@slot}{\gtt@anyday@slot}%
+	\pgfmathsetmacro\y@upper{%
+		\gtt@lasttitleline * \ganttvalueof{y unit title}%
+	}%
+	\pgfmathsetmacro\y@lower{%
+		\gtt@lasttitleline * \ganttvalueof{y unit title}%
+		+ (\gtt@currentline - \gtt@lasttitleline - 1)%
+		* \ganttvalueof{y unit chart}%
+	}%
+	\pgfmathsetmacro\x@mid{%
+		(\gtt@anyday@slot - 1 + \ganttvalueof{anyday offset})%
+		* \ganttvalueof{x unit}%
+	}%
+	\node [/pgfgantt/anyday label node] at (\x@mid pt, \y@lower pt) {#2};
+}
+\makeatother
+%
+\newganttlinktype{zigzagA}{
+	\ganttsetstartanchor{south west}%
+	\ganttsetendanchor{north west}%
+	\draw [decoration={zigzag,segment length=10,%amplitude=.9,
+		post=lineto,post length=2pt}, decorate, thick, cyan, -triangle 60]
+	(\xLeft, \yUpper) --
+	(\xRight, \yLower);
+}
+%
+\newganttlinktype{zigzagB}{
+	\ganttsetstartanchor{south west}%
+	\ganttsetendanchor{north west}%
+	\draw [decoration={snake,segment length=10, post=lineto,post length=2pt}, decorate, thick, red!60, -triangle 60]
+	(\xLeft, \yUpper) --
+	(\xRight, \yLower);
+}
+%
