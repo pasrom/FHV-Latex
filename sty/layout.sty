@@ -1,6 +1,6 @@
 %
-\newcommand{\abstandvor}{0.3}
-\newcommand{\abstandnach}{0.1}
+\newcommand{\spaceBefore}{0.3}
+\newcommand{\spaceAfter}{0.1}
 %
 \setkomafont{disposition}{\normalcolor\bfseries}
 %
@@ -57,20 +57,20 @@
 	beforeskip=0pt,
 	afterskip=1\baselineskip plus .1\baselineskip minus .167\baselineskip]{chapter}
 	\RedeclareSectionCommand[
-	beforeskip=\abstandvor\baselineskip,
-	afterskip=\abstandnach\baselineskip]{section}
+	beforeskip=\spaceBefore\baselineskip,
+	afterskip=\spaceAfter\baselineskip]{section}
 	\RedeclareSectionCommand[
-	beforeskip=\abstandvor\baselineskip,
-	afterskip=\abstandnach\baselineskip]{subsection}
+	beforeskip=\spaceBefore\baselineskip,
+	afterskip=\spaceAfter\baselineskip]{subsection}
 	\RedeclareSectionCommand[
-	beforeskip=\abstandvor\baselineskip,
-	afterskip=\abstandnach\baselineskip]{subsubsection}
+	beforeskip=\spaceBefore\baselineskip,
+	afterskip=\spaceAfter\baselineskip]{subsubsection}
 	\RedeclareSectionCommand[
-	beforeskip=\abstandvor\baselineskip,
-	afterskip=\abstandnach\baselineskip]{paragraph}
+	beforeskip=\spaceBefore\baselineskip,
+	afterskip=\spaceAfter\baselineskip]{paragraph}
 	\RedeclareSectionCommand[
-	beforeskip=\abstandvor\baselineskip,
-	afterskip=\abstandnach\baselineskip]{subparagraph}
+	beforeskip=\spaceBefore\baselineskip,
+	afterskip=\spaceAfter\baselineskip]{subparagraph}
 	
 \makeatletter
 \g@addto@macro\normalsize{%
