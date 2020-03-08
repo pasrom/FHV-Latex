@@ -1,6 +1,6 @@
 %
-\newcommand{\abstandvor}{0.3}
-\newcommand{\abstandnach}{0.1}
+\newcommand{\spaceBefore}{0.3}
+\newcommand{\spaceAfter}{0.1}
 %
 \setkomafont{disposition}{\normalcolor\bfseries}
 %
@@ -17,13 +17,11 @@
 	%change the layout
 	\usepackage[
 		left= 3.5cm,
-		%right = 3.5cm,
 		bottom = 4 cm,
 		top = 4.5 cm,
 		textwidth = 398pt,
 		headsep=1.0cm,
 		footskip = 1.5cm,
-		%\bindingOffset,
 		bindingoffset = \ValueBindingOffset
 	]{geometry}
 	\setkomafont{chapter}{\Huge\bfseries}
@@ -59,20 +57,20 @@
 	beforeskip=0pt,
 	afterskip=1\baselineskip plus .1\baselineskip minus .167\baselineskip]{chapter}
 	\RedeclareSectionCommand[
-	beforeskip=\abstandvor\baselineskip,
-	afterskip=\abstandnach\baselineskip]{section}
+	beforeskip=\spaceBefore\baselineskip,
+	afterskip=\spaceAfter\baselineskip]{section}
 	\RedeclareSectionCommand[
-	beforeskip=\abstandvor\baselineskip,
-	afterskip=\abstandnach\baselineskip]{subsection}
+	beforeskip=\spaceBefore\baselineskip,
+	afterskip=\spaceAfter\baselineskip]{subsection}
 	\RedeclareSectionCommand[
-	beforeskip=\abstandvor\baselineskip,
-	afterskip=\abstandnach\baselineskip]{subsubsection}
+	beforeskip=\spaceBefore\baselineskip,
+	afterskip=\spaceAfter\baselineskip]{subsubsection}
 	\RedeclareSectionCommand[
-	beforeskip=\abstandvor\baselineskip,
-	afterskip=\abstandnach\baselineskip]{paragraph}
+	beforeskip=\spaceBefore\baselineskip,
+	afterskip=\spaceAfter\baselineskip]{paragraph}
 	\RedeclareSectionCommand[
-	beforeskip=\abstandvor\baselineskip,
-	afterskip=\abstandnach\baselineskip]{subparagraph}
+	beforeskip=\spaceBefore\baselineskip,
+	afterskip=\spaceAfter\baselineskip]{subparagraph}
 	
 \makeatletter
 \g@addto@macro\normalsize{%
@@ -109,7 +107,7 @@
 	\ifx#1\@empty \hyperchapter[#2]{\hyperlink{toc.\nameOfChapter.\thechapter}{#2}}
 	\else \hyperchapter[#1]{\hyperlink{toc.\nameOfChapter.\thechapter}{#2}}
 	\fi}
-
+%
 \let\hypersection\section
 \def\section{\@ifstar\starsection\mysection}
 \def\starsection{\hypersection*}
@@ -122,7 +120,7 @@
 	\ifx#1\@empty \hypersection[#2]{\hyperlink{toc.\nameOfSection.\thesection}{#2}}
 	\else \hypersecton[#1]{\hyperlink{toc.\nameOfSection.\thesection}{#2}}
 	\fi}
-
+%
 \let\hypersubsection\subsection
 \def\subsection{\@ifstar\starsubsection\mysubsection}
 \def\starsubsection{\hypersubsection*}

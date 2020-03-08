@@ -17,13 +17,7 @@
 	\def\PresentationMode{3}
 \fi
 %
-\def\paperStyle{fhv}
-%
 \newcommand{\version}{v0.0}
-%
-\pdfminorversion=7 % use newer pdf version
-\pdfobjcompresslevel=2
-\pdfsuppresswarningpagegroup=1
 %
 \input{./sty/overallDefines.sty}
 %
@@ -32,9 +26,8 @@
 \usepackage{./sty/fhv}
 %
 \makeglossaries
-\renewcommand{\glsnamefont}[1]{\textbf{#1}}
 %
-% General Settings for Title...
+% General settings for title...
 %
 \setLanguage{\newLanguage}
 \setTitle{Title}
@@ -49,15 +42,11 @@
 \setDegree{Master of Science in Engineering, MSc}
 \setCompany{Company Name GmbH}
 %
-% PDF Settings
+% PDF settings
 %
 \pdfSettings
 %
 \allowdisplaybreaks
-%
-% hack to get the caption wider for a table
-%
-\renewcommand{\TPTminimum}{\linewidth}
 %
 \begin{document}
 	%
