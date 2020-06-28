@@ -28,7 +28,7 @@ script:
 - docker exec -t ubuntu-test bash -c "cd /travis;
     make clean;
     make FHVMODE=1 LANGUAGE=ngerman > log.txt;
-    cp build/LatexVorlage.pdf artifacts/${TRAVIS_BRANCH}/${SHORT_COMMIT}-DE_DOC_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf;
+    cp build/LatexVorlage.pdf artifacts/${SHORT_COMMIT}-DE_DOC_LatexVorlage-${TRAVIS_JOB_NUMBER}.pdf;
     cp log.txt artifacts/${TRAVIS_BRANCH}-${TRAVIS_JOB_NUMBER}-${SHORT_COMMIT}_DE_DOC_LatexVorlage.txt;"
 - if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
   bash scripts/dropbox_uploader_deleting.sh;
