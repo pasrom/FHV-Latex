@@ -196,6 +196,23 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 	%
 \end{table}
 %
+% Table with multiple lines in one cell
+%
+\begin{table}[H]
+	\centering
+	\noindent\adjustbox{max width=\linewidth}{
+		\begin{tabular}{|c|c|}
+			\hline
+			\rowcolor[HTML]{\farbeTabA}
+			A & B   \\ \hline
+			Zweck & \multilinecell{sehr lange Zeile, \\ die die Spalte sehr breit macht \\ und damit die Schriftgröße schrumpft; \\ kann durch eine $\backslash$multilinecell \\ in mehrere Zeilen aufgespaltet werden}	\\ \hline
+			\rowcolor[HTML]{\farbeTabB} 
+			Verwendung & $\backslash$multilinecell\{Zeile 1 $\backslash$$\backslash$ Zeile 2\}   \\ \hline
+		\end{tabular}
+	}
+	\unterschrift{Tabelle mit mehreren Zeilen in einer Zelle}{eigene Ausarbeitung}{}
+	\label{tab: Tabelle C}
+\end{table}
 \if\paper\FHVmode
 	\section{Listing}
 \else
