@@ -84,7 +84,15 @@
 		pdfsubject={\tmpPdfSubject},%
 		pdfkeywords={Fachhochschule Vorarlberg : \getThesistype~: \studyType~: \supervisorSurname, \supervisorName},%
 		pdflang={de},%
-		unicode=true,}%
+		unicode=true,%
+		%
+		% hyperrefsetup: colour of hyperlinks instead of boxes 
+		%
+		colorlinks   = false, % true: colour text, false: colour box
+		urlcolor     = blue,  % external colour links
+		linkcolor    = black, % internal links colour
+		citecolor    = black, % colour of citations
+		}%
 }
 %
 \pdfminorversion=7 % use newer pdf version
