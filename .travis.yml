@@ -2,7 +2,6 @@
 branches:
   only:
     - master
-    - update-texlive
 
 env:
   global:
