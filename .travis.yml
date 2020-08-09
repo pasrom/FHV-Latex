@@ -18,6 +18,7 @@ before_install:
   fi
 - docker pull sumankhanal/texlive-2020:full
 - docker run -d --name ubuntu-test -v $(pwd):/travis sumankhanal/texlive-2020:full tail -f /dev/null
+- docker exec -t ubuntu-test bash -c "tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet"
 - docker exec -t ubuntu-test bash -c "tlmgr update --self"
 - docker exec -t ubuntu-test bash -c "tlmgr update --all"
 - docker ps
