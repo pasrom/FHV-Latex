@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/pasrom/FHV-Latex.svg?branch=master)](https://travis-ci.org/pasrom/FHV-Latex)
+![Build Status](https://github.com/pasrom/fhv-latex/actions/workflows/build.yml/badge.svg?branch=master)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/pasrom/FHV-Latex/blob/master/LICENSE)
 #   FHV-Latex template
 
@@ -16,7 +16,7 @@ I also recommend to use [TeX Live](https://www.tug.org/texlive/) Latex distribut
 
 An easy to use [tablegenerator.](http://www.tablesgenerator.com).
 
-If you like to have a preview of the output mentioned in [LatexVorlage](https://github.com/pasrom/FHV-Latex#latexvorlagetex), [here](https://www.dropbox.com/sh/zu01sy61kavxjt9/AAAtWiXSjG5IDLw3g8G1s3Yka?dl=0) you will find the different builds.
+If you like to have a preview of the output mentioned in [LatexVorlage](https://github.com/pasrom/FHV-Latex#latexvorlagetex), [here](https://github.com/pasrom/FHV-Latex/actions/workflows/build.yml?query=branch%3Amaster++) you will find the different builds.
 
 # How to clone?
 
