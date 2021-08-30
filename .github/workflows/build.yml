@@ -1,0 +1,78 @@
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  fhv-docker:
+    runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest
+    steps:  
+    - uses: actions/checkout@v2
+    - name: make FHVMODE=1
+      run: |
+        make clean
+        make FHVMODE=1 LANGUAGE=ngerman
+    - name: copy artefact
+      run: |
+        cp build/LatexVorlage.pdf artifacts/DE_DOC_LatexVorlage.pdf
+    - name: make FHVMODE=3
+      run: |
+        make clean
+        make FHVMODE=3 LANGUAGE=ngerman
+    - name: copy artefact
+      run: |
+        cp build/LatexVorlage.pdf artifacts/DE_SUMMARY_LatexVorlage.pdf
+    - name: make FHVMODE=5
+      run: |
+        make clean
+        make FHVMODE=5 LANGUAGE=ngerman
+    - name: copy artefact
+      run: |
+        cp build/LatexVorlage.pdf artifacts/DE_PRESENTATION_LatexVorlage.pdf
+    - name: make FHVMODE=9
+      run: |
+        make clean
+        make FHVMODE=9 LANGUAGE=ngerman
+    - name: copy artefact
+      run: |
+        cp build/LatexVorlage.pdf artifacts/DE_PAPER_LatexVorlage.pdf
+    - name: make FHVMODE=2
+      run: |
+        make clean
+        make FHVMODE=2 LANGUAGE=ngerman
+    - name: copy artefact
+      run: |
+        cp build/LatexVorlage.pdf artifacts/DE_LatexVorlage.pdf
+    - name: make FHVMODE=2 english
+      run: |
+        make clean
+        make FHVMODE=2 LANGUAGE=english
+    - name: copy artefact
+      run: |
+        cp build/LatexVorlage.pdf artifacts/EN_LatexVorlage.pdf
+    - name: make FHVMODE=2 fhv
+      run: |
+        make clean
+        make FHVMODE=2 LANGUAGE=ngerman FHVTITLEPAGE=fhv
+    - name: copy artefact
+      run: |
+        cp build/LatexVorlage.pdf artifacts/DE_LatexVorlage-fhv.pdf
+    - name: make FHVMODE=2 fhv english
+      run: |
+        make clean
+        make FHVMODE=2 LANGUAGE=english FHVTITLEPAGE=fhv
+    - name: copy artefact
+      run: |
+        cp build/LatexVorlage.pdf artifacts/EN_LatexVorlage-fhv.pdf
+    - name: upload artefacts
+      uses: actions/upload-artifact@v2-preview
+      with:
+        name: fhv-latex-upload
+        path: artifacts/*.pdf
