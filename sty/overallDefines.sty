@@ -101,12 +101,12 @@
 %
 % standard definiton for biblatex
 %
-\def\biblatexOptions{
+\def\biblatexOptions{%
 	backend=biber,%
-	style = authoryear,%
-	citestyle = authoryear,
-	dashed=false,
-	backref=true,
+	style=authoryear,%
+	citestyle=authoryear,%
+	dashed=false,%
+	backref=true,%
 }
 %
 % standard definiton for the document class
@@ -138,10 +138,10 @@
 		twocolumn,
 		bibliography=totocnumbered,%
 	}%
-	\def\biblatexOptions{
+	\def\biblatexOptions{%
 		backend=biber,%
-		style = authoryear,%
-		citestyle = authoryear,%
+		style=authoryear,%
+		citestyle=authoryear,%
 		dashed=false,%
 	}
 \fi
