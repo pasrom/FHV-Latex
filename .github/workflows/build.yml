@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: texlive/texlive:latest
-    steps:  
-    - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v4
     - name: make FHVMODE=1
       run: |
         make clean
@@ -75,7 +75,7 @@ jobs:
       run: |
         cp build/LatexVorlage.pdf artifacts/EN_LatexVorlage-fhv.pdf
     - name: upload artefacts
-      uses: actions/upload-artifact@v2-preview
+      uses: actions/upload-artifact@v4
       with:
         name: fhv-latex-upload
         path: artifacts/*.pdf
