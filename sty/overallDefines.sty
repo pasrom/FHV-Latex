@@ -77,10 +77,10 @@
 	\def\tmpPdfSubject{\ifdefined\GITHash%
 		git-short:~\GITHash%
 	\fi\ifdefined\GITDate%
-		\xmpcomma~git-date:~\GITDate%
+		~git-date:~\GITDate%
 	\fi}
 	\hypersetup{pdftitle={\getTitle},%
-		pdfauthor={\authorSurname\xmpcomma~\authorName},%
+		pdfauthor={\authorSurname~\authorName},%
 		pdfsubject={\tmpPdfSubject},%
 		pdfkeywords={Fachhochschule Vorarlberg : \getThesistype~: \studyType~: \supervisorSurname, \supervisorName},%
 		pdflang={de},%
