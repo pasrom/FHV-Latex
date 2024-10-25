@@ -25,7 +25,7 @@
 		\usebibmacro{labeltitle}%
 		%		\setunit*{\addspace}
 	}%
-	\usebibmacro{date+extrayear}}
+	\usebibmacro{date+extradate}}
 %
 % http://tex.stackexchange.com/questions/54644/name-delimiters-in-biblatex
 %
@@ -36,8 +36,8 @@
 	%
 }
 %
-\DeclareNameAlias{sortname}{last-first}
-\DeclareNameAlias{editorin}{last-first}
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{editorin}{family-given}
 %
 \newbibmacro*{byeditor:in}{%
 	\ifnameundef{editor}
