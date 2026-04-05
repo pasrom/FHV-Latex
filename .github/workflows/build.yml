@@ -2,80 +2,57 @@ on:
   schedule:
     - cron:  '0 0 1 * *'
 
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
-  fhv-docker:
+  build:
     runs-on: ubuntu-latest
     container:
       image: texlive/texlive:latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - mode: 1
+            language: ngerman
+            artifact: DE_DOC_LatexVorlage
+          - mode: 3
+            language: ngerman
+            artifact: DE_SUMMARY_LatexVorlage
+          - mode: 5
+            language: ngerman
+            artifact: DE_PRESENTATION_LatexVorlage
+          - mode: 9
+            language: ngerman
+            artifact: DE_PAPER_LatexVorlage
+          - mode: 2
+            language: ngerman
+            artifact: DE_LatexVorlage
+          - mode: 2
+            language: english
+            artifact: EN_LatexVorlage
+          - mode: 2
+            language: ngerman
+            titlepage: fhv
+            artifact: DE_LatexVorlage-fhv
+          - mode: 2
+            language: english
+            titlepage: fhv
+            artifact: EN_LatexVorlage-fhv
     steps:
-    - uses: actions/checkout@v4
-    - name: make FHVMODE=1
+    - uses: actions/checkout@v6
+    - name: Build FHVMODE=${{ matrix.mode }} ${{ matrix.language }} ${{ matrix.titlepage }}
       run: |
         make clean
-        make FHVMODE=1 LANGUAGE=ngerman
-    - name: copy artefact
-      run: |
-        cp build/LatexVorlage.pdf artifacts/DE_DOC_LatexVorlage.pdf
-    - name: make FHVMODE=3
-      run: |
-        make clean
-        make FHVMODE=3 LANGUAGE=ngerman
-    - name: copy artefact
-      run: |
-        cp build/LatexVorlage.pdf artifacts/DE_SUMMARY_LatexVorlage.pdf
-    - name: make FHVMODE=5
-      run: |
-        make clean
-        make FHVMODE=5 LANGUAGE=ngerman
-    - name: copy artefact
-      run: |
-        cp build/LatexVorlage.pdf artifacts/DE_PRESENTATION_LatexVorlage.pdf
-    - name: make FHVMODE=9
-      run: |
-        make clean
-        make FHVMODE=9 LANGUAGE=ngerman
-    - name: copy artefact
-      run: |
-        cp build/LatexVorlage.pdf artifacts/DE_PAPER_LatexVorlage.pdf
-    - name: make FHVMODE=2
-      run: |
-        make clean
-        make FHVMODE=2 LANGUAGE=ngerman
-    - name: copy artefact
-      run: |
-        cp build/LatexVorlage.pdf artifacts/DE_LatexVorlage.pdf
-    - name: make FHVMODE=2 english
-      run: |
-        make clean
-        make FHVMODE=2 LANGUAGE=english
-    - name: copy artefact
-      run: |
-        cp build/LatexVorlage.pdf artifacts/EN_LatexVorlage.pdf
-    - name: make FHVMODE=2 fhv
-      run: |
-        make clean
-        make FHVMODE=2 LANGUAGE=ngerman FHVTITLEPAGE=fhv
-    - name: copy artefact
-      run: |
-        cp build/LatexVorlage.pdf artifacts/DE_LatexVorlage-fhv.pdf
-    - name: make FHVMODE=2 fhv english
-      run: |
-        make clean
-        make FHVMODE=2 LANGUAGE=english FHVTITLEPAGE=fhv
-    - name: copy artefact
-      run: |
-        cp build/LatexVorlage.pdf artifacts/EN_LatexVorlage-fhv.pdf
-    - name: upload artefacts
-      uses: actions/upload-artifact@v4
+        make FHVMODE=${{ matrix.mode }} LANGUAGE=${{ matrix.language }} ${{ matrix.titlepage && format('FHVTITLEPAGE={0}', matrix.titlepage) || '' }}
+        cp build/LatexVorlage.pdf build/${{ matrix.artifact }}.pdf
+    - name: Upload artifact
+      uses: actions/upload-artifact@v7
       with:
-        name: fhv-latex-upload
-        path: artifacts/*.pdf
+        name: ${{ matrix.artifact }}
+        path: build/${{ matrix.artifact }}.pdf
