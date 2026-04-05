@@ -3,7 +3,7 @@
 %
 \usepackage{etoolbox} %
 %
- \usepackage{scrhack}
+\if\FHVmode\presentations\else\usepackage{scrhack}\fi
 % https://tex.stackexchange.com/questions/289734/special-package-combination-gives-no-room-for-new-write
 \usepackage{morewrites}
 \morewritessetup{allocate=10}
@@ -95,6 +95,10 @@
 }%
 {\usepackage{./sty/layout}}
 %
+% load fontenc and inputenc before babel
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%
 %necessary if german language is selected
 \usepackage[english, ngerman]{babel} %german hyphenation and headings
 %
@@ -104,16 +108,12 @@
 %
 \RequirePackage{currfile}
 %
-% load after algorithm2e ref: https://www.mrunix.de/forums/showthread.php?71717-Algorithm2e-Zeilennummern-Bug
-\usepackage[T1]{fontenc}
-%
 \usepackage{amsmath} % need for subequations
 \usepackage{graphicx} % need for figures
 \usepackage[space]{grffile} % expand  file name processing of graphics/x
 \usepackage{calc}
 %
 \usepackage{subfiles}
-\usepackage[utf8]{inputenc} % utf8 encoding (us this, if you have to switch between platforms)
 \usepackage{array}
 \usepackage{longtable}
 %allow rotating
@@ -185,7 +185,9 @@
 % load as late as possible, otherwise the footnote will not work!
 \usepackage[\newLanguage]{varioref}
 \PassOptionsToPackage{hyphens,obeyspaces,spaces}{url}
-\usepackage[breaklinks=true]{hyperref}
+\ifthenelse{\equal{\FHVmode}{\presentations}}%
+{\hypersetup{breaklinks=true}}% beamer already loads hyperref
+{\usepackage[breaklinks=true]{hyperref}}
 \usepackage{footnotebackref}
 \usepackage{nameref}
 \setlength{\emergencystretch}{1em}%
