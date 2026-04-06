@@ -1,10 +1,10 @@
 \documentclass[./\jobname.tex]{subfiles}
 \begin{document}
 %
-\blindmathtrue
-\blinddocument
+\blindmathtrue%
+\blinddocument%
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\section{Mathemodus}
 \else
 	\chapter{Mathemodus}
@@ -17,7 +17,7 @@
 %
 Ich bin eine super Referenzierung: \cref{eq: eigenwerte rueckfuehrung}. Oder noch besser wenn auf mehrere Gleichungen referenziert werden will: \cref{eq: eigenwerte rueckfuehrung,eq: cos sin}.
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\section{BiB \& Acronyme}
 \else
 	\chapter{BiB \& Acronyme}
@@ -27,7 +27,7 @@ Ich bin eine super Referenzierung: \cref{eq: eigenwerte rueckfuehrung}. Oder noc
 	\item Dies ist eine Qullenangabe: \parencite[Vgl.][S.220-224]{IEEE802.1Q2014}.
 	\item Dies ist eine \gls{cbs}.
 	\item Zweite Verwendung von einem Acronym: \gls{cbs}.
-	\item Dies ist eine Fußzeile\footnote{Das ISO/OSI Model kann in \cite[][S.2-9]{Mandl2010} nachgeschlagen werden.}.
+	\item Dies ist eine Fußzeile\footnote{Das ISO/OSI Model kann in~\cite[][S.2-9]{Mandl2010} nachgeschlagen werden.}.
 	\item \textcite[][S.2-9]{Mandl2010} nachgeschlagen werden.
 	\item \parencite{Gibb1965Light} für Herausgeberwerke.
 \end{itemize}
@@ -41,7 +41,7 @@ Ich bin eine super Referenzierung: \cref{eq: eigenwerte rueckfuehrung}. Oder noc
 So kann direkt Zitiert werden:
 %
 \begin{quote}
-	\enquote{\textit{ich bin ein direktes Zitat}} \cite{Broster2001}
+	\enquote{\textit{ich bin ein direktes Zitat}}~\cite{Broster2001}
 \end{quote}
 %
 Acronym Tests: \enquote{ \glspl{fpsLabel} \glspl{fpsLabel}} für Plural.
@@ -52,7 +52,7 @@ Acronym Tests: \enquote{ \glspl{fpsLabel} \glspl{fpsLabel}} für Plural.
 %
 \blindtext[1]
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\section{Bilder}
 \else
 	\chapter{Bilder}
@@ -70,7 +70,7 @@ In \autoref{fig: example-image} ist ein Beispiel einer Abbildung dargestellt.
 	%\unterschrift{ich bin die Unterschrift}{}{}
 	% if you don't want to have your caption in the table of contents use the #3 argument to prevent the listing in the table of contents. e.q.:
 	%\unterschrift{ich bin die Unterschrift}{Quelle}{no}
-	\unterschrift{ich bin die Unterschrift}{Quelle}{}
+	\unterschrift{ich bin die Unterschrift}{Quelle}{}%
 	\label{fig: example-image}
 \end{figure}
 %
@@ -81,21 +81,21 @@ In \Cref{fig: Bild A,fig: Bild A} (oder mit Abkürzung \cref{fig: Bild A,fig: Bi
 	\begin{subfigure}[b]{0.5\linewidth}
 		\centering
 		\includegraphics[width=1\textwidth]{example-image-a}
-		\caption{Bild A}
+		\caption{Bild A}%
 		\label{fig: Bild A}
-	\end{subfigure}% 
+	\end{subfigure}%
 	%
 	\begin{subfigure}[b]{0.5\linewidth}
 		\centering
 		\includegraphics[width=1\textwidth]{example-image-b}
-		\caption{Bild B}
+		\caption{Bild B}%
 		\label{fig: Bild B}
 	\end{subfigure}%
 	\unterschrift{Bildunterschrift für beide Bilder}{\cite{Dorner2010}}{}%
 	\label{fig: Bild A und B}
 \end{figure}
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\subsection{Spezial}
 \else
 	\section{Spezial}
@@ -126,7 +126,7 @@ edge [e_in,effort={$U_{emf}$}, flow={$i_a$}] (GY)
 edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 \end{tikzpicture}
 }
-	\unterschrift{Kausalisierter Bondgraph}{eigene Ausarbeitung}{}
+	\unterschrift{Kausalisierter Bondgraph}{eigene Ausarbeitung}{}%
 \label{fig: kausalisierter bondgraph}
 \end{figure}
 %
@@ -136,7 +136,7 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 	\noindent\adjustbox{max width=\linewidth}{%
 	\subfile{../img/tikz/escon-schaltplan.tex}
 }
-	\unterschrift{Schaltkreis: Escon 50/5 Controller für Polverschiebung}{eigene Ausarbeitung}{}
+	\unterschrift{Schaltkreis: Escon 50/5 Controller für Polverschiebung}{eigene Ausarbeitung}{}%
 	\label{fig: Schalplan Polverschiebung}
 \end{figure}
 %
@@ -146,11 +146,11 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 	\noindent\adjustbox{max width=\linewidth}{%
 		\subfile{../img/tikz/blockschaltbild-state-space.tex}
 	}
-	\unterschrift{Zustandsregler mit Rückkopplungsverstärkungsmatrix f}{eigene Ausarbeitung}{}
+	\unterschrift{Zustandsregler mit Rückkopplungsverstärkungsmatrix f}{eigene Ausarbeitung}{}%
 	\label{fig: blockschaltbild-state-space.tex A}
 \end{figure}
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\section{Tabellen}
 \else
 	\chapter{Tabellen}
@@ -168,7 +168,7 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 			Akro 6/0 & ja & 1199382 & 145.12 & 151.40 & 147.88 & 147.89 & 1.13 & 1.06 \\ \hline
 		\end{tabular}
 	}
-	\unterschrift{Tabellen Unterschrift}{eigene Ausarbeitung}{}
+	\unterschrift{Tabellen Unterschrift}{eigene Ausarbeitung}{}%
 	\label{tab: Tabelle A}
 \end{table}
 %
@@ -185,7 +185,7 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 				Table 2 & Fußnote\mtnote{b}\\\hline
 				
 			\end{tabular}}
-		\unterschrift{Fußnoten in einer Tabelle}{eigene Ausarbeitun}{}
+		\unterschrift{Fußnoten in einer Tabelle}{eigene Ausarbeitun}{}%
 		\label{tab: Tabelle B}
 		%
 		\begin{tablenotes}
@@ -213,7 +213,7 @@ edge [e_in,effort={$T_{b}$}, flow={$\omega$}] (Rm);
 	\unterschrift{Tabelle mit mehreren Zeilen in einer Zelle}{eigene Ausarbeitung}{}
 	\label{tab: Tabelle C}
 \end{table}
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\section{Listing}
 \else
 	\chapter{Listing}
@@ -249,9 +249,9 @@ begin
 end;
 \end{lstlisting}
 %
-Line \ref{comment a} shows a comment. Die Escape Operatoren können unter \enquote{./sty/Listings.sty} geändert werden. 
+Line~\ref{comment a} shows a comment. Die Escape Operatoren können unter \enquote{./sty/Listings.sty} geändert werden.
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\section{Todo List}
 \else
 	\chapter{Todo List}
@@ -263,7 +263,7 @@ Line \ref{comment a} shows a comment. Die Escape Operatoren können unter \enquo
 \todo[inline]{This is a todo note inline} 
 \lipsum[3]
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\section{SVG Beispiel}
 \else
 	\chapter{SVG Beispiel}
@@ -273,7 +273,7 @@ Line \ref{comment a} shows a comment. Die Escape Operatoren können unter \enquo
 	\item Installiere Inkscape
 	\item Als erstes muss unter \enquote{Tools} \pfeil \enquote{Benutzer} \pfeil \enquote{SVG to PDF} die Konvertierung von SVG zu PDF gestartet werden. Dies sucht alle \enquote{.SVG} Dateien und wandelt diese zu \enquote{.PDF} Dateien um mit einer zusätzlichen Endung \enquote{-svg-raw.pdf}.\label{schritt translate}
 	\item Anschließend kann das Dokument normal Übersetzt werden.
-	\item Sind Änderungen an den SVG Dateien gemacht worden so muss \ref{schritt translate} ausgeführt werden.
+	\item Sind Änderungen an den SVG Dateien gemacht worden so muss~\ref{schritt translate} ausgeführt werden.
 \end{enumerate}
 %
 \begin{figure}[H]
@@ -283,7 +283,7 @@ Line \ref{comment a} shows a comment. Die Escape Operatoren können unter \enquo
 	\label{fig: beispiel svg}
 \end{figure}
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\section{Algorithmen}
 \else
 	\chapter{Algorithmen}
@@ -329,20 +329,20 @@ Der \autoref{algo: first algo} ist gut.\par
 	\label{algo: second algo}
 \end{algorithm}
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\section{Referenzieren in den Anhang}
 \else
 	\chapter{Referenzieren in den Anhang}
 \fi
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 	\subsection{test}
 \else
 	\section{test}
 	\autoref{sec: test anhang}
 \fi
 %
-\if\paper\FHVmode
+\if\paper\FHVmode%
 \section{Animation in PDFs}
 \else
 \chapter{Animation in PDFs}
