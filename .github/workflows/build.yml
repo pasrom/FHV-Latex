@@ -10,6 +10,16 @@ on:
   workflow_dispatch:
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v6
+    - name: chktex
+      run: chktex -q tex/*.tex
+
   build:
     runs-on: ubuntu-latest
     container:
