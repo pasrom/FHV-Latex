@@ -1,8 +1,8 @@
-![Build Status](https://github.com/pasrom/fhv-latex/actions/workflows/build.yml/badge.svg?branch=master)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/pasrom/FHV-Latex/blob/master/LICENSE)
+![Build Status](https://github.com/pasrom/fhv-latex/actions/workflows/build.yml/badge.svg?branch=main)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/pasrom/FHV-Latex/blob/main/LICENSE)
 #   FHV-Latex template
 
-To use this template, it is recommened to work with [TeXstudio](http://texstudio.sourceforge.net). You can use the given profile provided in [scripts](https://github.com/pasrom/FHV-Latex/tree/master/scripts)  (Mac, Windows, Linux). Install instructions can be found [here](https://tex.stackexchange.com/a/211363). If you like to add a dictionary here is a [link](https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries) where you can download one. To install the dictionary go to preference (TeXstudio), under Spell Checking Dictionary, change the directory to the folder you put your dictionary in and restart TeXstudio ([Source](https://tex.stackexchange.com/questions/87650/dictionary-for-texstudio-no-dictionary-available/87652)).
+To use this template, it is recommened to work with [TeXstudio](http://texstudio.sourceforge.net). You can use the given profile provided in [scripts](https://github.com/pasrom/FHV-Latex/tree/main/scripts)  (Mac, Windows, Linux). Install instructions can be found [here](https://tex.stackexchange.com/a/211363). If you like to add a dictionary here is a [link](https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries) where you can download one. To install the dictionary go to preference (TeXstudio), under Spell Checking Dictionary, change the directory to the folder you put your dictionary in and restart TeXstudio ([Source](https://tex.stackexchange.com/questions/87650/dictionary-for-texstudio-no-dictionary-available/87652)).
 
 If you like to convert svg files to pdf you can use [Inkscape](https://inkscape.org) and the given scripts in the [InkscapeConverter](https://gist.github.com/pasrom/0965be641547b34618926d404773cd94) Submodule Folder.
 
@@ -12,11 +12,11 @@ The bibliography uses Biber to build and is adapted to FHV guidelines.
 
 I also recommend to use [TeX Live](https://www.tug.org/texlive/) Latex distribution. 
 
-[Here](https://github.com/pasrom/FHV-Latex/blob/master/tex/Examples.tex) you find some examples: how to use Pictures, Tables, TikZ and the usage of referencing equations/sections.
+[Here](https://github.com/pasrom/FHV-Latex/blob/main/tex/Examples.tex) you find some examples: how to use Pictures, Tables, TikZ and the usage of referencing equations/sections.
 
 An easy to use [tablegenerator.](http://www.tablesgenerator.com).
 
-If you like to have a preview of the output mentioned in [LatexVorlage](https://github.com/pasrom/FHV-Latex#latexvorlagetex), [here](https://github.com/pasrom/FHV-Latex/actions/workflows/build.yml?query=branch%3Amaster++) you will find the different builds.
+If you like to have a preview of the output mentioned in [LatexVorlage](https://github.com/pasrom/FHV-Latex#latexvorlagetex), [here](https://github.com/pasrom/FHV-Latex/actions/workflows/build.yml?query=branch%3Amain++) you will find the different builds.
 
 # How to clone?
 
@@ -114,7 +114,7 @@ You can define here
 
 ## Use autocompletion
 
-Copy [`fhv.cwl`](https://github.com/pasrom/FHV-Latex/blob/master/scripts/fhv.cwl) to `~/.config/texstudio/completion/user/` (Linux, Mac). For further information [FAQ: Where are cwl files stored?](https://sourceforge.net/p/texstudio/wiki/Frequently%20Asked%20Questions/#where-are-cwl-files-stored)
+Copy [`fhv.cwl`](https://github.com/pasrom/FHV-Latex/blob/main/scripts/fhv.cwl) to `~/.config/texstudio/completion/user/` (Linux, Mac). For further information [FAQ: Where are cwl files stored?](https://sourceforge.net/p/texstudio/wiki/Frequently%20Asked%20Questions/#where-are-cwl-files-stored)
 
 
 # Common errors and possible fixes
