@@ -4,7 +4,7 @@
 	%
 	\makeatletter
 	% define a macro \Autoref to allow multiple references to be passed to \autoref
-	\newcommand\Autoref[1]{\@first@ref#1,@}
+	\newcommand\AutorefMult[1]{\@first@ref#1,@}
 	\def\@throw@dot#1.#2@{#1}% discard everything after the dot
 	\def\@set@refname#1{%    % set \@refname to autoefname+s using \getrefbykeydefault
 		\edef\@tmp{\getrefbykeydefault{#1}{anchor}{}}%
